@@ -1,3 +1,4 @@
+/*
 package com.thesis.project;
 
 public class hello {
@@ -17,3 +18,4 @@ public class hello {
         return content;
     }
 }
+*/

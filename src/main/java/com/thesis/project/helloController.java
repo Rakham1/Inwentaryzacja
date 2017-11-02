@@ -1,3 +1,4 @@
+/*
 package com.thesis.project;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,3 +17,4 @@ public class helloController {
         return new hello(couter.incrementAndGet(), String.format(temp,name));
     }
 }
+*/
