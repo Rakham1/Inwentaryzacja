@@ -1,24 +1,29 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.sql.Timestamp;
-import java.util.Collection;
 
 public class InHistoryDTO {
-    private long inId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private long idInHistory;
+    private int amount;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp timestamp;
     private String details;
-    private Collection<ItemDTO> item;
-    private int amount;
 
-    public long getInId() {
-        return inId;
+    public long getId() {
+        return idInHistory;
     }
 
-    public void setInId(long inId) {
-        this.inId = inId;
+    public void setId(long idInHistory) {
+        this.idInHistory = idInHistory;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public Timestamp getTimestamp() {
@@ -35,21 +40,5 @@ public class InHistoryDTO {
 
     public void setDetails(String details) {
         this.details = details;
-    }
-
-    public Collection<ItemDTO> getItem() {
-        return item;
-    }
-
-    public void setItem(Collection<ItemDTO> item) {
-        this.item = item;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

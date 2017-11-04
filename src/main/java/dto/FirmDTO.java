@@ -1,19 +1,22 @@
 package dto;
 
-public class FirmDTO {
-    private long firmId;
-    private String firmName;
-    private String postCode;
-    private String city;
-    private String street;
-    private int nip;
+import java.util.Collection;
 
-    public long getFirmId() {
-        return firmId;
+public class FirmDTO {
+    private long id;
+    private String firmName;
+    private String street;
+    private String city;
+    private String postcode;
+    private int nip;
+    private Collection<WarehouseDTO> warehouses;
+
+    public long getId() {
+        return id;
     }
 
-    public void setFirmId(long firmId) {
-        this.firmId = firmId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirmName() {
@@ -24,12 +27,12 @@ public class FirmDTO {
         this.firmName = firmName;
     }
 
-    public String getPostCode() {
-        return postCode;
+    public String getStreet() {
+        return street;
     }
 
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -40,6 +43,14 @@ public class FirmDTO {
         this.city = city;
     }
 
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
     public int getNip() {
         return nip;
     }
@@ -48,11 +59,11 @@ public class FirmDTO {
         this.nip = nip;
     }
 
-    public String getStreet() {
-        return street;
+    public Collection<WarehouseDTO> getWarehouses() {
+        return warehouses;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setWarehouses(Collection<WarehouseDTO> warehouses) {
+        this.warehouses = warehouses;
     }
 }

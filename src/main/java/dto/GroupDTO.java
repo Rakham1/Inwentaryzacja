@@ -1,27 +1,37 @@
 package dto;
 
 public class GroupDTO {
-    private long groupId;
-    private String groupName;
-    private boolean isPermament;
+    private long id;
+    private long name;
+    private boolean isPermanent;
 
-    public long getGroupId() {
-        return groupId;
+    public GroupDTO(long id, long name, boolean isPermanent) {
+        this.id = id;
+        this.name = name;
+        this.isPermanent = isPermanent;
     }
 
-    public void setGroupId(long groupId) {
-        this.groupId = groupId;
+    public long getId() {
+        return id;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public long getName() {
+        return name;
     }
 
-    public boolean isPermament() {
-        return isPermament;
+    public void setName(long name) {
+        this.name = name;
+    }
+
+    public boolean isPermanent() {
+        return isPermanent;
+    }
+
+    public void setPermanent(boolean permanent) {
+        isPermanent = permanent;
     }
 }

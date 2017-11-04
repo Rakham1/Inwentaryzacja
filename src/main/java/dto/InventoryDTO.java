@@ -5,20 +5,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Timestamp;
 
 public class InventoryDTO {
-    private long inventId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private long id;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp timestamp;
-    private String inventUser;
-    private String squad;
-    private String comment;
-    private UserDTO user;
+    UserDTO user;
+    String comment;
 
-    public long getInventId() {
-        return inventId;
+    public long getId() {
+        return id;
     }
 
-    public void setInventId(long inventId) {
-        this.inventId = inventId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Timestamp getTimestamp() {
@@ -29,20 +27,12 @@ public class InventoryDTO {
         this.timestamp = timestamp;
     }
 
-    public String getInventUser() {
-        return inventUser;
+    public UserDTO getUser() {
+        return user;
     }
 
-    public void setInventUser(String inventUser) {
-        this.inventUser = inventUser;
-    }
-
-    public String getSquad() {
-        return squad;
-    }
-
-    public void setSquad(String squad) {
-        this.squad = squad;
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     public String getComment() {
@@ -51,13 +41,5 @@ public class InventoryDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public void setUser(UserDTO user) {
-        this.user = user;
     }
 }

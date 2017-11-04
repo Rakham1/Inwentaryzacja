@@ -1,34 +1,28 @@
 package dto;
 
-import java.util.Collection;
-
 public class ItemDTO {
-    private long itemId;
-    private String itemName;
+    private long id;
+    private long itemName;
     private String description;
-    private long index;
     private int stock;
     private String unit;
-    private int minStock;
-    private int maxStock;
     private String barcode;
-    private Collection<WarehouseDTO> warehouse;
-    private Collection<GroupDTO> group;
-    private Collection<TypeDTO> type;
+    private TypeDTO type;
+    private GroupDTO group;
 
-    public long getItemId() {
-        return itemId;
+    public long getId() {
+        return id;
     }
 
-    public void setItemId(long itemId) {
-        this.itemId = itemId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getItemName() {
+    public long getItemName() {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
+    public void setItemName(long itemName) {
         this.itemName = itemName;
     }
 
@@ -38,14 +32,6 @@ public class ItemDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getIndex() {
-        return index;
-    }
-
-    public void setIndex(long index) {
-        this.index = index;
     }
 
     public int getStock() {
@@ -64,22 +50,6 @@ public class ItemDTO {
         this.unit = unit;
     }
 
-    public int getMinStock() {
-        return minStock;
-    }
-
-    public void setMinStock(int minStock) {
-        this.minStock = minStock;
-    }
-
-    public int getMaxStock() {
-        return maxStock;
-    }
-
-    public void setMaxStock(int maxStock) {
-        this.maxStock = maxStock;
-    }
-
     public String getBarcode() {
         return barcode;
     }
@@ -88,28 +58,19 @@ public class ItemDTO {
         this.barcode = barcode;
     }
 
-    public Collection<WarehouseDTO> getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Collection<WarehouseDTO> warehouse) {
-        this.warehouse = warehouse;
-    }
-
-    public Collection<GroupDTO> getGroup() {
-        return group;
-    }
-
-    public void setGroup(Collection<GroupDTO> group) {
-        this.group = group;
-    }
-
-    public Collection<TypeDTO> getType() {
+    public TypeDTO getType() {
         return type;
     }
 
-    public void setType(Collection<TypeDTO> type) {
+    public void setType(TypeDTO type) {
         this.type = type;
     }
 
+    public GroupDTO getGroup() {
+        return group;
+    }
+
+    public void setGroup(GroupDTO group) {
+        this.group = group;
+    }
 }

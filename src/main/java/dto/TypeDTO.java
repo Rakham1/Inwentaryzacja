@@ -1,22 +1,27 @@
 package dto;
 
 public class TypeDTO {
-    private long typeId;
-    private String typeName;
+    private long id;
+    private String name;
 
-    public long getTypeId() {
-        return typeId;
+    public TypeDTO(long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public void setTypeId(long typeId) {
-        this.typeId = typeId;
+    public long getId() {
+        return id;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
