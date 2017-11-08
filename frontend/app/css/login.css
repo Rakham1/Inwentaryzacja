@@ -1,22 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+
 .mainSite{
-	background: #bfbfbf;,
-	height: 100%;
-	width: 100%;
+	background : #bfbfbf;
+}
+
+.header-column img{
+	filter: opacity(0.3);
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .header-column{
-    width: 100%;
-	height: 100%;
-	max-width: initial;
-
-	background: yellow;
-}
-.red{
-	height: 100%;
-}
-.login-column{
 	width: 100%;
-	height: 100%;
+	height: 45vh;
+	max-width: initial;
+	text-align: center;
+	position: relative;
+}
+
+.header-column .prog_name{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 60px;
+	position: absolute;
+	bottom: 0;
+	margin-left: -140px;
+	margin-bottom: 30px;
+	color: #0047b3;
+}
+
+.header-column .prog_name .inv{
+	font-weight: bold;
+
+
+}
+
+.login-column{
+	width: 70%;
+	height: 45vh;
 	max-width: initial;
 }
 
@@ -27,21 +50,77 @@
 .right-column:before, .right-column:after {
 	content: "";
 	position: absolute;
-	top: 1px;
-	right: 1px;
+	top: 0px;
+	right: -1px;
 }
 .right-column:before {
-	bottom: -10px;
+	bottom: 0px;
 	width: 3px;
 	background-image: -webkit-linear-gradient(top, #000, transparent);
 	background-image: -moz-linear-gradient(top, #000, transparent);
 	background-image: -o-linear-gradient(top, #000, transparent);
 }
 .right-column:after {
-	left: -3px;
+	left: 0px;
 	height: 3px;
 	background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#000), to(transparent));
 	background-image: -webkit-linear-gradient(right, #000, transparent);
 	background-image: -moz-linear-gradient(right, #000, transparent);
 	background-image: -o-linear-gradient(right, #000, transparent);
+}
+
+.right-column img{
+	padding: 10px 10px 0 0;
+}
+
+.left-column {
+	position: relative;
+}
+
+.left-column:before, .left-column:after {
+	content: "";
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.left-column:before {
+	bottom: 0px;
+	width: 3px;
+	background-image: -webkit-linear-gradient(top, #000, transparent);
+	background-image: -moz-linear-gradient(top, #000, transparent);
+	background-image: -o-linear-gradient(top, #000, transparent);
+}
+.left-column:after {
+	right: 0px;
+	height: 3px;
+	background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#000), to(transparent));
+	background-image: -webkit-linear-gradient(right, transparent,#000);
+	background-image: -moz-linear-gradient(right, transparent,#000);
+	background-image: -o-linear-gradient(right, transparent,#000);
+}
+
+.login-form {
+	padding: 45px;
+	max-width: 500px;
+}
+
+.login-form input{
+	border-radius: 0px;
+	padding-left:15px;
+	border:1px solid black;
+	height: 40%;
+}
+.login-form input:hover{
+	border:1px solid #1a8cff;
+}
+
+.login-form .button{
+	display: block;
+	float: right;
+	width: 25%;
+	background: #0047b3;
+}
+
+.login-form input::-webkit-input-placeholder {
+	color: #8c8c8c;
 }
