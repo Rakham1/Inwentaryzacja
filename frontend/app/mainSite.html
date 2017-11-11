@@ -1,0 +1,24 @@
+<div class="mainSite">
+	<div class="row header-column">
+		<img src="../img/tlo_log.png">
+		<div class="large-12 columns red">
+			<span class="prog_name">
+				<span class="inv">INVENT</span>pro
+			</span>
+		</div>
+	</div>
+	<div class="row login-column">
+		<div class="large-5 columns text-right right-column">
+			<img src="../img/logo.png"/>
+		</div>
+		<div class="large-7 columns text-left left-column">
+			<div ng-controller="loginController">
+				<form class="login-form" name="formLogin">
+					<input type="text" ng-model="user.nickname" placeholder="Login"/>
+					<input type="password" ng-model="user.password" placeholder="Hasło"/>
+					<a href="#" class="button" ng-disabled="formLogin.$invalid" ng-click="loginUser()">OK</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

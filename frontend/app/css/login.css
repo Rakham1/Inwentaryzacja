@@ -15,8 +15,7 @@
 
 .header-column{
 	width: 100%;
-	height: 45vh;
-	max-width: initial;
+	height: 50vh;
 	text-align: center;
 	position: relative;
 }
@@ -33,13 +32,11 @@
 
 .header-column .prog_name .inv{
 	font-weight: bold;
-
-
 }
 
 .login-column{
-	width: 70%;
-	height: 45vh;
+	width: 100%;
+	height: 50vh;
 	max-width: initial;
 }
 
