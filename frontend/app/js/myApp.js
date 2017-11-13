@@ -3,12 +3,13 @@ var MyApp = angular.module('inventpro', ['ngRoute', 'ngCookies']);
 MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
 	$locationProvider.hashPrefix('!');
 	$qProvider.errorOnUnhandledRejections(false);
+	
 	$routeProvider
 		.when('/', {
-			templateUrl: 'mainSite.html'
+			templateUrl: 'html/mainSite.html'
 		})
 		.when('/user', {
-			templateUrl: '/html/user.html'
+			templateUrl: 'html/user.html'
 		})
 		.otherwise({
 			redirectTo: '/'

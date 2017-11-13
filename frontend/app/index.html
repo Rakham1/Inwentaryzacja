@@ -10,18 +10,42 @@
     <base href="/">
 </head>
 
-<body>
+<body ng-controller="navbarController">
+    <div class="top-bar stacked-for-medium" id="example-menu" ng-hide="isHidden()">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Site Title</li>
+            <li class="has-submenu">
+              <a href="#0">One</a>
+              <ul class="submenu menu vertical" data-submenu>
+                <li><a href="#0">One</a></li>
+                <li><a href="#0">Two</a></li>
+                <li><a href="#0">Three</a></li>
+              </ul>
+            </li>
+            <li><a href="#0">Two</a></li>
+            <li><a href="#0">Three</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><input type="search" placeholder="Search"></li>
+            <li><button type="button" class="button">Search</button></li>
+          </ul>
+        </div>
+      </div>
     <div ng-view class="view clearfix"></div>
-    <script src="../lib/vendor/jquery.js"></script>
-    <script src="../lib/vendor/foundation.js"></script>
-    <script src="../lib/angular.js"></script>
-    <script src="../lib/angular-route.js"></script>
-    <script src="../lib/vendor/foundation.min.js"></script>
-    <script src="../lib/angular-cookies.js"></script>
-    <script src="../lib/vendor/what-input.js"></script>
-    <script src="../lib/app.js"></script>
-    <script src="../js/myApp.js"></script>
-    <script src="../js/loginController.js"></script>
+    <script src="lib/vendor/jquery.js"></script>
+    <script src="lib/vendor/foundation.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/vendor/foundation.min.js"></script>
+    <script src="lib/angular-cookies.js"></script>
+    <script src="lib/vendor/what-input.js"></script>
+    <script src="lib/app.js"></script>
+    <script src="js/myApp.js"></script>
+    <script src="js/loginController.js"></script>
+    <script src="js/navbarController.js"></script>
 </body>
 
 </html>

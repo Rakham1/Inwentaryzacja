@@ -26,15 +26,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
                 .formLogin()
-                    .loginProcessingUrl("/login")
-                    .failureUrl("/login")
+                    .loginProcessingUrl("/api/login")
+                    .failureUrl("/api/login")
                     .successHandler(mySuccessHandler)
                     .failureHandler(new SimpleUrlAuthenticationFailureHandler())
                 .and()
                 .authorizeRequests()
                 .anyRequest().permitAll()
                 .and()
-                .logout();
+                .logout().logoutSuccessUrl("/api/login");
     }
 
 }

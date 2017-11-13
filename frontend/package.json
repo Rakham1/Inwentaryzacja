@@ -16,6 +16,7 @@
   "scripts": {
     "test": "karma start test\\karma.conf.js"
   },
+  "proxy": "http://localhost:8080/api",
   "keywords": [],
   "author": "",
   "license": "ISC"
