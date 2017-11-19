@@ -3,17 +3,20 @@ MyApp.controller('loginController', function ($scope, $http, $location, $cookies
 		username: '',
 		password: ''
 	}
-
+	
 	$scope.loginUser = function () {
 		$http.post("/api/login", $scope.user, {
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
 			transformRequest: transform
 		})
 			.then(function (response) {
-				$cookies.put('login', response.data.username)
-				$cookies.put('uId', response.data.uid);
-				$location.path('/user');
-				$route.reload();
+				var data = response.config.data;
+					console.log(response.config.data);
+					console.log(JSON.stringify(response));
+					$cookies.put('login', data.username)
+					$cookies.put('userId', data.uid);
+					$location.path('/user');
+					$route.reload();
 
 			}, function (error) {
 				showalert(error.data.value, "alert-danger");

@@ -11,18 +11,26 @@ import org.springframework.stereotype.Service;
 import com.thesis.project.repositories.UserRepository;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService{
 
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        Person user = userRepository.findByUsername(username);
 
-        if(user == null){
-            throw new UsernameNotFoundException("User nick doesnt exist");
+
+    public Person findPersonByUsername(String username) throws UsernameNotFoundException{
+        Person person = userRepository.findByUsername(username);
+        if(person == null){
+            throw new UsernameNotFoundException("User doesn't exists");
         }
-        return new User(user.getNickname(),user.getPassword(), true, true, true, true, AuthorityUtils.NO_AUTHORITIES);
+        return person;
+    }
+
+    public Person findPersonById(Long id) throws UsernameNotFoundException{
+        Person person = userRepository.findById(id);
+        if(person == null){
+            throw new UsernameNotFoundException("User doesn't exists");
+        }
+        return person;
     }
 }

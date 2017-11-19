@@ -5,6 +5,7 @@ public class UserDTO {
     private String name;
     private String surname;
     private FirmDTO firm;
+    private String username;
 
     public long getId() {
         return id;
@@ -36,5 +37,13 @@ public class UserDTO {
 
     public void setFirm(FirmDTO firm) {
         this.firm = firm;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -1,9 +1,54 @@
-<div>
-    <div>
-        abab
+<div class="large-12 columns user-body" ng-controller="userController">
+    <div class="">
+        <h3 class="user-header">Moje dane</h3>
     </div>
-    <div>
-        <div>acac</div>
-        <div>acva</div>
+    <div class="user-middle row">
+        <div class="large-3 columns left-user-column">
+            <div class="column-inside">
+                <p>Zalogowany jako {{user.name}} {{user.surname}} ( {{user.username}} )</p>
+            </div>
+        </div>
+
+        <div class="large-4 columns middle-user-column">
+            <div class="column-inside">
+                <h3 class="user-header-inside">Firma</h3>
+                <ul class="user-list">
+                    <li>
+                        <h4>{{firm.firmname}}</h4>
+                    </li>
+                    <li>{{firm.street}}</li>
+                    <li>{{firm.postCode}} {{firm.city}}</li>
+                    <li>NIP: {{firm.nip}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="large-5 columns right-user-column">
+            <div class="column-inside" ng-controller="showWhController">
+                <h3 class="user-header-inside">Magazyny</h3>
+                <div>
+                    <button class="hollow button" ng-click="switch()">Dodaj magazyn</button>
+                </div>
+                <div class="select-label">Wybierz magazyn</div>
+                    <select class="select">
+                        <option value="husker">Husker</option>
+                        <option value="starbuck">Starbuck</option>
+                        <option value="hotdog">Hot Dog</option>
+                        <option value="apollo">Apollo</option>
+                    </select>
+  
+                <ul class="user-list">
+                    <li>
+                        <h4>WAT TO ZUO</h4>
+                    </li>
+                    <li>Jana Kisibuły 13/9</li>
+                    <li>03-333 Warszawa</li>
+                </ul>
+                <div ng-controller="addWhController">
+                    <a href="javascript:" ng-click="switch()">Cofnij</a>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

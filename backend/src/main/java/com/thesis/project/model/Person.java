@@ -41,11 +41,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getNickname() {
+    public String getUsername() {
         return username;
     }
 
-    public void setNickname(String nickname) {
+    public void setUsername(String nickname) {
         this.username = username;
     }
 

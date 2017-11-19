@@ -3,13 +3,13 @@ package com.thesis.project.dto;
 public class UserLoginDTO {
 
     private long id;
-    String nickname;
+    String username;
     String password;
 
-    public UserLoginDTO(long id, String nickname, String password) {
+    public UserLoginDTO(long id, String username, String password) {
         super();
         this.id = id;
-        this.nickname = nickname;
+        this.username = username;
         this.password = password;
     }
 
@@ -22,11 +22,11 @@ public class UserLoginDTO {
     }
 
     public String getNickname() {
-        return nickname;
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setNickname(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

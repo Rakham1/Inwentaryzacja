@@ -2,50 +2,94 @@
 <html lang="en" ng-app="inventpro">
 
 <head>
-    <meta charset="utf-8">
-    <title>Inwentaryzacja</title>
-    <link rel="stylesheet" href="../css/foundation.css" />
-    <link rel="stylesheet" href="../css/app.css" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <base href="/">
+  <meta charset="utf-8">
+  <title>Inwentaryzacja</title>
+  <link rel="stylesheet" href="../css/foundation.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/user.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <base href="/">
 </head>
 
-<body ng-controller="navbarController">
-    <div class="top-bar stacked-for-medium" id="example-menu" ng-hide="isHidden()">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Site Title</li>
-            <li class="has-submenu">
-              <a href="#0">One</a>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><a href="#0">One</a></li>
-                <li><a href="#0">Two</a></li>
-                <li><a href="#0">Three</a></li>
-              </ul>
-            </li>
-            <li><a href="#0">Two</a></li>
-            <li><a href="#0">Three</a></li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="menu">
-            <li><input type="search" placeholder="Search"></li>
-            <li><button type="button" class="button">Search</button></li>
-          </ul>
-        </div>
-      </div>
-    <div ng-view class="view clearfix"></div>
-    <script src="lib/vendor/jquery.js"></script>
-    <script src="lib/vendor/foundation.js"></script>
-    <script src="lib/angular.js"></script>
-    <script src="lib/angular-route.js"></script>
-    <script src="lib/vendor/foundation.min.js"></script>
-    <script src="lib/angular-cookies.js"></script>
-    <script src="lib/vendor/what-input.js"></script>
-    <script src="lib/app.js"></script>
-    <script src="js/myApp.js"></script>
-    <script src="js/loginController.js"></script>
-    <script src="js/navbarController.js"></script>
+<body ng-class="{mainSite:isHidden()}" ng-controller="navbarController">
+  <div class="top-bar" data-menu-underline-from-center ng-hide="isHidden()">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li>
+          <a href="/user">INVENTpro</a>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li>
+          <a href="/user">Wyloguj</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Left Nav Sidebar -->
+
+  <div class="large-1 columns left-nav" ng-hide="isHidden()">
+    <div class="icon-bar vertical eight-up">
+      <a class="item">
+        <i class="fa fa-home"></i>
+        <label>Strona główna</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-gamepad"></i>
+        <label>Kartoteka przedmiotów</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-star"></i>
+        <label>Inwentaryzacja</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-thumbs-up"></i>
+        <label>Zwroty</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-trophy"></i>
+        <label>Wydania</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-trophy"></i>
+        <label>Raport</label>
+      </a>
+      <a class="item">
+        <i class="fa fa-trophy"></i>
+        <label>Kod kreskowy</label>
+      </a>
+    </div>
+  </div>
+
+  <div ng-view class="large-11 columns view clearfix body-class"></div>
+
+  <footer class="footer social-footer" ng-hide="isHidden()">
+    <div class="color">
+    </div>
+  </footer>
+
+  <script src="lib/vendor/jquery.js"></script>
+  <script src="lib/vendor/foundation.js"></script>
+  <script src="lib/angular.js"></script>
+  <script src="lib/angular-route.js"></script>
+  <script src="lib/vendor/foundation.min.js"></script>
+  <script src="lib/angular-cookies.js"></script>
+  <script src="lib/vendor/what-input.js"></script>
+  <script src="lib/app.js"></script>
+  <script src="js/myApp.js"></script>
+  <script src="js/loginController.js"></script>
+  <script src="js/navbarController.js"></script>
+  <script src="js/addWhController.js"></script>
+  <script src="js/showWhController.js"></script>
+  <script src="js/userController.js"></script>
+  <script>
+    $("[data-menu-underline-from-center] a").addClass("underline-from-center");
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,55 @@
+.user-body{
+  margin-top: 10%;
+  /* background-color: red; */
+}
+
+.user-header {
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.user-header-inside{
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.user-middle{
+  display: inline;
+
+}
+
+.left-user-column{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.middle-user-column, .right-user-column{
+    text-align: center;
+}
+
+.column-inside {
+    padding: 2rem 4rem;
+    /* background-color: yellow; */
+}
+  
+.user-list{
+  list-style-type: none; 
+  margin-bottom: 2rem; 
+}
+
+.select-label{
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.select{
+    width: 60%;
+    border: 1px solid #ccc;
+}
+
+.select:focus{
+  outline: none;
+}
