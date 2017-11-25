@@ -16,6 +16,11 @@ MyApp.controller('userController', function ($scope, $http, $location, $cookies,
         $scope.user = response.data;
     });
 
+
+    $http.get("api/firms/1").then(function(response){
+        $scope.firm=response.data;
+    });
+    
     // $http.get("/api/firms/" + scope.fId).then(function (response){
     //     $scope.firm = response.data;
     // })

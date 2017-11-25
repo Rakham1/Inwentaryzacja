@@ -1,14 +1,17 @@
 package com.thesis.project.dto;
 
+import com.thesis.project.model.Group;
+import com.thesis.project.model.Type;
+
 public class ItemDTO {
     private long id;
-    private long itemName;
+    private String itemName;
     private String description;
     private int stock;
     private String unit;
     private String barcode;
-    private TypeDTO type;
-    private GroupDTO group;
+//    private Type type;
+//    private Group group;
 
     public long getId() {
         return id;
@@ -18,11 +21,11 @@ public class ItemDTO {
         this.id = id;
     }
 
-    public long getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(long itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
@@ -58,19 +61,19 @@ public class ItemDTO {
         this.barcode = barcode;
     }
 
-    public TypeDTO getType() {
-        return type;
-    }
-
-    public void setType(TypeDTO type) {
-        this.type = type;
-    }
-
-    public GroupDTO getGroup() {
-        return group;
-    }
-
-    public void setGroup(GroupDTO group) {
-        this.group = group;
-    }
+//    public Type getType() {
+//        return type;
+//    }
+//
+//    public void setType(Type type) {
+//        this.type = type;
+//    }
+//
+//    public Group getGroup() {
+//        return group;
+//    }
+//
+//    public void setGroup(Group group) {
+//        this.group = group;
+//    }
 }

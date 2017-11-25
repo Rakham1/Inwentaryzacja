@@ -1,14 +1,24 @@
 package com.thesis.project.security;
 
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import com.thesis.project.services.MyUserDetailsService;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @ComponentScan
 @Configuration
@@ -23,6 +33,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Autowired
     MyUserDetailsService userDetailsService;
+
+
 //
 //    @Autowired
 //    MyAuthenticationProvider myAuthenticationProvider;
