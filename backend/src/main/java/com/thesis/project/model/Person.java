@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +34,10 @@ public class Person {
 
     @OneToMany(mappedBy = "user")
     private Set<Inventory> inventory = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    Role role;
 
     public long getId() {
         return id;
@@ -81,6 +87,7 @@ public class Person {
         this.mail = mail;
     }
 
+
     public Firm getFirm() {
         return firm;
     }
@@ -97,4 +104,11 @@ public class Person {
         this.inventory = inventory;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

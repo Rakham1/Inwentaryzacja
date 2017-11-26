@@ -1,8 +1,7 @@
 package com.thesis.project.services;
 
-import com.thesis.project.Factory.ItemFactory;
+import com.thesis.project.factory.ItemFactory;
 import com.thesis.project.dto.ItemDTO;
-import com.thesis.project.dto.TypeDTO;
 import com.thesis.project.model.Item;
 import com.thesis.project.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 @Service
 public class ItemService {
@@ -29,7 +26,8 @@ public class ItemService {
 
     @Transactional
     public void save(ItemDTO itDTO){
-        itemRepository.save(itemFactory.itemFromDto(itDTO));
+        Item item1 = itemFactory.itemFromDto(itDTO);
+        itemRepository.save(item1);
     }
 
     public void delete(Item item){
@@ -42,6 +40,10 @@ public class ItemService {
 
     public Item getItemByName(String name){
         return itemRepository.findProductByName(name);
+    }
+
+    public Item getItemByBarcode(String barcode){
+        return itemRepository.getItemByBarcode(barcode);
     }
 
     public ArrayList<Item> getAllItems(){

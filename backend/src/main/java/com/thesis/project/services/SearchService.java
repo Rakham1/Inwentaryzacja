@@ -1,6 +1,6 @@
 package com.thesis.project.services;
 
-import com.thesis.project.Factory.ItemFactory;
+import com.thesis.project.factory.ItemFactory;
 import com.thesis.project.dto.ItemDTO;
 import com.thesis.project.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

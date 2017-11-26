@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -46,11 +48,11 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "type_id")
-    Type type;
+    private Type type;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
-    Group group;
+    private Group group;
 
     @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
     private Set<InHistory> inHistory = new HashSet<>();
@@ -157,7 +159,7 @@ public class Item {
     public Group getGroup() {
         return group;
     }
-
+    @JsonIgnore
     public void setGroup(Group group) {
         this.group = group;
     }

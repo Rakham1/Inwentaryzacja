@@ -1,13 +1,24 @@
-package com.thesis.project.Factory;
+package com.thesis.project.factory;
 
+import com.thesis.project.dto.GroupDTO;
 import com.thesis.project.dto.ItemDTO;
+import com.thesis.project.dto.TypeDTO;
 import com.thesis.project.model.Item;
+import com.thesis.project.repositories.GroupRepository;
+import com.thesis.project.repositories.TypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
 @Component
 public class ItemFactory {
+
+    @Autowired
+    TypeRepository typeRepository;
+
+    @Autowired
+    GroupRepository groupRepository;
 
     public ArrayList<ItemDTO> itemToDTO(ArrayList<Item> items){
         ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
@@ -24,8 +35,8 @@ public class ItemFactory {
         itemToDto.setStock(item.getStock());
         itemToDto.setUnit(item.getUnit());
         itemToDto.setBarcode(item.getBarcode());
-//        itemToDto.setType(item.getType());
-//        itemToDto.setGroup(item.getGroup());
+        itemToDto.setTypeId(item.getType().getId());
+        itemToDto.setGroupId(item.getGroup().getId());
         return itemToDto;
     }
 
@@ -38,8 +49,8 @@ public class ItemFactory {
         item.setStock(itemDTO.getStock());
         item.setUnit(itemDTO.getUnit());
         item.setBarcode(itemDTO.getBarcode());
-//        item.setType(itemDTO.getType());
-//        item.setGroup(itemDTO.getGroup());
+        item.setType(typeRepository.findTypeById(itemDTO.getTypeId()));
+        item.setGroup(groupRepository.findGroupById(itemDTO.getGroupId()));
         return item;
     }
 }

@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +38,7 @@ public class Type {
     public Set<Item> getItem() {
         return item;
     }
-
+    @JsonIgnore
     public void setItem(Set<Item> item) {
         this.item = item;
     }

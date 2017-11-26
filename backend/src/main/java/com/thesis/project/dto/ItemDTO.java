@@ -10,8 +10,8 @@ public class ItemDTO {
     private int stock;
     private String unit;
     private String barcode;
-//    private Type type;
-//    private Group group;
+    private long typeId;
+    private long groupId;
 
     public long getId() {
         return id;
@@ -61,19 +61,19 @@ public class ItemDTO {
         this.barcode = barcode;
     }
 
-//    public Type getType() {
-//        return type;
-//    }
-//
-//    public void setType(Type type) {
-//        this.type = type;
-//    }
-//
-//    public Group getGroup() {
-//        return group;
-//    }
-//
-//    public void setGroup(Group group) {
-//        this.group = group;
-//    }
+    public long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
+    }
+
+    public long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
+    }
 }
