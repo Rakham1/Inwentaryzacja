@@ -1,0 +1,58 @@
+<div ng-controller="itemsController">
+    <label>Search:
+        <input ng-model="searchKeyword">
+    </label>
+    <table class="responsive-card-table unstriped">
+        <thead>
+            <tr>
+                <th>Przedmiot</th>
+                <th>Opis</th>
+                <th>Ilość</th>
+                <th>Jm.</th>
+                <th>Kod skanera</th>
+                <th>Grupa</th>
+                <th>Typ</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="i in items | filter: searchKeyword">
+            <tr>
+                <td>
+                    <a href="javascript:" ng-click="popUp(i)">{{i.itemName}}</a>
+                </td>
+                <div id="p" class="pop">
+                    <div class="upInfo">
+                        <input type="text" placeholder="{{thisItem.itemName}}" />
+                        <textarea type="text" placeholder="{{thisItem.description}}" />
+                        <div>{{thisItem.type.name}}</div>
+                    </div>
+                    <div class="stock">
+                        <div class="stockInfo">
+                            <input type="text" placeholder="{{thisItem.stock}}" />
+                            <input type="text" placeholder="{{thisItem.unit}}" />
+                            <input type="text" placeholder="{{thisItem.price}}" />
+
+                        </div>
+                        <div class="mStock">
+                            <input type="text" placeholder="{{thisItem.minStock}}" />
+                            <input type="text" placeholder="{{thisItem.maxStock}}" />
+                        </div>
+                    </div>
+                    <div class="downInfo">
+                        <input type="text" placeholder="{{thisItem.notes}}" />
+                        <input type="text" placeholder="{{thisItem.timestamp}}" />
+                        <input type="text" placeholder="{{thisItem.warehouse}}" />
+                        <input type="text" placeholder="{{thisItem.barcode}}" />
+                    </div>
+                    <a href="javascript:" class="button" ng-click="close()">Koniec</a>
+                </div>
+                <div id="g" class="grey"></div>
+                <td>{{i.description}}</td>
+                <td>{{i.stock}}</td>
+                <td>{{i.unit}}</td>
+                <td>{{i.barcode}}</td>
+                <td>{{i.group_id}}</td>
+                <td>{{i.type_id}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -11,6 +11,10 @@ MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
 		.when('/user', {
 			templateUrl: 'html/user.html'
 		})
+		.when('/items',{
+			templateUrl: 'html/items.html',
+			controller: 'itemsController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

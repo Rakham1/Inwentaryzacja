@@ -1,0 +1,145 @@
+
+.responsive-card-table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  
+}
+
+.responsive-card-table.unstriped tbody {
+  background-color: transparent;
+}
+
+.responsive-card-table th {
+  background-color: #e6e6e6;
+}
+
+.responsive-card-table tr,
+.responsive-card-table th,
+.responsive-card-table td {
+  border: 1px solid #0a0a0a;
+}
+
+@media screen and (max-width: 640px) {
+  .responsive-card-table {
+    
+  }
+  .responsive-card-table thead tr {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+  }
+  .responsive-card-table tr {
+    border: 1px solid #0a0a0a;
+    display: block;
+  }
+  .responsive-card-table tr + tr {
+    margin-top: 1.5rem;
+  }
+  .responsive-card-table td {
+    border: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-bottom: 1px solid #0a0a0a;
+    padding-left: 50%;
+    position: relative;
+  }
+  .responsive-card-table td:before {
+    content: attr(data-label);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-left: -100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .responsive-card-table td:after {
+    content: '';
+    position: absolute;
+    background: #e6e6e6;
+    width: 45%;
+    height: 95%;
+    left: 1px;
+    top: 1px;
+    z-index: 0;
+  }
+}
+.grey {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+  opacity: .10;
+}
+.pop {
+  margin: 0 auto;
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: auto;
+  height: 70%;
+  padding: 16px;
+  border: 1px solid black;
+  background-color: white;
+  z-index: 2;
+  overflow: auto;
+}
+.pop input[type=text]{
+  width: 200px;
+  height: 30px;
+  border: 1px solid black;
+  padding:4px;
+}
+.pop textarea{
+  width: 200px;
+  height: 30px;
+  border: 1px solid black;
+  padding:4px;
+}
+.pop input::placeholder {
+  color:black;
+}
+
+.pop textarea::placeholder{
+  color:black;
+}
+.pop .upInfo{
+  /* background-color: blue; */
+}
+.pop .stock{
+  display: flex;
+  align-items: center;
+  /* background-color: yellow; */
+  margin-bottom: 16px;
+}
+.pop .stock .stockInfo{
+  margin-right: 4px;
+}
+.pop .stock .stockInfo input{
+  display: inline-block;
+  /* background-color: green; */
+}
+.pop .stock .mStock{
+
+  /* background-color: pink; */
+}
+.pop .downInfo{
+  /* background-color: red; */
+}
+.pop .button{
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+}

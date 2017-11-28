@@ -34,6 +34,9 @@ public class Item {
     @Column(name = "maxStock")
     private int maxStock;
 
+    @Column(name = "price")
+    private long price;
+
     @Column(name = "unit")
     private String unit;
 
@@ -114,6 +117,14 @@ public class Item {
 
     public void setMaxStock(int maxStock) {
         this.maxStock = maxStock;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public String getUnit() {

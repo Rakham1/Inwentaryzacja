@@ -2,6 +2,7 @@ package com.thesis.project.factory;
 
 import com.thesis.project.dto.GroupDTO;
 import com.thesis.project.dto.ItemDTO;
+import com.thesis.project.dto.ItemOutputDTO;
 import com.thesis.project.dto.TypeDTO;
 import com.thesis.project.model.Item;
 import com.thesis.project.repositories.GroupRepository;
@@ -19,6 +20,8 @@ public class ItemFactory {
 
     @Autowired
     GroupRepository groupRepository;
+
+    ItemOutputDTO itemOutputDTO;
 
     public ArrayList<ItemDTO> itemToDTO(ArrayList<Item> items){
         ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
