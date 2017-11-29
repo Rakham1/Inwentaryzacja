@@ -21,29 +21,56 @@
                 </td>
                 <div id="p" class="pop">
                     <div class="upInfo">
-                        <input type="text" placeholder="{{thisItem.itemName}}" />
-                        <textarea type="text" placeholder="{{thisItem.description}}" />
-                        <div>{{thisItem.type.name}}</div>
+                        <label>Nazwa przedmiotu:</label>
+                        <input type="text" ng-hide="active == $index" placeholder="{{thisItem.itemName}}" readonly="readonly" />
+                        <input type="text" ng-show="active == $index" ng-model="items.itemName" />
+                        <label>Opis:</label>
+                        <textarea type="text" ng-hide="active == $index" placeholder="{{thisItem.description}}" readonly="readonly" />
+                        <textarea type="text" ng-show="active == $index" ng-model="items.description" />
+                        <label>Rodzaj:</label>
+                        <div ng-hide="active == $index">{{thisItem.type.name}}</div>
+                        <select ng-show="active == $index">
+                            {{types.name}}
+                        </select>
                     </div>
                     <div class="stock">
                         <div class="stockInfo">
-                            <input type="text" placeholder="{{thisItem.stock}}" />
-                            <input type="text" placeholder="{{thisItem.unit}}" />
-                            <input type="text" placeholder="{{thisItem.price}}" />
+                            <label>Ilość:</label>
+                            <input type="text" ng-hide="active == $index" placeholder="{{thisItem.stock}}" readonly="readonly" />
+                            <input type="text" ng-show="active == $index" ng-model="items.stock" />
+                            <label>Jednostka:</label>
+                            <input type="text" ng-hide="active == $index" placeholder="{{thisItem.unit}}" readonly="readonly" />
+                            <input type="text" ng-show="active == $index" ng-model="items.unit" />
+                            <label>Cena:</label>
+                            <input type="text" ng-hide="active == $index" placeholder="{{thisItem.price}}" readonly="readonly" />
+                            <input type="text" ng-show="active == $index" ng-model="items.price" />
 
                         </div>
                         <div class="mStock">
-                            <input type="text" placeholder="{{thisItem.minStock}}" />
-                            <input type="text" placeholder="{{thisItem.maxStock}}" />
+                            <label>Min ilość przedmiotów:</label>
+                            <input type="text" placeholder="{{thisItem.minStock}}" readonly="readonly" />
+                            <label>Max ilość przedmiotów:</label>
+                            <input type="text" placeholder="{{thisItem.maxStock}}" readonly="readonly" />
                         </div>
                     </div>
                     <div class="downInfo">
-                        <input type="text" placeholder="{{thisItem.notes}}" />
-                        <input type="text" placeholder="{{thisItem.timestamp}}" />
-                        <input type="text" placeholder="{{thisItem.warehouse}}" />
-                        <input type="text" placeholder="{{thisItem.barcode}}" />
+                        <label>Uwagi:</label>
+                        <input type="text" ng-hide="active == $index" placeholder="{{thisItem.notes}}" readonly="readonly" />
+                        <input type="text" ng-show="active == $index" ng-model="items.notes" />
+                        <label>Czas dodania:</label>
+                        <input type="text" placeholder="{{thisItem.timestamp}}" readonly="readonly" />
+                        <label>Magazyn:</label>
+                        <input type="text" placeholder="{{thisItem.warehouse}}" readonly="readonly" />
+                        <label>Kod kreskowy:</label>
+                        <input type="text" ng-hide="active == $index" placeholder="{{thisItem.barcode}}" readonly="readonly" />
+                        <input type="text" ng-show="active == $index" ng-model="items.barcode" />
                     </div>
-                    <a href="javascript:" class="button" ng-click="close()">Koniec</a>
+                    <div class="itemFooter">
+                        <button ng-hide="active==$index" ng-click="edit($index)">Edit</button>
+                        <button ng-show="active==$index" ng-click="update($index)">Back</button>
+                        <button class="button" ng-click="close()">Koniec</button>
+                        <button ng-click="delete()">Usuń</button>
+                    </div>
                 </div>
                 <div id="g" class="grey"></div>
                 <td>{{i.description}}</td>
