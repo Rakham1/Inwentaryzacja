@@ -58,6 +58,6 @@ html, body{
     border: 2px solid #333333 !important;
     background-color:gray;
     color: white;
-    text-align: center;
-    padding:15px;
+    text-align: right;
+    padding:5px;
 }

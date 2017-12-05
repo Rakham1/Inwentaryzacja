@@ -40,8 +40,11 @@ public class Item {
     @Column(name = "unit")
     private String unit;
 
-    @Column(name = "barcode")
+    @Column(name = "barcode", nullable = true)
     private String barcode;
+
+    @Column(name = "notes")
+    private String notes;
 
     @Column(name = "timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
@@ -101,6 +104,14 @@ public class Item {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public int getMinStock() {
@@ -170,7 +181,7 @@ public class Item {
     public Group getGroup() {
         return group;
     }
-    @JsonIgnore
+
     public void setGroup(Group group) {
         this.group = group;
     }

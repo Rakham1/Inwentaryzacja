@@ -1,5 +1,6 @@
 package com.thesis.project.controllers;
 
+import com.thesis.project.dto.ItemOutputDTO;
 import com.thesis.project.factory.ItemFactory;
 import com.thesis.project.dto.ItemDTO;
 import com.thesis.project.dto.Search;
@@ -48,8 +49,8 @@ public class ItemController {
     }
 
     @GetMapping("/allItems")
-    public ResponseEntity<ArrayList<ItemDTO>> getAll(){
-        return new ResponseEntity<>(itemFactory.itemToDTO(itemService.getAllItems()), HttpStatus.OK);
+    public ResponseEntity<ArrayList<ItemOutputDTO>> getAll() throws NullPointerException{
+        return new ResponseEntity<>(itemFactory.itemtoDTO2(itemService.getAllItems()), HttpStatus.OK);
     }
 
     @RequestMapping("/search")
@@ -61,14 +62,14 @@ public class ItemController {
         return new ResponseEntity<>(search, HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}/edit")
+    @PutMapping("/{id}/edit")
     public ResponseEntity<ItemDTO> editItem(@RequestBody ItemDTO itemDTO, @PathVariable("id") long id){
         Item item = itemService.getItemById(id);
         HttpStatus httpStatus = HttpStatus.OK;
         if(item != null){
             itemDTO.setId(item.getId());
             itemService.update(itemDTO);
-        }
+    }
         else
             httpStatus = HttpStatus.NOT_FOUND;
 

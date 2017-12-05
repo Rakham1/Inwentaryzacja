@@ -46,7 +46,7 @@ public class Group {
     public Set<Item> getItem() {
         return item;
     }
-
+    @JsonIgnore
     public void setItem(Set<Item> item) {
         this.item = item;
     }

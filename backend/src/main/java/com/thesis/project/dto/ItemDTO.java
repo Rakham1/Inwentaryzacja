@@ -10,6 +10,8 @@ public class ItemDTO {
     private int stock;
     private String unit;
     private String barcode;
+    private long price;
+    private String notes;
     private long typeId;
     private long groupId;
 
@@ -59,6 +61,22 @@ public class ItemDTO {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public long getTypeId() {

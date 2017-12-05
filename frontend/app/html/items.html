@@ -1,7 +1,86 @@
 <div ng-controller="itemsController">
-    <label>Search:
-        <input ng-model="searchKeyword">
-    </label>
+    <form ng-click="clearSearch()" class="inputForm">
+        <input type="text" class="inputSearch" ng-model="searchKeyword" placeholder="Wyszukaj przedmiot..." />
+        <button class="addItemButton" ng-click="addPopUp()">Dodaj przedmiot</button>
+    </form>
+    <!-- <div>
+        <div class="inputGroup">
+            <input ng-model="searchKeyword" type="text" class="searchForm" placeholder="Wyszukaj przedmiot"/>
+            <span class="groupAddon">
+                <span class="fi-magnifying-glass"></span>
+            </span>
+        </div>
+    </div> -->
+    <!-- <label>Search:
+            <input ng-model="searchKeyword">
+        </label> -->
+    <!-- <a href="javascript:" class="button" ng-click="addPopUp()">Dodaj przedmiot</a> -->
+    <div id="pAdd" class="addItemForm">
+        <form name="formName" class="formItem" ng-submit="createItem(addItem)">
+            <div class="row columns">
+                <h3>Dodaj przedmiot</h3>
+            </div>
+            <div class="row columns">
+                <label>Nazwa przedmiotu
+                    <input type="text" required ng-model="addItem.iN" placeholder="Przedmiot" />
+                </label>
+            </div>
+            <div class="row columns">
+                <label>Opis przedmiotu
+                    <textarea required ng-model="addItem.desc" placeholder="Dodaj opis"></textarea>
+                </label>
+            </div>
+            <div class="row">
+                <label class="columns large-4">Ilość</label>
+                <label class="columns large-4">Jednostka</label>
+                <label class="columns large-4">Cena</label>
+                <div class="columns large-4">
+                    <input type="number" min="0" required ng-model="addItem.st" placeholder="Dodaj ilość" />
+                </div>
+
+                <div class="columns large-4">
+                    <input type="text" required ng-model="addItem.un" placeholder="Dodaj jednostkę" />
+                </div>
+
+                <div class="columns large-4">
+                    <input type="text" required ng-model="addItem.pr" placeholder="Dodaj cenę" />
+                </div>
+            </div>
+            <div class="row columns" ng-controller="groupsController">
+                <label>Grupa
+                    <select type="text" required ng-model="addItem.gId">
+                        <option value="">Wybierz z listy</option>
+                        <option ng-repeat="g in groups" value="{{g.id}}">{{g.name}}</option>
+                        <option>Brak na liście? Dodaj grupę</option>
+                    </select>
+                </label>
+            </div>
+            <div class="row columns" ng-controller="typesController">
+                <label>Typ
+                    <select type="text" required ng-model="addItem.tId">
+                        <option value="">Wybierz z listy</option>
+                        <option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>
+                        <option>Brak na liście? Dodaj listę</option>
+                    </select>
+                </label>
+            </div>
+            <div class="row columns">
+                <label>Uwagi
+                    <textarea required ng-model="addItem.no" ng-init='addItem.no = "Brak."'></textarea>
+                </label>
+            </div>
+            <div class="row columns">
+                <label>Barcode
+                    <input type="text" ng-model="addItem.bar" placeholder="Barcode"></input>
+                </label>
+            </div>
+            <div class="row columns">
+                <button type="submit" ng-disabled="formName.$invalid" class="primary button expanded add-button">Dodaj</button>
+            </div>
+        </form>
+    </div>
+    <div id="gAdd" class="backForm"></div>
+
     <table class="responsive-card-table unstriped">
         <thead>
             <tr>
@@ -9,6 +88,7 @@
                 <th>Opis</th>
                 <th>Ilość</th>
                 <th>Jm.</th>
+                <th>Cena</th>
                 <th>Kod skanera</th>
                 <th>Grupa</th>
                 <th>Typ</th>
@@ -17,16 +97,17 @@
         <tbody ng-repeat="i in items | filter: searchKeyword">
             <tr>
                 <td>
-                    <a href="javascript:" ng-click="popUp(i)">{{i.itemName}}</a>
+                    <!-- <a href="javascript:" ng-click="popUp(i)">{{i.itemName}}</a> -->
+                    {{i.itemName}}
                 </td>
                 <div id="p" class="pop">
-                    <div class="upInfo">
+                    <!-- <div class="upInfo">
                         <label>Nazwa przedmiotu:</label>
                         <input type="text" ng-hide="active == $index" placeholder="{{thisItem.itemName}}" readonly="readonly" />
-                        <input type="text" ng-show="active == $index" ng-model="items.itemName" />
+                        <input type="text" ng-show="active == $index" placeholder="{{thisItem.itemName}}" ng-model="itemName" />
                         <label>Opis:</label>
                         <textarea type="text" ng-hide="active == $index" placeholder="{{thisItem.description}}" readonly="readonly" />
-                        <textarea type="text" ng-show="active == $index" ng-model="items.description" />
+                        <textarea type="text" ng-show="active == $index" ng-model="description" />
                         <label>Rodzaj:</label>
                         <div ng-hide="active == $index">{{thisItem.type.name}}</div>
                         <select ng-show="active == $index">
@@ -37,13 +118,13 @@
                         <div class="stockInfo">
                             <label>Ilość:</label>
                             <input type="text" ng-hide="active == $index" placeholder="{{thisItem.stock}}" readonly="readonly" />
-                            <input type="text" ng-show="active == $index" ng-model="items.stock" />
+                            <input type="text" ng-show="active == $index" ng-model="stock" />
                             <label>Jednostka:</label>
                             <input type="text" ng-hide="active == $index" placeholder="{{thisItem.unit}}" readonly="readonly" />
-                            <input type="text" ng-show="active == $index" ng-model="items.unit" />
+                            <input type="text" ng-show="active == $index" ng-model="unit" />
                             <label>Cena:</label>
                             <input type="text" ng-hide="active == $index" placeholder="{{thisItem.price}}" readonly="readonly" />
-                            <input type="text" ng-show="active == $index" ng-model="items.price" />
+                            <input type="text" ng-show="active == $index" ng-model="price" />
 
                         </div>
                         <div class="mStock">
@@ -56,29 +137,120 @@
                     <div class="downInfo">
                         <label>Uwagi:</label>
                         <input type="text" ng-hide="active == $index" placeholder="{{thisItem.notes}}" readonly="readonly" />
-                        <input type="text" ng-show="active == $index" ng-model="items.notes" />
+                        <input type="text" ng-show="active == $index" ng-model="notes" />
                         <label>Czas dodania:</label>
                         <input type="text" placeholder="{{thisItem.timestamp}}" readonly="readonly" />
                         <label>Magazyn:</label>
                         <input type="text" placeholder="{{thisItem.warehouse}}" readonly="readonly" />
                         <label>Kod kreskowy:</label>
                         <input type="text" ng-hide="active == $index" placeholder="{{thisItem.barcode}}" readonly="readonly" />
-                        <input type="text" ng-show="active == $index" ng-model="items.barcode" />
+                        <input type="text" ng-show="active == $index" ng-model="barcode" />
                     </div>
                     <div class="itemFooter">
                         <button ng-hide="active==$index" ng-click="edit($index)">Edit</button>
                         <button ng-show="active==$index" ng-click="update($index)">Back</button>
                         <button class="button" ng-click="close()">Koniec</button>
                         <button ng-click="delete()">Usuń</button>
-                    </div>
+                    </div> -->
+                    <form name="editName" class="formEdit">
+                        <div class="row columns">
+                            <h3>Edytuj przedmiot</h3>
+                        </div>
+                        <div class="row columns">
+                            <label>Nazwa przedmiotu
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.itemName}}" readonly="readonly" />
+                                <input type="text" ng-show="active == $index" required ng-model="editItem.itemName" ng-value="thisItem.itemName"/>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Opis
+                                <textarea type="text" ng-hide="active == $index" placeholder="{{thisItem.description}}" readonly="readonly" />
+                                <textarea type="text" ng-show="active == $index" required ng-model="editItem.description" ng-value="thisItem.description"/>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <label class="columns large-4">Ilość</label>
+                            <label class="columns large-4">Jednostka</label>
+                            <label class="columns large-4">Cena</label>
+                            <div class="columns large-4">
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.stock}}" readonly="readonly" />
+                                <input type="text" ng-show="active == $index" required ng-model="editItem.stock" ng-value="thisItem.stock"/>
+                            </div>
+                            <div class="columns large-4">
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.unit}}" readonly="readonly" />
+                                <input type="text" ng-show="active == $index" required ng-model="editItem.unit" ng-value="thisItem.unit"/>
+                            </div>
+                            <div class="columns large-4">
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.price}}" readonly="readonly" />
+                                <input type="text" ng-show="active == $index" required ng-model="editItem.price" ng-value="thisItem.price"/>
+                            </div>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <label class="columns large-6">Grupa</label>
+                            <label class="columns large-6">Typ</label>
+                            <div class="columns columns large-6" ng-controller="groupsController">
+                                <div ng-hide="active == $index">{{thisItem.group.name}}</div>
+                                <select type="text" ng-show="active == $index" required ng-model="editItem.gId">
+                                    <option value="">Wybierz z listy</option>
+                                    <option ng-repeat="g in groups" value="{{g.id}}">{{g.name}}</option>
+                                    <option>Brak na liście? Dodaj grupę</option>
+                                </select>
+                                <div>{{editItem.gId}}</div>
+                            </div>
+                            <div class="columns columns large-6" ng-controller="typesController">
+                                <div ng-hide="active == $index">{{thisItem.type.name}}</div>
+                                <select type="text" ng-show="active == $index" required ng-model="editItem.tId">
+                                    <option value="">Wybierz z listy</option>
+                                    <option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>
+                                    <option>Brak na liście? Dodaj grupę</option>
+                                </select>
+                                <div>{{editItem.tId}}</div>
+                            </div>
+                        </div>
+                        <div class="row columns">
+                            <label>Uwagi
+                                <textarea type="text" ng-hide="active == $index" placeholder="{{thisItem.notes}}" readonly="readonly"></textarea>
+                                <textarea type="text" ng-show="active == $index" required ng-model="editItem.notes" ng-value="thisItem.notes"></textarea>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Czas dodania
+                                <input type="text" placeholder="{{thisItem.timestamp}}" readonly="readonly" />
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Magazyn
+                                <input type="text" placeholder="{{thisItem.warehouse}}" readonly="readonly" />
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Kod kreskowy
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.barcode}}" readonly="readonly" />
+                                <input type="text" ng-show="active == $index" ng-model="editItem.barcode" ng-value="thisItem.barcode"/>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <button ng-hide="active==$index" ng-click="edit($index)" class="primary button expanded">Edytuj</button>
+                            <button ng-show="active==$index" ng-disabled="editName.$invalid" ng-click="update(editItem)" class="primary button expanded">Zatwierdź</button>
+                        </div>
+                        <div class="row columns">
+                            <button ng-click="close()" class="primary button expanded">Koniec</button>
+                        </div>
+                        <div class="row columns">
+                            <button ng-hide="active==$index" ng-click="delete()" class="primary button expanded">Usuń</button>
+                            <button ng-show="active==$index" ng-click="back()" class="primary button expanded">Cofnij</button>
+                        </div>
+                    </form>
                 </div>
                 <div id="g" class="grey"></div>
                 <td>{{i.description}}</td>
                 <td>{{i.stock}}</td>
                 <td>{{i.unit}}</td>
+                <td>{{i.price}} zł</td>
                 <td>{{i.barcode}}</td>
-                <td>{{i.group_id}}</td>
-                <td>{{i.type_id}}</td>
+                <td>{{i.groupName}}</td>
+                <td>{{i.typeName}}</td>
             </tr>
         </tbody>
     </table>
