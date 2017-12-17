@@ -5,11 +5,17 @@ html, body{
     padding:0; 
     margin:0; 
     height: 95.2%;
-    z-index: 1}
-
-.icon-bar .item{
-    padding:1.5rem 0.5rem;
+    z-index: 1;
+    max-width: 150px;
 }
+
+.icon-bar{
+    width: 300px;
+}
+
+/* .icon-bar .item{
+    padding:1.5rem 0.5rem;
+} */
 
 .top-bar{
     padding: 1.2rem 1.5rem;

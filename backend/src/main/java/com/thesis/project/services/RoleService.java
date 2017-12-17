@@ -13,6 +13,10 @@ public class RoleService {
     @Autowired
     RoleRepository roleRepository;
 
+    public Role findRoleById(Long id){
+        return roleRepository.findRoleById(id);
+    }
+
     public Role findRoleByName(String name){
         return roleRepository.findRoleByName(name);
     }

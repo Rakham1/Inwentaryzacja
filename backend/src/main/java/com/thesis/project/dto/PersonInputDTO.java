@@ -1,11 +1,13 @@
 package com.thesis.project.dto;
 
-public class UserDTO {
+
+public class PersonInputDTO {
     private long id;
     private String name;
     private String surname;
-    private FirmDTO firm;
     private String username;
+    private String password;
+    private long roleId;
 
     public long getId() {
         return id;
@@ -31,12 +33,12 @@ public class UserDTO {
         this.surname = surname;
     }
 
-    public FirmDTO getFirm() {
-        return firm;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirm(FirmDTO firm) {
-        this.firm = firm;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
@@ -45,5 +47,13 @@ public class UserDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 }

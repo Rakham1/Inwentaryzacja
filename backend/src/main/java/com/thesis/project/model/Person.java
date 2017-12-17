@@ -25,9 +25,10 @@ public class Person {
 
     @Column(name = "surname")
     private String surname;
+//
+//    @Column(name = "email")
+//    private String mail;
 
-    @Column(name = "email")
-    private String mail;
 
     @OneToOne(mappedBy = "user")
     private Firm firm;
@@ -37,7 +38,7 @@ public class Person {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    Role role;
+    private Role role;
 
     public long getId() {
         return id;
@@ -51,7 +52,7 @@ public class Person {
         return username;
     }
 
-    public void setUsername(String nickname) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -79,13 +80,13 @@ public class Person {
         this.surname = surname;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+//    public String getMail() {
+//        return mail;
+//    }
+//
+//    public void setMail(String mail) {
+//        this.mail = mail;
+//    }
 
 
     public Firm getFirm() {

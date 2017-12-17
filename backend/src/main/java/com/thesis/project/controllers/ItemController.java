@@ -27,7 +27,7 @@ public class ItemController {
     @Autowired
     ItemFactory itemFactory;
 
-    @PostMapping("/addItem")
+    @PostMapping("{/addItem")
     public ResponseEntity<ArrayList<ItemDTO>> addItem(@RequestBody ItemDTO itemDTO){
         itemService.save(itemDTO);
         return new ResponseEntity<>(HttpStatus.OK);

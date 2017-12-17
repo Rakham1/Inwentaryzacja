@@ -8,7 +8,7 @@ public class InventoryDTO {
     private long id;
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp timestamp;
-    UserDTO user;
+    PersonInputDTO user;
     String comment;
 
     public long getId() {
@@ -27,11 +27,11 @@ public class InventoryDTO {
         this.timestamp = timestamp;
     }
 
-    public UserDTO getUser() {
+    public PersonInputDTO getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(PersonInputDTO user) {
         this.user = user;
     }
 

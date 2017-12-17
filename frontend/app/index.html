@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="../css/login.css" />
   <link rel="stylesheet" href="../css/user.css" />
   <link rel="stylesheet" href="../css/items.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link rel="stylesheet" href="../css/firms.css" />
+  <link rel="stylesheet" href="../css/groups_types.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../fonts/foundation-icons/foundation-icons.css" />
@@ -20,57 +23,73 @@
     <div class="top-bar-left">
       <ul class="menu">
         <li>
-          <a href="/user">INVENTpro</a>
+          <a href="/user" ng-if="userRights()">INVENTpro</a>
+          <a href="/admin" ng-if="adminRights()">INVENTpro</a>
         </li>
       </ul>
     </div>
-    <div class="top-bar-right">
+    <!-- <div class="top-bar-right">
       <ul class="menu">
         <li>
           <a href="/user">Wyloguj</a>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
-
   <!-- Left Nav Sidebar -->
 
-  <div class="large-1 columns left-nav" ng-hide="isHidden()">
+  <div class="large-1 columns left-nav" ng-cloak ng-hide="isHidden()">
     <div class="icon-bar vertical eight-up">
-      <a class="item" href="/user">
+      <a class="item" href="/user" ng-cloak ng-if="userRights()">
         <i class="fa fa-home"></i>
         <label>Strona główna</label>
       </a>
-      <a class="item" href="/items">
+      <a class="item" href="/admin" ng-cloak ng-if="adminRights()">
+        <i class="fa fa-home"></i>
+        <label>Strona główna</label>
+      </a>
+      <a class="item" href="/items" ng-cloak ng-if="userRights()">
         <i class="fa fa-gamepad"></i>
         <label>Kartoteka przedmiotów</label>
       </a>
-      <a class="item">
+      <a class="item" href="/admin" ng-cloak ng-show="adminRights()">
+        <i class="fa fa-home"></i>
+        <label>Użytkownicy</label>
+      </a>
+      <a class="item" href="/firms" ng-cloak ng-show="adminRights()">
+        <i class="fa fa-home"></i>
+        <label>Firmy</label>
+      </a>
+      <a class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-star"></i>
         <label>Inwentaryzacja</label>
       </a>
-      <a class="item">
+      <a class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-thumbs-up"></i>
         <label>Zwroty</label>
       </a>
-      <a class="item">
+      <a class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-trophy"></i>
         <label>Wydania</label>
       </a>
-      <a class="item">
+      <a class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-trophy"></i>
         <label>Raport</label>
       </a>
-      <a class="item">
+      <a class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-trophy"></i>
         <label>Kod kreskowy</label>
+      </a>
+      <a class="item" ng-cloak ng-click="logout()">
+        <i class="fa fa-trophy"></i>
+        <label>Wyloguj</label>
       </a>
     </div>
   </div>
 
   <div ng-view class="large-11 columns view clearfix body-class"></div>
 
-  <footer class="footer social-footer" ng-hide="isHidden()" ng-controller="userController">
+  <footer class="footer social-footer" ng-cloak ng-hide="isHidden()" ng-controller="userController">
     <div class="color">
         Zalogowany jako {{user.name}} {{user.surname}} ( {{user.username}} )
     </div>
@@ -86,6 +105,7 @@
   <script src="lib/app.js"></script>
   <script src="js/myApp.js"></script>
   <script src="js/loginController.js"></script>
+  <script src="js/adminController.js"></script>
   <script src="js/navbarController.js"></script>
   <script src="js/addWhController.js"></script>
   <script src="js/showWhController.js"></script>
@@ -93,6 +113,7 @@
   <script src="js/itemsController.js"></script>
   <script src="js/typesController.js"></script>
   <script src="js/groupsController.js"></script>
+  <script src="js/firmController.js"></script>  
   <script>
     $("[data-menu-underline-from-center] a").addClass("underline-from-center");
   </script>

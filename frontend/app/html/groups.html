@@ -1,0 +1,25 @@
+<a href="/items" class="button">Wróć</a>
+<form class="group_typeForm">
+    <div class="row columns">
+        <h2>Grupy</h2>
+    </div>
+    <div id="g.id" class="row columns repeat" ng-repeat="g in groups">
+        <span ng-hide="change == $index">{{g.name}}</span>
+
+        <input type="text" ng-show="change == $index" placeholder="{{g.name}}" class="columns large-6" ng-model="editGroup.name"/>
+        <i class="fi-page-edit" ng-hide="change == $index" ng-click="editG($index)"></i>
+        <i class="fi-save" ng-click="save(editGroup,  g.id)" ng-show="change == $index"></i>
+        <i class="fi-x" ng-click="delete(g.id)"></i>
+        
+    </div>
+    <div class="row columns" ng-repeat="input in inputs">
+        <input ng-model="input.name" />
+        <i class="fi-save" ng-click="addNew(input)"></i>
+        <i class="fi-x" ng-click="deleteInput(input)"></i>
+    </div>
+    <div class="row columns">
+        <button class="primary button expanded" ng-click="add()">
+            <i class="fi-plus"></i>
+        </button>
+    </div>
+</form>

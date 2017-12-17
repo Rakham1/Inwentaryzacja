@@ -24,7 +24,12 @@ public class RoleController {
     @Autowired
     RoleFactory roleFactory;
 
-    @GetMapping("/{name}")
+    @GetMapping("{id}")
+    public ResponseEntity<Role> loadRoleById(@PathVariable("id") Long id){
+        return new ResponseEntity<>(roleService.findRoleById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/role/{name}")
     public ResponseEntity<Role> loadRoleByName(@PathVariable("name") String name){
         return new ResponseEntity<>(roleService.findRoleByName(name), HttpStatus.OK);
     }

@@ -1,6 +1,5 @@
 package com.thesis.project.dto;
 
-import java.util.Collection;
 
 public class FirmDTO {
     private long id;
@@ -8,8 +7,8 @@ public class FirmDTO {
     private String street;
     private String city;
     private String postcode;
-    private int nip;
-    private Collection<WarehouseDTO> warehouses;
+    private String nip;
+    private long userId;
 
     public long getId() {
         return id;
@@ -51,19 +50,19 @@ public class FirmDTO {
         this.postcode = postcode;
     }
 
-    public int getNip() {
+    public String getNip() {
         return nip;
     }
 
-    public void setNip(int nip) {
+    public void setNip(String nip) {
         this.nip = nip;
     }
 
-    public Collection<WarehouseDTO> getWarehouses() {
-        return warehouses;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setWarehouses(Collection<WarehouseDTO> warehouses) {
-        this.warehouses = warehouses;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

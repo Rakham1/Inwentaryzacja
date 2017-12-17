@@ -16,6 +16,7 @@ public class RoleFactory {
 
     public RoleDTO roleToDTO(Role role){
         RoleDTO roletoDTO = new RoleDTO();
+        roletoDTO.setId(role.getId());
         roletoDTO.setName(role.getName());
         roletoDTO.setPrivilages(role.getPrivilages());
         return roletoDTO;
@@ -23,6 +24,7 @@ public class RoleFactory {
 
     public Role roleFromDTO(RoleDTO roleDTO){
         Role role = new Role();
+        role.setId(roleDTO.getId());
         role.setName(roleDTO.getName());
         role.setPrivilages(roleDTO.getPrivilages());
         return role;

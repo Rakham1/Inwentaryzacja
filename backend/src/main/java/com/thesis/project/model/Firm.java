@@ -15,7 +15,6 @@ public class Firm {
     private long firmId;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
     private Person user;
 
     @Column(name = "firmname")
@@ -31,10 +30,10 @@ public class Firm {
     private String street;
 
     @Column(name="nip")
-    private int nip;
+    private String nip;
 
     @OneToMany(mappedBy = "firm")
-    @Column(name = "warehouse")
+    @Column(name = "warehouse", nullable = true)
     private Set<Warehouse> warehouse = new HashSet<>();
 
     public long getFirmId() {
@@ -82,11 +81,11 @@ public class Firm {
         this.street = street;
     }
 
-    public int getNip() {
+    public String getNip() {
         return nip;
     }
 
-    public void setNip(int nip) {
+    public void setNip(String nip) {
         this.nip = nip;
     }
 
@@ -100,7 +99,5 @@ public class Firm {
 
     public void setFirmId(long firmId) {
         this.firmId = firmId;
-
-
     }
 }

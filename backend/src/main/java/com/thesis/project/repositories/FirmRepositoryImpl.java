@@ -1,6 +1,6 @@
 package com.thesis.project.repositories;
 
-import com.thesis.project.model.Role;
+import com.thesis.project.model.Firm;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -8,34 +8,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 
 @Repository
-public class RoleRepositoryImpl implements RoleRepository {
+public class FirmRepositoryImpl implements FirmRepository {
 
     @Autowired
     EntityManager entityManager;
 
     @Override
-    public Role findRoleById(Long id) {
+    public Firm findByFirmId(long id) {
         Session session = entityManager.unwrap(Session.class);
-
-        Criteria crit = session.createCriteria(Role.class);
+        Criteria crit = session.createCriteria(Firm.class);
         crit.add(Restrictions.eq("id",id));
-        return (Role) crit.uniqueResult();
+        return (Firm) crit.uniqueResult();
     }
 
     @Override
-    public Role findRoleByName(String name) {
+    public void update(Firm firm) {
         Session session = entityManager.unwrap(Session.class);
-        Criteria crit = session.createCriteria(Role.class);
-        crit.add(Restrictions.eq("name", name));
-        return (Role) crit.uniqueResult();
+        session.merge(firm);
     }
 
     @Override
-    public ArrayList<Role> findAllRoles() {
+    public void save(Firm firm) {
         Session session = entityManager.unwrap(Session.class);
-        return new ArrayList(session.createCriteria(Role.class).list());
+        session.save(firm);
+        session.flush();
     }
 }

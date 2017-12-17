@@ -1,0 +1,88 @@
+<div class="wrap">
+    <h2>Użytkownicy</h2>
+    <label class="searchLabel">Wyszukaj
+        <input type="text" class="usersSearch" />
+    </label>
+    <a href="#" class="button aaa" ng-click="add()">
+        <span class="fi-plus small" style="vertical-align:middle"></span> Dodaj użytkownika
+    </a>
+    <form class="cont" ng-show="show==true">
+        <i class="fi-x" ng-click="close(addUser)"></i>
+        <div class="sameRow">
+            <label class="addLabel">Imie</label>
+            <input type="text" class="addInput" ng-model="addUser.name">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Nazwisko</label>
+            <input type="text" class="addInput" ng-model="addUser.surname">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Nick</label>
+            <input type="text" class="addInput" ng-model="addUser.username">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Hasło</label>
+            <input type="text" class="addInput" ng-model="addUser.password">
+        </div>
+        <button ng-click="apply(addUser)" type="submit">Zatwierdź</button>
+    </form>
+    <div class="divTable">
+        <div class="divTable blueTable">
+            <div class="divTableHeading">
+                <div class="divTableRow">
+                    <div class="divTableHead">Imię</div>
+                    <div class="divTableHead">Nazwisko</div>
+                    <div class="divTableHead">Nick</div>
+                    <div class="divTableHead">Hasło</div>
+                    <div class="divTableHead">Typ konta</div>
+                    <div class="divTableHead"></div>
+                    <div class="divTableHead"></div>
+                </div>
+            </div>
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="u in users | orderBy: 'id'" id="{{u.id}}">
+                    <div class="divTableCell">{{u.name}}</div>
+                    <div class="divTableCell">{{u.surname}}</div>
+                    <div class="divTableCell">{{u.username}}</div>
+                    <div class="divTableCell">{{u.password}}</div>
+                    <div class="divTableCell">{{u.roleName}}</div>
+                    <div class="divTableCell" ng-click="edit(u)">
+                        <i class="fi-page-edit"></i>
+                    </div>
+                    <div class="divTableCell" ng-click="delete(u.id)">
+                        <i class="fi-trash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="cont" ng-show="edit==true">
+                <h3>Edytuj użytkownika</h3>
+                <i class="fi-x" ng-click="closeEdit(editUser)"></i>
+                <div class="sameRow">
+                    <label class="addLabel">Imie</label>
+                    <input type="text" class="addInput" ng-model="editUser.name" placeholder="{{thisUser.name}}">
+                </div>
+                <div class="sameRow">
+                    <label class="addLabel">Nazwisko</label>
+                    <input type="text" class="addInput" ng-model="editUser.surname" placeholder="{{thisUser.surname}}">
+                </div>
+                <div class="sameRow">
+                    <label class="addLabel">Nick</label>
+                    <input type="text" class="addInput" ng-model="editUser.username" placeholder="{{thisUser.username}}">
+                </div>
+                <div class="sameRow">
+                    <label class="addLabel">Hasło</label>
+                    <input type="text" class="addInput" ng-model="editUser.password" placeholder="{{thisUser.password}}">
+                </div>
+                <div class="sameRow">
+                    <label class="addLabel">Typ konta</label>
+                    <select ng-model="editUser.rId" class="addSelect">
+                        <option value="">Wybierz z listy</option>
+                        <option ng-repeat="r in roles" value="{{r.id}}">{{r.name}}</option>
+                    </select>
+                </div>
+                <button ng-click="applyEdit(editUser, thisUser.id)" type="submit">Zatwierdź</button>
+            </form>
+    </div>
+
+</div>

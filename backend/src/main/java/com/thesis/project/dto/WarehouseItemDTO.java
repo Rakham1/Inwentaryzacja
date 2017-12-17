@@ -3,22 +3,22 @@ package com.thesis.project.dto;
 import java.util.Collection;
 
 public class WarehouseItemDTO {
-    private Collection<WarehouseDTO> warehouses;
-    private Collection<ItemDTO> items;
+    private long warehouseId;
+    private long itemId;
 
-    public Collection<WarehouseDTO> getWarehouses() {
-        return warehouses;
+    public long getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setWarehouses(Collection<WarehouseDTO> warehouses) {
-        this.warehouses = warehouses;
+    public void setWarehouseId(long warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
-    public Collection<ItemDTO> getItems() {
-        return items;
+    public long getItemId() {
+        return itemId;
     }
 
-    public void setItems(Collection<ItemDTO> items) {
-        this.items = items;
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
     }
 }

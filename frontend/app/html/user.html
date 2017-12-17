@@ -1,4 +1,4 @@
-<div class="large-12 columns user-body" ng-controller="userController">
+<div class="large-12 columns user-body">
     <div class="">
         <h3 class="user-header">Moje dane</h3>
     </div>
@@ -14,11 +14,11 @@
                 <h3 class="user-header-inside">Firma</h3>
                 <ul class="user-list">
                     <li>
-                        <h4>{{firm.firmname}}</h4>
+                        <h4>{{user.firm.firmName}}</h4>
                     </li>
-                    <li>{{firm.street}}</li>
-                    <li>{{firm.postCode}} {{firm.city}}</li>
-                    <li>NIP: {{firm.nip}}</li>
+                    <li>{{user.firm.street}}</li>
+                    <li>{{user.firm.postCode}} {{user.firm.city}}</li>
+                    <li>NIP: {{user.firm.nip}}</li>
                 </ul>
             </div>
         </div>

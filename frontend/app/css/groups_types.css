@@ -1,0 +1,41 @@
+.group_typeForm{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 10%;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid black;
+    z-index: 2;
+    overflow: auto;
+}
+
+.group_typeForm h2{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.group_typeForm input[type="text"]{
+    display: block;
+    margin: 0 auto;
+}
+
+.columns .row{
+    display: block;
+}
+
+.group_typeForm .repeat{
+    font-size: 20px;
+    margin:10px 10px 10px 0;
+}
+
+.group_typeForm button{
+    height: 60px;
+    margin-bottom: 0;
+}
+
+.fi-plus{
+    font-size: 30px;
+}

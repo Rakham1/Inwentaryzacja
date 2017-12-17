@@ -19,9 +19,10 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
     });
 
     $scope.popUp = function (i) {
-        $http.get("/api/groups/allgroups").then(function (response) {
-            console.log(JSON.stringify(response));
+        $http.get("/api/groups/allGroups").then(function (response) {
+            
             $scope.groups = response.data;
+            console.log(JSON.stringify(response));
         });
 
         $http.get("/api/types/allTypes").then(function (response) {
@@ -71,8 +72,6 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
 
     $scope.edit = function (index) {
         $scope.active = index;
-        
-        
     }
     
     $scope.update = function (editItem) {
@@ -99,7 +98,7 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
             barcode: editItem.barcode,
             groupId: editItem.gId,
             typeId: editItem.tId
-        }
+        };
 
         $.ajax({
             type: 'PUT',
