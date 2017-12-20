@@ -1,7 +1,7 @@
 package com.thesis.project.services;
 
-import com.thesis.project.factory.ItemFactory;
 import com.thesis.project.dto.ItemDTO;
+import com.thesis.project.factory.ItemFactory;
 import com.thesis.project.model.Item;
 import com.thesis.project.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,33 +20,33 @@ public class ItemService {
     ItemFactory itemFactory;
 
     @Transactional
-    public void update(ItemDTO itDTO){
+    public void update(ItemDTO itDTO) {
         itemRepository.update(itemFactory.itemFromDto(itDTO));
     }
 
     @Transactional
-    public void save(ItemDTO itDTO){
+    public Long save(ItemDTO itDTO) {
         Item item1 = itemFactory.itemFromDto(itDTO);
-        itemRepository.save(item1);
+        return itemRepository.save(item1);
     }
 
-    public void delete(Item item){
+    public void delete(Item item) {
         itemRepository.delete(item);
     }
 
-    public Item getItemById(long id){
+    public Item getItemById(Long id) {
         return itemRepository.findProductById(id);
     }
 
-    public Item getItemByName(String name){
+    public Item getItemByName(String name) {
         return itemRepository.findProductByName(name);
     }
 
-    public Item getItemByBarcode(String barcode){
+    public Item getItemByBarcode(String barcode) {
         return itemRepository.getItemByBarcode(barcode);
     }
 
-    public ArrayList<Item> getAllItems(){
+    public ArrayList<Item> getAllItems() {
         return itemRepository.findAllProducts();
     }
 }

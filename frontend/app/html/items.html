@@ -1,7 +1,11 @@
 <div ng-controller="itemsController">
     <form ng-click="clearSearch()" class="inputForm">
-        <input type="text" class="inputSearch" ng-model="searchKeyword" placeholder="Wyszukaj przedmiot..." />
-        <button class="addItemButton" ng-click="addPopUp()">Dodaj przedmiot</button>
+        <input type="text" class="inputSearch" ng-model="searchKeyword" ng-disabled="disableBtn" placeholder="Wyszukaj przedmiot..." />
+        <button class="addItemButton" ng-click="addPopUp()" ng-disabled="disableBtn">Dodaj przedmiot</button>
+        <select ng-model="wId" class="whItemsSelect" ng-change="chooseWh(wId)" ng-init="disableBtn">
+                <option disabled selected value> -- Wybierz magazyn -- </option>
+            <option ng-repeat="w in whs | orderBy: 'id'" value="{{w.id}}">{{w.name}}</option>
+        </select>
     </form>
     <div id="pAdd" class="addItemForm">
         <form name="formName" class="formItem" ng-submit="createItem(addItem)">

@@ -2,9 +2,9 @@ package com.thesis.project.dto;
 
 public class UserLoginDTO {
 
-    private long id;
-    String username;
-    String password;
+    private Long id;
+    private String username;
+    private String password;
 
     public UserLoginDTO(long id, String username, String password) {
         super();
@@ -13,11 +13,11 @@ public class UserLoginDTO {
         this.password = password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

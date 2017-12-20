@@ -19,11 +19,11 @@ public class TypeRepositoryImpl implements TypeRepository {
     EntityManager entityManager;
 
     @Override
-    public Type findTypeById(long id) {
+    public Type findTypeById(Long id) {
         Session session = entityManager.unwrap(Session.class);
 
         Criteria crit = session.createCriteria(Type.class);
-        crit.add(Restrictions.eq("id",id));
+        crit.add(Restrictions.eq("id", id));
         return (Type) crit.uniqueResult();
     }
 
@@ -32,7 +32,7 @@ public class TypeRepositoryImpl implements TypeRepository {
         Session session = entityManager.unwrap(Session.class);
 
         Criteria crit = session.createCriteria(Type.class);
-        crit.add(Restrictions.eq("name",name));
+        crit.add(Restrictions.eq("name", name));
         return (Type) crit.uniqueResult();
     }
 

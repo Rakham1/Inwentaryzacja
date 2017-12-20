@@ -10,26 +10,26 @@ public class InHistory {
 
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
 
-    @Column(name = "timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "timestamp", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
 
-    private int amount;
+    private Integer amount;
 
     private String details;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "IN_IT",
             joinColumns = @JoinColumn(name = "In_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name ="It_Id", nullable = false))
+            inverseJoinColumns = @JoinColumn(name = "It_Id", nullable = false))
     private Set<Item> item = new HashSet<>();
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
@@ -41,11 +41,11 @@ public class InHistory {
         this.timestamp = timestamp;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

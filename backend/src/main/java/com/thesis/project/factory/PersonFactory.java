@@ -14,13 +14,13 @@ public class PersonFactory {
     @Autowired
     RoleRepository roleRepository;
 
-    public ArrayList<PersonInputDTO> personToDTO(ArrayList<Person> people){
+    public ArrayList<PersonInputDTO> personToDTO(ArrayList<Person> people) {
         ArrayList<PersonInputDTO> personInputDTOS = new ArrayList<>();
         people.stream().forEach((i -> personInputDTOS.add(personToDTO(i))));
         return personInputDTOS;
     }
 
-    public PersonInputDTO personToDTO(Person person){
+    public PersonInputDTO personToDTO(Person person) {
         PersonInputDTO personInputDTO = new PersonInputDTO();
 
         personInputDTO.setId(person.getId());
@@ -32,7 +32,7 @@ public class PersonFactory {
         return personInputDTO;
     }
 
-    public Person personFromDto(PersonInputDTO personInputDTO){
+    public Person personFromDto(PersonInputDTO personInputDTO) {
         Person person = new Person();
 
         person.setId(personInputDTO.getId());
@@ -44,7 +44,7 @@ public class PersonFactory {
         return person;
     }
 
-    private PersonOutputDTO personToDTO2(Person person){
+    private PersonOutputDTO personToDTO2(Person person) {
         PersonOutputDTO personOutputDTO = new PersonOutputDTO();
 
         personOutputDTO.setId(person.getId());
@@ -56,7 +56,7 @@ public class PersonFactory {
         return personOutputDTO;
     }
 
-    public ArrayList<PersonOutputDTO> persontoDTO2(ArrayList<Person> people){
+    public ArrayList<PersonOutputDTO> persontoDTO2(ArrayList<Person> people) {
         ArrayList<PersonOutputDTO> personOutputDTOS = new ArrayList<>();
         people.stream().forEach((i -> personOutputDTOS.add(personToDTO2(i))));
         return personOutputDTOS;

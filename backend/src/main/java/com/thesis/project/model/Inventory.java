@@ -8,19 +8,19 @@ public class Inventory {
 
     @Id
     @GeneratedValue
-    private long id;
-    @Column(name = "timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Long id;
+    @Column(name = "timestamp", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
     private String comment;
     @ManyToOne
     @JoinColumn(name = "user_Id")
-    Person user;
+    private Person user;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

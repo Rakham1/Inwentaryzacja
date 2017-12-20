@@ -1,8 +1,21 @@
 MyApp.controller('userController', function ($scope, $http, $location, $cookies, $route) {
     $scope.user;
     $scope.firm;
+    $scope.wh;
     $scope.datas = [];
-    // $scope.fId = firm.firmId;
+    $scope.whs = [];
+    // $scope.fId = firm.fimId;
+
+    // $cookies.put("firmId", user.firm.firmId);
+
+    $http.get("api/firms/" + $cookies.get("userId") + "/user").then(function (response) {
+        $scope.firm = response.data;
+        $cookies.put("firmId", response.data.firmId);
+    });
+
+    $http.get("api/firms/" + $cookies.get("firmId") + "/whs").then(function(response){
+        $scope.whs = response.data;
+    })
 
     $scope.getUserId = function(){
         return $cookies.get("userId");
@@ -12,16 +25,13 @@ MyApp.controller('userController', function ($scope, $http, $location, $cookies,
         return $cookies.get('login');
     }
 
-    $http.get("/api/users/username/"+$scope.getLogin()) .then(function (response) {
+    $http.get("/api/users/"+ $scope.getUserId()).then(function (response) {
         $scope.user = response.data;
     });
 
-
-    $http.get("api/firms/1").then(function(response){
-        $scope.firm=response.data;
-    });
-    
-    // $http.get("/api/firms/" + scope.fId).then(function (response){
-    //     $scope.firm = response.data;
-    // })
+    $scope.changeWh = function(wid){
+        $http.get("/api/whs/"+ wid).then(function(response){
+            $scope.wh = response.data;
+        });
+    }
 });

@@ -1,0 +1,112 @@
+#wrapperWh{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.leftColumnWh{
+    width: 40%;
+    height: 100%;
+    margin-top: 30px;
+    float: left;    
+    overflow: hidden;
+}
+.addWhForm{
+  left: 0;
+  position: absolute;
+  margin: 0 auto;
+  top: 12%;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  color: #fefefe;
+  z-index: 2;
+  overflow: hidden;
+  transform: translateY(-10px);
+  transition: all 0.5s;
+  visibility: hidden;
+}
+.addWhForm label{
+  cursor: auto;
+}
+.addWhForm.active {
+  visibility: visible;
+  transition: all 600ms;
+  transform: translateY(20px);
+  transition: all 0.5s;
+}
+.addWhForm button.add-button{
+  background-color: #faa803;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.addWhForm button.add-button:disabled{
+  background-color: #faa803;
+  color: white;  
+}
+.addWhForm button.add-button:active{
+  background-color: #faa803;
+  color: white;
+}
+.addWhForm button.add-button:hover{
+  background-color: #faa803;
+  color: white;
+}
+.addWhForm button.add-button:hover:disabled{
+  background-color: #faa803;
+  color: white;
+}
+.addWhForm button.add-button:focus{
+  background-color: #faa803;
+  color: white;
+}
+
+
+
+.righColumnWh{
+  width: 60%;
+  height: 100%;
+  margin-top: 30px; 
+  float: right;
+  overflow: hidden;
+}
+h2.wh{
+  margin-top: -10px;
+}
+input[type="text"].editWhInput{
+  margin: 0;
+}
+table.editWh {
+  font-family: Verdana, Geneva, sans-serif;
+  width: 100%;
+  text-align: left;
+}
+table.editWh td, table.editWh th {
+  padding: 3px 2px;
+  width: 300px;
+}
+table.editWh tbody td {
+  border: 1px solid #FFFF;
+  font-size: 14px;
+}
+table.editWh thead {
+  border: 1px solid #FFFF;
+  background: #FFFF;
+  border-bottom: 3px solid #3C8C7C;
+}
+table.editWh thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #3C8C7C;
+}
+table.editWh thead th:nth-last-child(2), table.editWh tbody td:nth-last-child(2),
+table.editWh thead th:last-child, table.editWh tbody td:last-child{
+  padding: 4px 2px;
+  width: 50px;
+}
+/* .error{
+  color: red;
+  border-color:red;
+} */

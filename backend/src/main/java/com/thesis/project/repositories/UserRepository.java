@@ -1,16 +1,20 @@
 package com.thesis.project.repositories;
 
 import com.thesis.project.model.Person;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;
 
 
-public interface UserRepository{
+public interface UserRepository {
     Person findByUsername(String username);
+
     Person findById(Long id);
+
     ArrayList<Person> findAllUsers();
+
     void update(Person person);
+
     void save(Person person);
+
     void delete(Person person);
 }

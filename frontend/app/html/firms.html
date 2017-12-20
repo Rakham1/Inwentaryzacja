@@ -1,6 +1,6 @@
 <div id="wrapper">
     <div class="leftColumn">
-        <select class="usersFirm" type="text" required ng-model="uid" ng-click="changeUser(editFirm.uId)" ng-change="changeFirm(editFirm)"
+        <select class="usersFirm" type="text" required ng-model="uid" ng-change="changeFirm(editFirm)"
             ng-init="disableBtn">
             <option disabled selected value> -- Wybierz użytkownika -- </option>
             <option value="{{u.id}}" ng-repeat="u in users" ng-hide="u.id==1">{{u.username}}</option>

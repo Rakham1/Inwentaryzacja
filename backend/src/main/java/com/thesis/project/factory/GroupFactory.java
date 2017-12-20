@@ -1,7 +1,7 @@
 package com.thesis.project.factory;
 
 import com.thesis.project.dto.GroupDTO;
-import  com.thesis.project.model.Group;
+import com.thesis.project.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,13 +9,13 @@ import java.util.ArrayList;
 @Component
 public class GroupFactory {
 
-    public ArrayList<GroupDTO> groupToDTO(ArrayList<Group> items){
+    public ArrayList<GroupDTO> groupToDTO(ArrayList<Group> items) {
         ArrayList<GroupDTO> groupDTOS = new ArrayList<>();
         items.stream().forEach((g -> groupDTOS.add(groupToDTO(g))));
         return groupDTOS;
     }
 
-    public GroupDTO groupToDTO(Group group){
+    public GroupDTO groupToDTO(Group group) {
         GroupDTO grouptoDTO = new GroupDTO();
         grouptoDTO.setId(group.getId());
         grouptoDTO.setName(group.getName());
@@ -24,7 +24,7 @@ public class GroupFactory {
         return grouptoDTO;
     }
 
-    public Group groupFromDTO(GroupDTO groupDTO){
+    public Group groupFromDTO(GroupDTO groupDTO) {
         Group group = new Group();
         group.setId(groupDTO.getId());
         group.setName(groupDTO.getName());

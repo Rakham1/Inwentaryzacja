@@ -21,7 +21,7 @@ public class RoleRepositoryImpl implements RoleRepository {
         Session session = entityManager.unwrap(Session.class);
 
         Criteria crit = session.createCriteria(Role.class);
-        crit.add(Restrictions.eq("id",id));
+        crit.add(Restrictions.eq("id", id));
         return (Role) crit.uniqueResult();
     }
 

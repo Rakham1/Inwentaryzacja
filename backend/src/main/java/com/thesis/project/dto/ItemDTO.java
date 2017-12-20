@@ -1,25 +1,22 @@
 package com.thesis.project.dto;
 
-import com.thesis.project.model.Group;
-import com.thesis.project.model.Type;
-
 public class ItemDTO {
-    private long id;
+    private Long id;
     private String itemName;
     private String description;
-    private int stock;
+    private Integer stock;
     private String unit;
     private String barcode;
-    private long price;
+    private Long price;
     private String notes;
-    private long typeId;
-    private long groupId;
+    private Long typeId;
+    private Long groupId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +36,11 @@ public class ItemDTO {
         this.description = description;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
@@ -63,11 +60,11 @@ public class ItemDTO {
         this.barcode = barcode;
     }
 
-    public long getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -79,19 +76,19 @@ public class ItemDTO {
         this.notes = notes;
     }
 
-    public long getTypeId() {
+    public Long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(long typeId) {
+    public void setTypeId(Long typeId) {
         this.typeId = typeId;
     }
 
-    public long getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(long groupId) {
+    public void setGroupId(Long groupId) {
         this.groupId = groupId;
     }
 }

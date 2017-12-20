@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
         Session session = entityManager.unwrap(Session.class);
 
         Criteria crit = session.createCriteria(Person.class);
-        crit.add(Restrictions.eq("id",id));
+        crit.add(Restrictions.eq("id", id));
         return (Person) crit.uniqueResult();
     }
 

@@ -14,7 +14,7 @@ public class Item {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "itemName")
     private String itemName;
@@ -22,20 +22,20 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "productIndex")
-    private int index;
+//    @Column(name = "productIndex")
+//    private Integer index;
 
     @Column(name = "stock")
-    private int stock;
+    private Integer stock;
 
-    @Column(name = "minStock")
-    private int minStock;
-
-    @Column(name = "maxStock")
-    private int maxStock;
+//    @Column(name = "minStock")
+//    private Integer minStock;
+//
+//    @Column(name = "maxStock")
+//    private Integer maxStock;
 
     @Column(name = "price")
-    private long price;
+    private Long price;
 
     @Column(name = "unit")
     private String unit;
@@ -46,11 +46,11 @@ public class Item {
     @Column(name = "notes")
     private String notes;
 
-    @Column(name = "timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "timestamp", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
 
-    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
-    private Set<Warehouse> warehouse = new HashSet<>();
+    @OneToMany(mappedBy = "item")
+    private Set<WarIt> warIts = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "type_id")
@@ -60,17 +60,17 @@ public class Item {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
-    private Set<InHistory> inHistory = new HashSet<>();
+//    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
+//    private Set<InHistory> inHistory = new HashSet<>();
+//
+//    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
+//    private Set<OutHistory> outHistory = new HashSet<>();
 
-    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
-    private Set<OutHistory> outHistory = new HashSet<>();
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,19 +90,19 @@ public class Item {
         this.description = description;
     }
 
-    public long getIndex() {
-        return index;
-    }
+//    public Integer getIndex() {
+//        return index;
+//    }
+//
+//    public void setIndex(Integer index) {
+//        this.index = index;
+//    }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
@@ -114,27 +114,27 @@ public class Item {
         this.notes = notes;
     }
 
-    public int getMinStock() {
-        return minStock;
-    }
+//    public Integer getMinStock() {
+//        return minStock;
+//    }
+//
+//    public void setMinStock(Integer minStock) {
+//        this.minStock = minStock;
+//    }
+//
+//    public Integer getMaxStock() {
+//        return maxStock;
+//    }
+//
+//    public void setMaxStock(Integer maxStock) {
+//        this.maxStock = maxStock;
+//    }
 
-    public void setMinStock(int minStock) {
-        this.minStock = minStock;
-    }
-
-    public int getMaxStock() {
-        return maxStock;
-    }
-
-    public void setMaxStock(int maxStock) {
-        this.maxStock = maxStock;
-    }
-
-    public long getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -154,12 +154,13 @@ public class Item {
         this.barcode = barcode;
     }
 
-    public Set<Warehouse> getWarehouse() {
-        return warehouse;
+    public Set<WarIt> getWarIts() {
+        return warIts;
     }
 
-    public void setWarehouse(Set<Warehouse> warehouse) {
-        this.warehouse = warehouse;
+    @JsonIgnore
+    public void setWarIts(Set<WarIt> warIts) {
+        this.warIts = warIts;
     }
 
     public Type getType() {
@@ -186,19 +187,19 @@ public class Item {
         this.group = group;
     }
 
-    public Set<InHistory> getInHistory() {
-        return inHistory;
-    }
-
-    public void setInHistory(Set<InHistory> inHistory) {
-        this.inHistory = inHistory;
-    }
-
-    public Set<OutHistory> getOutHistory() {
-        return outHistory;
-    }
-
-    public void setOutHistory(Set<OutHistory> outHistory) {
-        this.outHistory = outHistory;
-    }
+//    public Set<InHistory> getInHistory() {
+//        return inHistory;
+//    }
+//
+//    public void setInHistory(Set<InHistory> inHistory) {
+//        this.inHistory = inHistory;
+//    }
+//
+//    public Set<OutHistory> getOutHistory() {
+//        return outHistory;
+//    }
+//
+//    public void setOutHistory(Set<OutHistory> outHistory) {
+//        this.outHistory = outHistory;
+//    }
 }

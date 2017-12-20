@@ -1,7 +1,5 @@
 package com.thesis.project.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +10,7 @@ public class Person {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "username", unique = true)
     private String username;
@@ -40,11 +38,11 @@ public class Person {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

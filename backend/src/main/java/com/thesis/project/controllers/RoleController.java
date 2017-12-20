@@ -25,17 +25,17 @@ public class RoleController {
     RoleFactory roleFactory;
 
     @GetMapping("{id}")
-    public ResponseEntity<Role> loadRoleById(@PathVariable("id") Long id){
+    public ResponseEntity<Role> loadRoleById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(roleService.findRoleById(id), HttpStatus.OK);
     }
 
     @GetMapping("/role/{name}")
-    public ResponseEntity<Role> loadRoleByName(@PathVariable("name") String name){
+    public ResponseEntity<Role> loadRoleByName(@PathVariable("name") String name) {
         return new ResponseEntity<>(roleService.findRoleByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/allRoles")
-    public ResponseEntity<ArrayList<RoleDTO>> getAll(){
+    public ResponseEntity<ArrayList<RoleDTO>> getAll() {
         return new ResponseEntity<>(roleFactory.roleToDTO(roleService.findAllRoles()), HttpStatus.OK);
     }
 }

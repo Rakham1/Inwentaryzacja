@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 @Repository
 @Transactional
-public class ItemRepositoryImpl implements ItemRepository{
+public class ItemRepositoryImpl implements ItemRepository {
 
     @Autowired
     private EntityManager entityManager;
@@ -23,11 +23,11 @@ public class ItemRepositoryImpl implements ItemRepository{
     private SessionFactory sessionFactory;
 
     @Override
-    public Item findProductById(long id) {
+    public Item findProductById(Long id) {
         Session session = entityManager.unwrap(Session.class);
 
         Criteria crit = session.createCriteria(Item.class);
-        crit.add(Restrictions.eq("id",id));
+        crit.add(Restrictions.eq("id", id));
         return (Item) crit.uniqueResult();
     }
 
@@ -52,7 +52,7 @@ public class ItemRepositoryImpl implements ItemRepository{
 
         Criteria crit = session.createCriteria(Item.class);
         crit.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        crit.add(Restrictions.like("itemName", "%"+itemName+"%").ignoreCase());
+        crit.add(Restrictions.like("itemName", "%" + itemName + "%").ignoreCase());
         return new ArrayList(crit.list());
     }
 
@@ -72,11 +72,11 @@ public class ItemRepositoryImpl implements ItemRepository{
     }
 
     @Override
-    public void save(Item item) {
+    public Long save(Item item) {
         Session session = entityManager.unwrap(Session.class);
-
-        session.save(item);
+        Long id = (Long) session.save(item);
         session.flush();
+        return id;
     }
 
     @Override

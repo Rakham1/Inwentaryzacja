@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 @Component
 public class TypeFactory {
-    public ArrayList<TypeDTO> typeToDTO(ArrayList<Type> types){
+    public ArrayList<TypeDTO> typeToDTO(ArrayList<Type> types) {
         ArrayList<TypeDTO> typeDTOS = new ArrayList<>();
         types.stream().forEach((t -> typeDTOS.add(typeToDTO(t))));
         return typeDTOS;
     }
 
-    public TypeDTO typeToDTO(Type type){
+    public TypeDTO typeToDTO(Type type) {
         TypeDTO typetoDTO = new TypeDTO();
         typetoDTO.setId(type.getId());
         typetoDTO.setName(type.getName());
@@ -22,7 +22,7 @@ public class TypeFactory {
         return typetoDTO;
     }
 
-    public Type typeFromDTO(TypeDTO typeDTO){
+    public Type typeFromDTO(TypeDTO typeDTO) {
         Type group = new Type();
         group.setId(typeDTO.getId());
         group.setName(typeDTO.getName());

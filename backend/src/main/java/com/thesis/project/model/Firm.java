@@ -12,7 +12,7 @@ public class Firm {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private long firmId;
+    private Long firmId;
 
     @OneToOne
     private Person user;
@@ -29,14 +29,14 @@ public class Firm {
     @Column(name = "street")
     private String street;
 
-    @Column(name="nip")
+    @Column(name = "nip")
     private String nip;
 
     @OneToMany(mappedBy = "firm")
     @Column(name = "warehouse", nullable = true)
     private Set<Warehouse> warehouse = new HashSet<>();
 
-    public long getFirmId() {
+    public Long getFirmId() {
         return firmId;
     }
 
@@ -88,7 +88,7 @@ public class Firm {
     public void setNip(String nip) {
         this.nip = nip;
     }
-
+    @JsonIgnore
     public Set<Warehouse> getWarehouse() {
         return warehouse;
     }
@@ -97,7 +97,7 @@ public class Firm {
         this.warehouse = warehouse;
     }
 
-    public void setFirmId(long firmId) {
+    public void setFirmId(Long firmId) {
         this.firmId = firmId;
     }
 }

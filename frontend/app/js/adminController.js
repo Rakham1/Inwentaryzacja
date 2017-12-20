@@ -7,7 +7,6 @@ MyApp.controller('adminController', function ($scope, $http, $location, $cookies
     $scope.edit = false;
     var scope = $scope;
 
-
     $http.get("api/admin/allUsers").then(function (response) {
         $scope.users = response.data;
     });

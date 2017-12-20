@@ -2,10 +2,11 @@ package com.thesis.project.factory;
 
 import com.thesis.project.dto.FirmDTO;
 import com.thesis.project.model.Firm;
-import com.thesis.project.repositories.FirmRepository;
 import com.thesis.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 
 @Component
 public class FirmFactory {
@@ -13,7 +14,13 @@ public class FirmFactory {
     @Autowired
     UserRepository userRepository;
 
-    public FirmDTO firmToDto(Firm firm){
+    public ArrayList<FirmDTO> firmToDTO(ArrayList<Firm> firms) {
+        ArrayList<FirmDTO> firmDTOS = new ArrayList<>();
+        firms.stream().forEach((g -> firmDTOS.add(firmToDto(g))));
+        return firmDTOS;
+    }
+
+    public FirmDTO firmToDto(Firm firm) {
         FirmDTO firmDTO = new FirmDTO();
         firmDTO.setId(firm.getFirmId());
         firmDTO.setFirmName(firm.getFirmName());
@@ -25,7 +32,7 @@ public class FirmFactory {
         return firmDTO;
     }
 
-    public Firm firmFromDto(FirmDTO firmDTO){
+    public Firm firmFromDto(FirmDTO firmDTO) {
         Firm firm = new Firm();
         firm.setFirmId(firmDTO.getId());
         firm.setFirmName(firmDTO.getFirmName());

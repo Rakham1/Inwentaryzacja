@@ -3,24 +3,37 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
     $scope.items = [];
     $scope.groups = [];
     $scope.types = [];
+    $scope.whs = [];
+    $scope.wId;
     $scope.thisItem;
     $scope.id;
     $scope.searchKeyword = '';
     $scope.active = -1;
+    $scope.disableBtn = true;
+
+    $http.get("api/firms/" + $cookies.get("firmId") + "/whs").then(function (response) {
+        $scope.whs = response.data;
+    })
+
+    $scope.chooseWh = function(wId){
+        $cookies.put("whID", wId);
+        $http.get("/api/items/allItems/" + $cookies.get("whID")).then(function (response) {
+            console.log(JSON.stringify(response));
+            $scope.items = response.data;
+            $scope.disableBtn = false;
+        });
+    }
 
     $scope.addPopUp = function () {
         document.getElementById('pAdd').style.display = 'block';
         document.getElementById('gAdd').style.display = 'block';
     }
 
-    $http.get("/api/items/allItems").then(function (response) {
-        console.log(JSON.stringify(response));
-        $scope.items = response.data;
-    });
+    
 
     $scope.popUp = function (i) {
         $http.get("/api/groups/allGroups").then(function (response) {
-            
+
             $scope.groups = response.data;
             console.log(JSON.stringify(response));
         });
@@ -53,7 +66,7 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
             document.getElementById('gAdd').style.display = 'none';
             $scope.active = -1;
         }
-        
+
     });
 
     $scope.close = function () {
@@ -66,14 +79,14 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
         $scope.active = -1;
     };
 
-    $scope.back = function(){
+    $scope.back = function () {
         $scope.active = -1;
     }
 
     $scope.edit = function (index) {
         $scope.active = index;
     }
-    
+
     $scope.update = function (editItem) {
         // items.itemName = thisItem.itemName;
         // items.description = thisItem.description;
@@ -81,7 +94,7 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
         // items.unit = thisItem.unit;
         // items.price = thisItem.price;
         // items.barcode = thisItem.barcode;
-                // $http.put("/api/items/" + $cookies.get('itemId') + "/edit/", params, {
+        // $http.put("/api/items/" + $cookies.get('itemId') + "/edit/", params, {
         //     headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
         //     transformRequest: transform
         // }).then(function (response) {
@@ -149,8 +162,21 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
-                $location.path('/items');
-                $window.location.reload();
+                var data = {
+                    warehouseId: $cookies.get("whID"),
+                    itemId: json.addedItemId
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: "/api/items/addItemWh",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (json) {
+                    },
+                    error: function (json) {
+                    }
+                });
             },
             error: function (json) {
             }

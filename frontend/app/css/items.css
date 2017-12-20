@@ -9,17 +9,21 @@
 } */
 
 .inputForm{
-  position: relative;
   margin-top:10px;
+  display: table;
 }
 
 .inputForm .inputSearch {
   height: 33px; 
   border: none;
-  width: 500px;
+  width: 400px;
   padding: 0;
   font-size: 15px;
-  ;
+  display: table-cell;
+}
+
+.inputForm .inputSearch:hover:disabled{
+  cursor: not-allowed;
 }
 
 .inputForm .inputSearch::placeholder{
@@ -28,15 +32,26 @@
 }
 
 .inputForm .addItemButton{
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 520px;
+  left: 520px; */
+  margin-left: 20px;
+  margin-right: 20px;
+  display: table-cell;
   line-height: 0;
   font-size: 15px;
   font-weight: bold;
   background-color: #545454;
 }
-
+.inputForm .addItemButton:hover:disabled{
+  background-color: #545454;
+  color: white;
+  cursor: not-allowed;
+}
+.whItemsSelect{
+  display: table-cell;
+  width: 200px;
+}
 #custom-search-input button:hover{
   border: 0;
   box-shadow: none;

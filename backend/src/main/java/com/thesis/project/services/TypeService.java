@@ -19,29 +19,29 @@ public class TypeService {
     @Autowired
     TypeFactory typeFactory;
 
-    public Type findTypeById(long id){
+    public Type findTypeById(Long id) {
         return typeRepository.findTypeById(id);
     }
 
-    public Type findTypeByName (String name){
+    public Type findTypeByName(String name) {
         return typeRepository.findTypeByName(name);
     }
 
-    public ArrayList<Type> findAllTypes(){
+    public ArrayList<Type> findAllTypes() {
         return typeRepository.findAllTypes();
     }
 
     @Transactional
-    public void update(TypeDTO typeDTO){
+    public void update(TypeDTO typeDTO) {
         typeRepository.update(typeFactory.typeFromDTO(typeDTO));
     }
 
     @Transactional
-    public void save(TypeDTO typeDTO){
+    public void save(TypeDTO typeDTO) {
         typeRepository.save(typeFactory.typeFromDTO(typeDTO));
     }
 
-    public void delete(Type type){
+    public void delete(Type type) {
         typeRepository.delete(type);
     }
 }

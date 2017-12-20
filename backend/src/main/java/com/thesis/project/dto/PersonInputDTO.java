@@ -2,18 +2,18 @@ package com.thesis.project.dto;
 
 
 public class PersonInputDTO {
-    private long id;
+    private Long id;
     private String name;
     private String surname;
     private String username;
     private String password;
-    private long roleId;
+    private Long roleId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class PersonInputDTO {
         this.username = username;
     }
 
-    public long getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(long roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 }

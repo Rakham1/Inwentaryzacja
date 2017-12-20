@@ -1,15 +1,18 @@
 package com.thesis.project.dto;
 
 public class WarehouseDTO {
-    private long id;
+    private Long id;
     private String name;
-    FirmDTO firm;
+    private String postCode;
+    private String city;
+    private String street;
+    private Long firmId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -21,11 +24,35 @@ public class WarehouseDTO {
         this.name = name;
     }
 
-    public FirmDTO getFirm() {
-        return firm;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setFirm(FirmDTO firm) {
-        this.firm = firm;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Long getFirmId() {
+        return firmId;
+    }
+
+    public void setFirmId(Long firmId) {
+        this.firmId = firmId;
     }
 }

@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,26 +12,32 @@ public class Warehouse {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "firm_id", nullable = false)
-    Firm firm;
+    private Firm firm;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "WAR_IT",
-    joinColumns = @JoinColumn(name = "War_Id", nullable = false),
-    inverseJoinColumns = @JoinColumn(name ="It_Id", nullable = false))
-    private Set<Item> item = new HashSet<>();
+    @Column(name = "postCode")
+    private String postCode;
 
-    public long getId() {
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "street")
+    private String street;
+
+    @OneToMany(mappedBy = "warehouse")
+    private Set<WarIt> warIts = new HashSet<>();
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +57,35 @@ public class Warehouse {
         this.name = name;
     }
 
-    public Set<Item> getItem() {
-        return item;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setItem(Set<Item> item) {
-        this.item = item;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+    @JsonIgnore
+    public Set<WarIt> getWarIts() {
+        return warIts;
+    }
+
+    public void setWarIts(Set<WarIt> warIts) {
+        this.warIts = warIts;
     }
 }

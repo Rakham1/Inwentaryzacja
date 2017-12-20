@@ -1,28 +1,29 @@
 package com.thesis.project.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 public class InHistoryDTO {
-    private long idInHistory;
-    private int amount;
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+    private Long idInHistory;
+    private Integer amount;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp timestamp;
     private String details;
 
-    public long getId() {
+    public Long getId() {
         return idInHistory;
     }
 
-    public void setId(long idInHistory) {
+    public void setId(Long idInHistory) {
         this.idInHistory = idInHistory;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

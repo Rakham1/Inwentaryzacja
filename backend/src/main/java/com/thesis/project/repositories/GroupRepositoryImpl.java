@@ -13,16 +13,16 @@ import java.util.ArrayList;
 
 @Repository
 @Transactional
-public class GroupRepositoryImpl implements GroupRepository{
+public class GroupRepositoryImpl implements GroupRepository {
 
     @Autowired
     EntityManager entityManager;
 
     @Override
-    public Group findGroupById(long id) {
+    public Group findGroupById(Long id) {
         Session session = entityManager.unwrap(Session.class);
         Criteria crit = session.createCriteria(Group.class);
-        crit.add(Restrictions.eq("id",id));
+        crit.add(Restrictions.eq("id", id));
         return (Group) crit.uniqueResult();
     }
 
@@ -30,7 +30,7 @@ public class GroupRepositoryImpl implements GroupRepository{
     public Group findGroupByName(String name) {
         Session session = entityManager.unwrap(Session.class);
         Criteria crit = session.createCriteria(Group.class);
-        crit.add(Restrictions.eq("name",name));
+        crit.add(Restrictions.eq("name", name));
         return (Group) crit.uniqueResult();
     }
 

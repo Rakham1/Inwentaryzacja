@@ -1,15 +1,15 @@
 package com.thesis.project.dto;
 
 public class RoleDTO {
-    private long id;
+    private Long id;
     private String name;
     private String privilages;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

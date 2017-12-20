@@ -21,48 +21,46 @@ public class TypeController {
     TypeService typeService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Type> loadTypeById(@PathVariable("id") long id){
+    public ResponseEntity<Type> loadTypeById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(typeService.findTypeById(id), HttpStatus.OK);
     }
 
     @GetMapping("/group/{name}")
-    public ResponseEntity<Type> loadTypeById(@PathVariable("name") String name){
+    public ResponseEntity<Type> loadTypeById(@PathVariable("name") String name) {
         return new ResponseEntity<>(typeService.findTypeByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/allTypes")
-    public ResponseEntity<ArrayList<TypeDTO>> getAll(){
+    public ResponseEntity<ArrayList<TypeDTO>> getAll() {
         return new ResponseEntity<>(typeFactory.typeToDTO(typeService.findAllTypes()), HttpStatus.OK);
     }
 
     @PostMapping("/addType")
-    public ResponseEntity<ArrayList<TypeDTO>> addType(@RequestBody TypeDTO typeDTO){
+    public ResponseEntity<ArrayList<TypeDTO>> addType(@RequestBody TypeDTO typeDTO) {
         typeService.save(typeDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PatchMapping("/{id}/edit")
-    public ResponseEntity<TypeDTO> editType(@RequestBody TypeDTO typeDTO, @PathVariable("id") long id){
+    public ResponseEntity<TypeDTO> editType(@RequestBody TypeDTO typeDTO, @PathVariable("id") Long id) {
         Type type = typeService.findTypeById(id);
         HttpStatus httpStatus = HttpStatus.OK;
-        if(type != null){
+        if (type != null) {
             typeDTO.setId(type.getId());
             typeService.update(typeDTO);
-        }
-        else
+        } else
             httpStatus = HttpStatus.NOT_FOUND;
 
         return new ResponseEntity<>(httpStatus);
     }
 
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> deleteType(@PathVariable("id") long id){
+    public ResponseEntity<String> deleteType(@PathVariable("id") Long id) {
         Type type = typeService.findTypeById(id);
         HttpStatus httpStatus = HttpStatus.OK;
-        if(type != null){
+        if (type != null) {
             typeService.delete(type);
-        }
-        else
+        } else
             httpStatus = HttpStatus.NOT_FOUND;
 
         return new ResponseEntity<>(httpStatus);

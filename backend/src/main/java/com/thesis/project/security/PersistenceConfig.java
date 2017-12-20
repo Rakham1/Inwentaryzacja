@@ -25,17 +25,17 @@ public class PersistenceConfig {
     private Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory(){
+    public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] {"com.thesis.project.model"});
+        sessionFactory.setPackagesToScan(new String[]{"com.thesis.project.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory){
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager transManager = new HibernateTransactionManager();
         transManager.setSessionFactory(sessionFactory);
 
@@ -43,7 +43,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
         dataSource.setUrl(environment.getProperty("spring.datasource.url"));
@@ -53,12 +53,12 @@ public class PersistenceConfig {
         return dataSource;
     }
 
-    Properties hibernateProperties(){
-        return new Properties(){
+    Properties hibernateProperties() {
+        return new Properties() {
             {
-                setProperty("hibernate.dialect",environment.getProperty("spring.jpa.properties.hibernate.dialect"));
+                setProperty("hibernate.dialect", environment.getProperty("spring.jpa.properties.hibernate.dialect"));
                 setProperty("databasePlatform", "org.hibernate.dialect.MySQL5Dialect");
-                setProperty("hibernate.ddl-auto",environment.getProperty("spring.jpa.hibernate.ddl-auto"));
+                setProperty("hibernate.ddl-auto", environment.getProperty("spring.jpa.hibernate.ddl-auto"));
             }
         };
     }

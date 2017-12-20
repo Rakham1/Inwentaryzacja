@@ -2,19 +2,19 @@ package com.thesis.project.dto;
 
 
 public class FirmDTO {
-    private long id;
+    private Long id;
     private String firmName;
     private String street;
     private String city;
     private String postcode;
     private String nip;
-    private long userId;
+    private Long userId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,11 +58,11 @@ public class FirmDTO {
         this.nip = nip;
     }
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 }

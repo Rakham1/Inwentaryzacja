@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="../css/items.css" />
   <link rel="stylesheet" href="../css/admin.css" />
   <link rel="stylesheet" href="../css/firms.css" />
+  <link rel="stylesheet" href="../css/whs.css" />
+  <link rel="stylesheet" href="../css/inventory.css" />
   <link rel="stylesheet" href="../css/groups_types.css" />
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../fonts/foundation-icons/foundation-icons.css" />
@@ -60,7 +63,11 @@
         <i class="fa fa-home"></i>
         <label>Firmy</label>
       </a>
-      <a class="item" ng-cloak ng-if="userRights()">
+      <a class="item" href="/whs" ng-cloak ng-show="adminRights()">
+        <i class="fa fa-home"></i>
+        <label>Magazyny</label>
+      </a>
+      <a href="/inventory" class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-star"></i>
         <label>Inwentaryzacja</label>
       </a>
@@ -94,10 +101,11 @@
         Zalogowany jako {{user.name}} {{user.surname}} ( {{user.username}} )
     </div>
   </footer>
-
   <script src="lib/vendor/jquery.js"></script>
   <script src="lib/vendor/foundation.js"></script>
-  <script src="lib/angular.js"></script>
+  <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+  <script type="text/javascript" src="lib/jquery-ui.js"></script>
+  <script src="/lib/angular.js"></script>
   <script src="lib/angular-route.js"></script>
   <script src="lib/vendor/foundation.min.js"></script>
   <script src="lib/angular-cookies.js"></script>
@@ -107,13 +115,14 @@
   <script src="js/loginController.js"></script>
   <script src="js/adminController.js"></script>
   <script src="js/navbarController.js"></script>
-  <script src="js/addWhController.js"></script>
   <script src="js/showWhController.js"></script>
   <script src="js/userController.js"></script>
   <script src="js/itemsController.js"></script>
   <script src="js/typesController.js"></script>
   <script src="js/groupsController.js"></script>
   <script src="js/firmController.js"></script>  
+  <script src="js/whsController.js"></script>
+  <script src="js/inventoryController.js"></script>
   <script>
     $("[data-menu-underline-from-center] a").addClass("underline-from-center");
   </script>

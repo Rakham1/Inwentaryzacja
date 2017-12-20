@@ -32,6 +32,14 @@ MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
 			templateUrl: 'html/types.html',
 			controller: 'typesController'
 		})
+		.when('/whs',{
+			templateUrl: 'html/warehouses.html',
+			controller: 'whsController'
+		})
+		.when('/inventory',{
+			templateUrl: 'html/inventory.html',
+			controller: 'inventoryController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

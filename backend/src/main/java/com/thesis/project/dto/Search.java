@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Search {
     private ArrayList<ItemDTO> items;
 
-    public Search(){
+    public Search() {
         super();
     }
 
