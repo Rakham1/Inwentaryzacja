@@ -1,6 +1,54 @@
+.leftInvColumn{
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
 .inventh1{
     text-align: center;
 }
 .invForm{
-    display: inline-block;
+    display: block;
+}
+.selectedItem{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+select.inv{
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+input[type="text"].invAddInput{
+    margin-bottom: 0;
+}
+.row .invForm{
+    width: 100%;
+    height: auto;
+}
+.row{
+    width: 100%;
+}
+.invDiv{
+    width: 100%;
+    height: auto;
+}
+.invLabel{
+    cursor: auto;
+}
+input[type="text"].invInput, .invTextarea, .invSelect{
+    width: 400px;
+}
+.invTextarea{
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 100px;
+}
+.rightInvColumn{
+    float: right;
+    width: 50%;
+    max-height: 650px;
+    overflow: hidden;
+    overflow-y: hidden
 }

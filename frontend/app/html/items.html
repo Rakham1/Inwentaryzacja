@@ -86,7 +86,7 @@
                 <th>Typ</th>
             </tr>
         </thead>
-        <tbody ng-repeat="i in items | filter: searchKeyword">
+        <tbody ng-repeat="i in items | filter: searchKeyword | orderBy: 'id'">
             <tr ng-click="popUp(i)">
                 <td>
                     {{i.itemName}}

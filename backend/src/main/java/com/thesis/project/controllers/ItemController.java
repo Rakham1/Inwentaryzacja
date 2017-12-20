@@ -1,18 +1,15 @@
 package com.thesis.project.controllers;
 
-import com.thesis.project.dto.ItemDTO;
-import com.thesis.project.dto.ItemOutputDTO;
-import com.thesis.project.dto.Search;
-import com.thesis.project.dto.WarehouseItemDTO;
+import com.thesis.project.dto.*;
 import com.thesis.project.factory.ItemFactory;
+import com.thesis.project.model.Inventory;
 import com.thesis.project.model.Item;
 import com.thesis.project.model.Person;
 import com.thesis.project.model.Warehouse;
+import com.thesis.project.repositories.InventoryItemRepository;
+import com.thesis.project.repositories.InventoryRepository;
 import com.thesis.project.repositories.UserRepository;
-import com.thesis.project.services.ItemService;
-import com.thesis.project.services.SearchService;
-import com.thesis.project.services.WarehouseItemService;
-import com.thesis.project.services.WarehouseService;
+import com.thesis.project.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +39,13 @@ public class ItemController {
     WarehouseItemService warehouseItemService;
 
     @Autowired
+    InventoryItemService inventoryItemService;
+
+    @Autowired
     WarehouseService warehouseService;
+
+    @Autowired
+    InventoryRepository inventoryRepository;
 
     @PostMapping("/addItem")
     public ResponseEntity<String> addItem(@RequestBody ItemDTO itemDTO) {
@@ -56,6 +59,12 @@ public class ItemController {
         Person user = userRepository.findByUsername(user1.getUsername());
 
         warehouseItemService.save(warehouseItemDTO, user.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/addItemInv")
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToInv(@RequestBody InventoryItemDTO inventoryItemDTO) {
+        inventoryItemService.save(inventoryItemDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -83,6 +92,13 @@ public class ItemController {
         Warehouse warehouse = warehouseService.findByWhId(id);
         return new ResponseEntity<>(
                 itemFactory.itemtoDTO2(warehouseItemService.getWhItemsByWhId(warehouse.getId())), HttpStatus.OK);
+    }
+
+    @GetMapping("/allItems/invs/{id}")
+    public ResponseEntity<ArrayList<ItemOutputDTO>> getAllItemsByInvId(@PathVariable("id") Long id) throws NullPointerException {
+        Inventory inventory = inventoryRepository.findByInvId(id);
+        return new ResponseEntity<>(
+                itemFactory.itemtoDTO3(inventoryItemService.getItemsByInvId(inventory.getId())), HttpStatus.OK);
     }
 
     @RequestMapping("/search")

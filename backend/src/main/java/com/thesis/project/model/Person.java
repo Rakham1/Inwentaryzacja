@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -94,7 +96,7 @@ public class Person {
     public void setFirm(Firm firm) {
         this.firm = firm;
     }
-
+    @JsonIgnore
     public Set<Inventory> getInventory() {
         return inventory;
     }

@@ -33,6 +33,9 @@ public class Warehouse {
     @OneToMany(mappedBy = "warehouse")
     private Set<WarIt> warIts = new HashSet<>();
 
+    @OneToMany(mappedBy ="warehouse")
+    private Set<WarInv> warInvs = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -87,5 +90,13 @@ public class Warehouse {
 
     public void setWarIts(Set<WarIt> warIts) {
         this.warIts = warIts;
+    }
+
+    public Set<WarInv> getWarInvs() {
+        return warInvs;
+    }
+
+    public void setWarInvs(Set<WarInv> warInvs) {
+        this.warInvs = warInvs;
     }
 }

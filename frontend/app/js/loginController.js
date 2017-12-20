@@ -16,6 +16,7 @@ MyApp.controller('loginController', function ($scope, $http, $location, $cookies
 					$cookies.put('login', response.data.username);
 					$cookies.put('userId', response.data.uid);
 				}
+				
 				$http.get("/api/users/authorities").then(function (response) {
 					$cookies.put("adminRights", response.data.privilege);
 					console.log($cookies.get("adminRights"));

@@ -22,17 +22,8 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-//    @Column(name = "productIndex")
-//    private Integer index;
-
     @Column(name = "stock")
     private Integer stock;
-
-//    @Column(name = "minStock")
-//    private Integer minStock;
-//
-//    @Column(name = "maxStock")
-//    private Integer maxStock;
 
     @Column(name = "price")
     private Long price;
@@ -59,6 +50,9 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+
+    @OneToMany(mappedBy = "item")
+    private Set<InvIte> invItes = new HashSet<>();
 
 //    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
 //    private Set<InHistory> inHistory = new HashSet<>();
@@ -90,13 +84,6 @@ public class Item {
         this.description = description;
     }
 
-//    public Integer getIndex() {
-//        return index;
-//    }
-//
-//    public void setIndex(Integer index) {
-//        this.index = index;
-//    }
 
     public Integer getStock() {
         return stock;
@@ -113,22 +100,6 @@ public class Item {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-//    public Integer getMinStock() {
-//        return minStock;
-//    }
-//
-//    public void setMinStock(Integer minStock) {
-//        this.minStock = minStock;
-//    }
-//
-//    public Integer getMaxStock() {
-//        return maxStock;
-//    }
-//
-//    public void setMaxStock(Integer maxStock) {
-//        this.maxStock = maxStock;
-//    }
 
     public Long getPrice() {
         return price;
@@ -202,4 +173,13 @@ public class Item {
 //    public void setOutHistory(Set<OutHistory> outHistory) {
 //        this.outHistory = outHistory;
 //    }
+
+
+    public Set<InvIte> getInvItes() {
+        return invItes;
+    }
+    @JsonIgnore
+    public void setInvItes(Set<InvIte> invItes) {
+        this.invItes = invItes;
+    }
 }

@@ -1,5 +1,7 @@
 MyApp.controller('navbarController', function ($scope, $http, $location, $cookies, $route) {
 
+    $scope.user;
+
     $scope.isHidden = function () {
         return $location.path() == '/';
     };
@@ -17,9 +19,12 @@ MyApp.controller('navbarController', function ($scope, $http, $location, $cookie
             $cookies.remove('adminRights');
             $cookies.remove('login');
             $cookies.remove('itemId');
+            $cookies.remove('userId');
             $location.path('/')
         }, function(error){
             showalert(error.data.value, "alert-danger");
         });
     };
+
+    
 }); 

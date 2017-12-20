@@ -2,6 +2,7 @@ package com.thesis.project.factory;
 
 import com.thesis.project.dto.ItemDTO;
 import com.thesis.project.dto.ItemOutputDTO;
+import com.thesis.project.model.InvIte;
 import com.thesis.project.model.Item;
 import com.thesis.project.model.WarIt;
 import com.thesis.project.repositories.GroupRepository;
@@ -85,5 +86,30 @@ public class ItemFactory {
         warIts.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO2(i))));
         return itemOutputDTOS;
     }
+
+    private ItemOutputDTO itemtoDTO3(InvIte invIte) {
+        ItemOutputDTO itemOutputDTO = new ItemOutputDTO();
+        Item item = invIte.getItem();
+
+        itemOutputDTO.setId(item.getId());
+        itemOutputDTO.setItemName(item.getItemName());
+        itemOutputDTO.setDescription(item.getDescription());
+        itemOutputDTO.setStock(item.getStock());
+        itemOutputDTO.setUnit(item.getUnit());
+        itemOutputDTO.setBarcode(item.getBarcode());
+        itemOutputDTO.setPrice(item.getPrice());
+        itemOutputDTO.setNotes(item.getNotes());
+        itemOutputDTO.setTypeName(item.getType().getName());
+        itemOutputDTO.setGroupName(item.getGroup().getName());
+        return itemOutputDTO;
+    }
+
+    public ArrayList<ItemOutputDTO> itemtoDTO3(List<InvIte> invItes) {
+        ArrayList<ItemOutputDTO> itemOutputDTOS = new ArrayList<>();
+        invItes.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO3(i))));
+        return itemOutputDTOS;
+    }
+
+
 
 }

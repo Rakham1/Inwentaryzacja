@@ -5,7 +5,7 @@
 }
 .leftColumnWh{
     width: 40%;
-    height: 100%;
+    height: 700px;
     margin-top: 30px;
     float: left;    
     overflow: hidden;
@@ -31,7 +31,7 @@
 .addWhForm.active {
   visibility: visible;
   transition: all 600ms;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: all 0.5s;
 }
 .addWhForm button.add-button{

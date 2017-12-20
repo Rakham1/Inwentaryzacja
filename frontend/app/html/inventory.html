@@ -1,18 +1,53 @@
 <div class="row">
-    <h1 class="inventh1">Inwentaryzacja nr 1</h1>
-    <form class="invForm">
-        <div>
-            <label>Inwentaryzacja nr:
-                <input type="text" />
-            </label>
+    <h1 class="inventh1">Inwentaryzacja</h1>
+    <div class="leftInvColumn">
+        <form class="invForm">
+            <div class="invDiv">
+                <label class="invLabel">Inwentaryzacja nr:
+                    <input type="text" class="invInput" ng-model="addInv.inventoryNumber"/>
+                </label>
+            </div>
+            <div class="invDiv" ng-controller="userController">
+                <label class="invLabel">Przeprowadzona przez:</label>
+                {{user.name}} {{user.surname}}
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Data spisu:</label>
+                <input type="text" id="datepicker" class="invInput" />
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Miejsce:</label>
+                <select ng-model="wId" class="invSelect" ng-change="chooseWh(wId)" ng-init="disableBtn">
+                    <option disabled selected value> -- Wybierz magazyn -- </option>
+                    <option ng-repeat="w in whs | orderBy: 'id'" value="{{w.id}}">{{w.name}}</option>
+                </select>
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Skład komisji:</label>
+                <textarea class="invTextarea" ng-model="addInv.committeeSquad"></textarea>
+
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Komentarz:</label>
+                <textarea class="invTextarea" ng-model="addInv.comment"></textarea>
+
+            </div>
+            <div class="invDiv">
+                <button type="button" class="av" ng-click="add(a)">Dodaj kolejne przedmioty</button>
+            </div>
+            <div class="invDiv">
+                <button ng-click="addInvPage(addInv)">Zapisz dokument</button>
+            </div>
+        </form>
+    </div>
+    <div class="rightInvColumn">
+        <div class="selectedItem" ng-repeat="input in inputs">
+            <select class="inv" id="index_{{$index}}" ng-model="initial.itemid">
+                <option disabled selected value>-- Wybierz przedmiot -- </option>
+                <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
+            </select>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="initial.amount"/>
+            <button class="button" ng-click="delete(input)">Usuń</button>
         </div>
-        <div>
-            Konrad Kozłowski
-        </div>
-        <div>
-            <label>Data spisu:
-                <input type="text" id="datepicker">
-            </label>
-        </div>
-    </form>
+    </div>
 </div>

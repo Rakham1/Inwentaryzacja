@@ -2,13 +2,13 @@ package com.thesis.project.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.sql.Timestamp;
+import java.security.Timestamp;
 
 public class InventoryDTO {
     private Long id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp timestamp;
-    private PersonInputDTO user;
+    private String inventoryNumber;
+    private String committeeSquad;
+    private Long personId;
     private String comment;
 
     public Long getId() {
@@ -19,20 +19,28 @@ public class InventoryDTO {
         this.id = id;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public String getInventoryNumber() {
+        return inventoryNumber;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setInventoryNumber(String inventoryNumber) {
+        this.inventoryNumber = inventoryNumber;
     }
 
-    public PersonInputDTO getUser() {
-        return user;
+    public String getCommitteeSquad() {
+        return committeeSquad;
     }
 
-    public void setUser(PersonInputDTO user) {
-        this.user = user;
+    public void setCommitteeSquad(String committeeSquad) {
+        this.committeeSquad = committeeSquad;
+    }
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 
     public String getComment() {

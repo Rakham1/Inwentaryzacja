@@ -18,8 +18,7 @@ public class WarehouseService {
     WarehouseFactory warehouseFactory;
 
     public Warehouse findByWhId(Long id) {
-        Warehouse warehouse = warehouseRepository.findByWhId(id);
-        return warehouse;
+        return warehouseRepository.findByWhId(id);
     }
 
     public ArrayList<Warehouse> findAllWhs() {
