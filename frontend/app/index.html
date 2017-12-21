@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/whs.css" />
   <link rel="stylesheet" href="../css/inventory.css" />
   <link rel="stylesheet" href="../css/groups_types.css" />
+  <link rel="stylesheet" href="../css/raports.css" />
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
@@ -79,7 +80,7 @@
         <i class="fa fa-trophy"></i>
         <label>Wydania</label>
       </a>
-      <a class="item" ng-cloak ng-if="userRights()">
+      <a  href="/raport" class="item" ng-cloak ng-if="userRights()">
         <i class="fa fa-trophy"></i>
         <label>Raport</label>
       </a>
@@ -123,6 +124,7 @@
   <script src="js/firmController.js"></script>  
   <script src="js/whsController.js"></script>
   <script src="js/inventoryController.js"></script>
+  <script src="js/raportsController.js"></script>
   <script>
     $("[data-menu-underline-from-center] a").addClass("underline-from-center");
   </script>

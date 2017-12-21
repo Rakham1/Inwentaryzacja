@@ -54,11 +54,11 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private Set<InvIte> invItes = new HashSet<>();
 
-//    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
-//    private Set<InHistory> inHistory = new HashSet<>();
-//
-//    @ManyToMany(mappedBy = "item", fetch = FetchType.EAGER)
-//    private Set<OutHistory> outHistory = new HashSet<>();
+    @OneToMany(mappedBy = "item")
+    private  Set<DepIt> depIts = new HashSet<>();
+
+    @OneToMany(mappedBy = "item")
+    private Set<RelIt> relIts = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -158,28 +158,27 @@ public class Item {
         this.group = group;
     }
 
-//    public Set<InHistory> getInHistory() {
-//        return inHistory;
-//    }
-//
-//    public void setInHistory(Set<InHistory> inHistory) {
-//        this.inHistory = inHistory;
-//    }
-//
-//    public Set<OutHistory> getOutHistory() {
-//        return outHistory;
-//    }
-//
-//    public void setOutHistory(Set<OutHistory> outHistory) {
-//        this.outHistory = outHistory;
-//    }
-
-
     public Set<InvIte> getInvItes() {
         return invItes;
     }
-    @JsonIgnore
+
     public void setInvItes(Set<InvIte> invItes) {
         this.invItes = invItes;
+    }
+
+    public Set<DepIt> getDepIts() {
+        return depIts;
+    }
+
+    public void setDepIts(Set<DepIt> depIts) {
+        this.depIts = depIts;
+    }
+
+    public Set<RelIt> getRelIts() {
+        return relIts;
+    }
+
+    public void setRelIts(Set<RelIt> relIts) {
+        this.relIts = relIts;
     }
 }

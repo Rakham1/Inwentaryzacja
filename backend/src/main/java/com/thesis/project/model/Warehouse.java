@@ -31,10 +31,16 @@ public class Warehouse {
     private String street;
 
     @OneToMany(mappedBy = "warehouse")
+    private Set<Inventory> inventories = new HashSet<>();
+
+    @OneToMany(mappedBy = "warehouse")
     private Set<WarIt> warIts = new HashSet<>();
 
-    @OneToMany(mappedBy ="warehouse")
-    private Set<WarInv> warInvs = new HashSet<>();
+    @OneToMany(mappedBy = "warehouse")
+    private Set<StorageDepot> storageDepots = new HashSet<>();
+
+    @OneToMany(mappedBy = "warehouse")
+    private Set<ItemRelease> itemReleases = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -92,11 +98,27 @@ public class Warehouse {
         this.warIts = warIts;
     }
 
-    public Set<WarInv> getWarInvs() {
-        return warInvs;
+    public Set<Inventory> getInventories() {
+        return inventories;
     }
 
-    public void setWarInvs(Set<WarInv> warInvs) {
-        this.warInvs = warInvs;
+    public void setInventories(Set<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
+    public Set<StorageDepot> getStorageDepots() {
+        return storageDepots;
+    }
+
+    public void setStorageDepots(Set<StorageDepot> storageDepots) {
+        this.storageDepots = storageDepots;
+    }
+
+    public Set<ItemRelease> getItemReleases() {
+        return itemReleases;
+    }
+
+    public void setItemReleases(Set<ItemRelease> itemReleases) {
+        this.itemReleases = itemReleases;
     }
 }

@@ -1,23 +1,17 @@
 package com.thesis.project.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Inv_It")
-public class InvIte {
-
+@Table(name = "DepositItem")
+public class DepIt {
     @Id
     @GeneratedValue
     private Long id;
-
     private Integer amount;
-
     @ManyToOne
-    @JoinColumn(name = "inventory_id")
-    private Inventory inventory;
-
+    @JoinColumn(name = "depot_id")
+    private StorageDepot storageDepot;
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
@@ -37,15 +31,15 @@ public class InvIte {
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-    @JsonIgnore
-    public Inventory getInventory() {
-        return inventory;
+
+    public StorageDepot getStorageDepot() {
+        return storageDepot;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+    public void setStorageDepot(StorageDepot storageDepot) {
+        this.storageDepot = storageDepot;
     }
-    @JsonIgnore
+
     public Item getItem() {
         return item;
     }

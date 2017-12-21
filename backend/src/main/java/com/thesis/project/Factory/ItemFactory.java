@@ -4,6 +4,7 @@ import com.thesis.project.dto.ItemDTO;
 import com.thesis.project.dto.ItemOutputDTO;
 import com.thesis.project.model.InvIte;
 import com.thesis.project.model.Item;
+import com.thesis.project.model.RelIt;
 import com.thesis.project.model.WarIt;
 import com.thesis.project.repositories.GroupRepository;
 import com.thesis.project.repositories.ItemRepository;
@@ -96,11 +97,6 @@ public class ItemFactory {
         itemOutputDTO.setDescription(item.getDescription());
         itemOutputDTO.setStock(item.getStock());
         itemOutputDTO.setUnit(item.getUnit());
-        itemOutputDTO.setBarcode(item.getBarcode());
-        itemOutputDTO.setPrice(item.getPrice());
-        itemOutputDTO.setNotes(item.getNotes());
-        itemOutputDTO.setTypeName(item.getType().getName());
-        itemOutputDTO.setGroupName(item.getGroup().getName());
         return itemOutputDTO;
     }
 
@@ -110,6 +106,22 @@ public class ItemFactory {
         return itemOutputDTOS;
     }
 
+    private ItemOutputDTO itemtoDTO4(RelIt relIt) {
+        ItemOutputDTO itemOutputDTO = new ItemOutputDTO();
+        Item item = relIt.getItem();
 
+        itemOutputDTO.setId(item.getId());
+        itemOutputDTO.setItemName(item.getItemName());
+        itemOutputDTO.setDescription(item.getDescription());
+        itemOutputDTO.setStock(item.getStock());
+        itemOutputDTO.setUnit(item.getUnit());
+        itemOutputDTO.setPrice(item.getPrice());
+        return itemOutputDTO;
+    }
 
+    public ArrayList<ItemOutputDTO> itemtoDTO4(List<RelIt> relIts) {
+        ArrayList<ItemOutputDTO> itemOutputDTOS = new ArrayList<>();
+        relIts.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO4(i))));
+        return itemOutputDTOS;
+    }
 }

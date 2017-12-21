@@ -36,6 +36,9 @@ public class Person {
     @OneToMany(mappedBy = "user")
     private Set<Inventory> inventory = new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    private Set<ItemRelease> itemReleases = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -111,5 +114,13 @@ public class Person {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<ItemRelease> getItemReleases() {
+        return itemReleases;
+    }
+
+    public void setItemReleases(Set<ItemRelease> itemReleases) {
+        this.itemReleases = itemReleases;
     }
 }

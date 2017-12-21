@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.security.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,11 +19,8 @@ public class Inventory {
 
     private String committeeSquad;
 
-    @OneToMany(mappedBy = "inventory")
-    private Set<WarInv> warInvs = new HashSet<>();
-//
-//    @Column(name = "timestamp", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-//    private Timestamp timestamp;
+    @Column(name = "inv_Date")
+    private Date invDate;
 
     private String comment;
 
@@ -33,13 +31,9 @@ public class Inventory {
     @OneToMany(mappedBy = "inventory")
     private Set<InvIte> invItes = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name="warehouse_id")
+    private Warehouse warehouse;
 
 //    public Timestamp getTimestamp() {
 //        return timestamp;
@@ -48,6 +42,14 @@ public class Inventory {
 //    public void setTimestamp(Timestamp timestamp) {
 //        this.timestamp = timestamp;
 //    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getInventoryNumber() {
         return inventoryNumber;
@@ -63,14 +65,6 @@ public class Inventory {
 
     public void setCommitteeSquad(String committeeSquad) {
         this.committeeSquad = committeeSquad;
-    }
-
-    public Set<WarInv> getWarInvs() {
-        return warInvs;
-    }
-
-    public void setWarInvs(Set<WarInv> warInvs) {
-        this.warInvs = warInvs;
     }
 
     public String getComment() {
@@ -89,12 +83,28 @@ public class Inventory {
         this.user = user;
     }
 
+    public Date getInvDate() {
+        return invDate;
+    }
+
+    public void setInvDate(Date invDate) {
+        this.invDate = invDate;
+    }
+
     public Set<InvIte> getInvItes() {
         return invItes;
     }
 
     public void setInvItes(Set<InvIte> invItes) {
         this.invItes = invItes;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 }
 

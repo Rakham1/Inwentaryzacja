@@ -6,6 +6,5 @@ import java.util.ArrayList;
 
 public interface InventoryItemRepository {
     ArrayList<InvIte> getItemsByInvId(Long inventoryId);
-
     void save (InvIte invIte);
 }

@@ -21,7 +21,7 @@ MyApp.controller('adminController', function ($scope, $http, $location, $cookies
 
     $scope.edit = function (u) {
         $scope.edit = true;
-        $http.get("api/users/"+ u.id).then(function(response){
+        $http.get("api/users/" + u.id).then(function (response) {
             $scope.thisUser = response.data;
         })
     }
@@ -50,30 +50,42 @@ MyApp.controller('adminController', function ($scope, $http, $location, $cookies
             password: addUser.password,
             roleId: '2'
         };
-
-        $.ajax({
-            type: 'POST',
-            url: "/api/admin/addUser",
-            data: JSON.stringify(params),
-            dataType: 'json',
-            contentType: "application/json; charset=utf-8",
-            success: function (json) {
-                $http.get("api/admin/allUsers").then(function (response) {
-                    $scope.users = response.data;
-                });
-
-            },
-            error: function (json) {
-                $http.get("api/admin/allUsers").then(function (response) {
-                    $scope.users = response.data;
-                });
-                scope.close(addUser);
-            }
-
+        $http.post("/api/admin/addUser", params, {
+            headers: { 'Content-Type': "application/json; charset=utf-8" }
+        }).then(function (response) {
+            $http.get("api/admin/allUsers").then(function (response) {
+                $scope.users = response.data;
+            });
+            scope.close(addUser);
+        }, function (error) {
+            $http.get("api/admin/allUsers").then(function (response) {
+                $scope.users = response.data;
+            });
+            scope.close(addUser);
         });
+        // $.ajax({
+        //     type: 'POST',
+        //     url: "/api/admin/addUser",
+        //     data: JSON.stringify(params),
+        //     dataType: 'json',
+        //     contentType: "application/json; charset=utf-8",
+        //     success: function (json) {
+        //         $http.get("api/admin/allUsers").then(function (response) {
+        //             $scope.users = response.data;
+        //         });
+
+        //     },
+        //     error: function (json) {
+        //         $http.get("api/admin/allUsers").then(function (response) {
+        //             $scope.users = response.data;
+        //         });
+        //         scope.close(addUser);
+        //     }
+
+        // });
     };
 
-    scope.applyEdit = function(editUser, tUid){
+    scope.applyEdit = function (editUser, tUid) {
         var params = {
             name: editUser.name,
             surname: editUser.surname,
@@ -84,7 +96,7 @@ MyApp.controller('adminController', function ($scope, $http, $location, $cookies
 
         $.ajax({
             type: 'PUT',
-            url: "/api/admin/"+ tUid + "/edit",
+            url: "/api/admin/" + tUid + "/edit",
             data: JSON.stringify(params),
             dataType: 'json',
             contentType: "application/json; charset=utf-8",

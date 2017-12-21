@@ -40,6 +40,10 @@ MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
 			templateUrl: 'html/inventory.html',
 			controller: 'inventoryController'
 		})
+		.when('/raport', {
+			templateUrl: 'html/raports.html',
+			controller: 'raportsController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

@@ -42,12 +42,13 @@
     </div>
     <div class="rightInvColumn">
         <div class="selectedItem" ng-repeat="input in inputs">
-            <select class="inv" id="index_{{$index}}" ng-model="initial.itemid">
+            <select class="inv" id="index_{{$index}}" ng-model="input.itemid">
                 <option disabled selected value>-- Wybierz przedmiot -- </option>
                 <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
             </select>
-            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="initial.amount"/>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="input.amount"/>
             <button class="button" ng-click="delete(input)">Usuń</button>
         </div>
+        <div>{{inputs|json}}</div>
     </div>
 </div>

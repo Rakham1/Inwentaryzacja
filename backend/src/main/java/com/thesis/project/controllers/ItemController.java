@@ -2,10 +2,7 @@ package com.thesis.project.controllers;
 
 import com.thesis.project.dto.*;
 import com.thesis.project.factory.ItemFactory;
-import com.thesis.project.model.Inventory;
-import com.thesis.project.model.Item;
-import com.thesis.project.model.Person;
-import com.thesis.project.model.Warehouse;
+import com.thesis.project.model.*;
 import com.thesis.project.repositories.InventoryItemRepository;
 import com.thesis.project.repositories.InventoryRepository;
 import com.thesis.project.repositories.UserRepository;
@@ -47,6 +44,12 @@ public class ItemController {
     @Autowired
     InventoryRepository inventoryRepository;
 
+    @Autowired
+    ReleaseItService releaseItService;
+
+    @Autowired
+    ItemReleaseService itemReleaseService;
+
     @PostMapping("/addItem")
     public ResponseEntity<String> addItem(@RequestBody ItemDTO itemDTO) {
         Long i = itemService.save(itemDTO);
@@ -65,6 +68,11 @@ public class ItemController {
     @PostMapping("/addItemInv")
     public ResponseEntity<ArrayList<ItemDTO>> addItemToInv(@RequestBody InventoryItemDTO inventoryItemDTO) {
         inventoryItemService.save(inventoryItemDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping("/addItemRel")
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToRel(@RequestBody ReleaseItDTO releaseItDTO) {
+        releaseItService.save(releaseItDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -99,6 +107,13 @@ public class ItemController {
         Inventory inventory = inventoryRepository.findByInvId(id);
         return new ResponseEntity<>(
                 itemFactory.itemtoDTO3(inventoryItemService.getItemsByInvId(inventory.getId())), HttpStatus.OK);
+    }
+
+    @GetMapping("/allItems/rels/{id}")
+    public ResponseEntity<ArrayList<ItemOutputDTO>> getAllItemsByRelId(@PathVariable("id") Long id) throws NullPointerException {
+        ItemRelease itemRelease = itemReleaseService.findByIRelId(id);
+        return new ResponseEntity<>(
+                itemFactory.itemtoDTO4(releaseItService.getItemsByRelId(itemRelease.getId())), HttpStatus.OK);
     }
 
     @RequestMapping("/search")

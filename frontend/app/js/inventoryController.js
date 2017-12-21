@@ -1,11 +1,12 @@
 MyApp.controller('inventoryController', function ($scope, $http, $location, $window, $cookies, $route, $anchorScroll) {
     $scope.inputs = [];
     $scope.whs = [];
-    $scope.items = [];
-    $scope.initial = {
-        amount: '',
-        itemid: ''
-    }
+    // $scope.items = [];
+    var scope = $scope;
+    // $scope.initial = {
+    //     amount: '',
+    //     itemid: ''
+    // }
     var dateToday = new Date();
     $(function () {
         $("#datepicker").datepicker({
@@ -15,8 +16,15 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
         });
     });
 
+    scope.newItem = function(){
+        return{
+            itemid:'',
+            amount:''
+        }
+    }
+
     $scope.add = function () {
-        $scope.inputs.push({});
+        $scope.inputs.push(scope.newItem());
         for (i = 0; i < $scope.items.length; i++) {
             document.getElementById("index_" + i).disabled = true;
         }
@@ -53,9 +61,9 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
             contentType: "application/json; charset=utf-8",
             success: function (json) {
                 var data = {
-                    itemId : $scope.initial.itemid,
-                    inventoryId : json.addedInvId,
-                    amount : $scope.initial.amount
+                    itemId: $scope.initial.itemid,
+                    inventoryId: json.addedInvId,
+                    amount: $scope.initial.amount
                 }
                 $.ajax({
                     type: 'POST',
