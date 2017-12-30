@@ -1,0 +1,85 @@
+<div class="wrap">
+    <h2>Kontrahenci</h2>
+    <label class="searchLabel">Wyszukaj
+        <input type="text" class="usersSearch" />
+    </label>
+    <a href="#" class="button aaa" ng-click="add()">
+        <span class="fi-plus small" style="vertical-align:middle"></span> Dodaj kontrahenta
+    </a>
+    <form class="cont" ng-show="show==true">
+        <i class="fi-x" ng-click="close(addContractor)"></i>
+        <div class="sameRow">
+            <label class="addLabel">Nazwa firmy</label>
+            <input type="text" class="addInput" ng-model="addContractor.firmName">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">NIP</label>
+            <input type="text" class="addInput" ng-model="addContractor.nip">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Ulica</label>
+            <input type="text" class="addInput" ng-model="addContractor.street">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Kod pocztowy</label>
+            <input type="text" class="addInput" ng-model="addContractor.postCode">
+        </div>
+        <div class="sameRow">
+            <label class="addLabel">Miasto</label>
+            <input type="text" class="addInput" ng-model="addContractor.city">
+        </div>
+        <button ng-click="apply(addContractor)" type="submit">Zatwierdź</button>
+    </form>
+    <div class="divTableContractor">
+        <div class="divTableContractor blueTable">
+            <div class="divTableHeading">
+                <div class="divTableRow">
+                    <div class="divTableHead">Nazwa firmy</div>
+                    <div class="divTableHead">NIP</div>
+                    <div class="divTableHead">Ulica</div>
+                    <div class="divTableHead">Kod pocztowy</div>
+                    <div class="divTableHead">Miasto</div>
+                    <div class="divTableHead"></div>
+                </div>
+            </div>
+            <div class="divTableBody">
+                <div class="divTableRow" ng-repeat="c in contractors | orderBy: 'id'" id="{{c.id}}">
+                    <div class="divTableCell">{{c.firmName}}</div>
+                    <div class="divTableCell">{{c.nip}}</div>
+                    <div class="divTableCell">{{c.street}}</div>
+                    <div class="divTableCell">{{c.postCode}}</div>
+                    <div class="divTableCell">{{c.city}}</div>
+                    <div class="a" ng-click="edit(c)">
+                        <i class="fi-page-edit"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="cont" ng-show="edit==true">
+            <h3>Edytuj kontrahenta</h3>
+            <i class="fi-x" ng-click="closeEdit(editContractor)"></i>
+            <div class="sameRow">
+                <label class="addLabel">Nazwa firmy: </label>
+                <input type="text" class="addInput" ng-model="editContractor.firmName" placeholder="{{thisContractor.firmName}}">
+            </div>
+            <div class="sameRow">
+                <label class="addLabel">NIP: </label>
+                <input type="text" class="addInput" ng-model="editContractor.nip" placeholder="{{thisContractor.nip}}">
+            </div>
+            <div class="sameRow">
+                <label class="addLabel">Ulica: </label>
+                <input type="text" class="addInput" ng-model="editContractor.street" placeholder="{{thisContractor.street}}">
+            </div>
+            <div class="sameRow">
+                <label class="addLabel">Kod pocztowy: </label>
+                <input type="text" class="addInput" ng-model="editContractor.postCode" placeholder="{{thisContractor.postCode}}">
+            </div>
+            <div class="sameRow">
+                <label class="addLabel">Miasto: </label>
+                <input type="text" class="addInput" ng-model="editContractor.city" placeholder="{{thisContractor.city}}">
+            </div>
+            <button ng-click="applyEdit(editContractor, thisContractor.id)" type="submit">Zatwierdź</button>
+        </form>
+    </div>
+
+</div>

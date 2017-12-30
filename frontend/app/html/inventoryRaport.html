@@ -1,0 +1,64 @@
+<div class="row raport" ng-click="generateInv(i)" id="exportthis">
+    <div class="header">
+        <div class="leftC">
+            <h1>{{thisFirm.firmName}}</h1>
+            <div class="firmInfo">{{thisFirm.postCode}} {{thisFirm.city}}</div>
+            <div class="firmInfo">{{thisFirm.street}}</div>
+            <div class="firmInfo">NIP: {{thisFirm.nip}}</div>
+        </div>
+        <div class="rightC">
+            <div class="docName">
+                <h3 style="text-align:center">Inwentaryzacja nr {{thisInvRap.inventoryNumber}}</h3>
+                <span class="invDate">Data: {{thisInvRap.invDate | date: "dd-MM-yyyy"}}</span>
+            </div>
+            <div class="emp">
+                <div class="leftEmp">
+                    <span style="text-align:center">Pracownik</span>
+                </div>
+                <div class="rightEmp" ng-controller="userController">{{user.name}} {{user.surname}}</div>
+            </div>
+            <div class="wh">
+                <div class="leftWh">Miejsce spisu</div>
+                <div class="rightWh">{{thisInvRap.warehouse.name}}</div>
+            </div>
+        </div>
+    </div>
+    <table class="invDocTable">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Ilość</th>
+                <th>Spisana ilość</th>
+                <th>Niedobór</th>
+                <th>Nadmiar</th>
+                <th>jm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in allItems | orderBy: 'id'">
+                <td>{{item.itemName}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.stock}}</td>
+                <td>{{getAmountInvById(item.invItes, invId)}}</td>
+                <td>{{shortage(item.invItes, item, invId)}}</td>
+                <td>{{overload(item.invItes, item, invId)}}</td>
+                <td>{{item.unit}}</td>
+            </tr>
+        </tbody>
+        </tr>
+    </table>
+    <div class="bottomComment">
+        <div class="bottomCommentL">
+            <div class="bottomC">
+                <span class="commentI">{{thisInvRap.comment}}</span>
+            </div>
+        </div>
+        <div class="bottomCommentR">
+            <div class="bottomSign">
+                <span class="sign">Data i czytelny podpis</span> 
+            </div>
+        </div>
+    </div>
+</div>
+<button ng-click="generatePDF()">PDF</button>

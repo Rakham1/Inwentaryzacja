@@ -7,13 +7,14 @@
                     <input type="text" class="invInput" ng-model="addInv.inventoryNumber"/>
                 </label>
             </div>
+            
             <div class="invDiv" ng-controller="userController">
                 <label class="invLabel">Przeprowadzona przez:</label>
                 {{user.name}} {{user.surname}}
             </div>
             <div class="invDiv">
                 <label class="invLabel">Data spisu:</label>
-                <input type="text" id="datepicker" class="invInput" />
+                <input type="text" id="datepicker" class="invInput" ng-model="addInv.invDate"/>
             </div>
             <div class="invDiv">
                 <label class="invLabel">Miejsce:</label>
@@ -33,7 +34,7 @@
 
             </div>
             <div class="invDiv">
-                <button type="button" class="av" ng-click="add(a)">Dodaj kolejne przedmioty</button>
+                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
             </div>
             <div class="invDiv">
                 <button ng-click="addInvPage(addInv)">Zapisz dokument</button>
@@ -42,13 +43,12 @@
     </div>
     <div class="rightInvColumn">
         <div class="selectedItem" ng-repeat="input in inputs">
-            <select class="inv" id="index_{{$index}}" ng-model="input.itemid">
+            <select class="inv" id="index_{{$index}}" ng-model="itId" ng-change="chooseItem(itId)">
                 <option disabled selected value>-- Wybierz przedmiot -- </option>
                 <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
             </select>
-            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="input.amount"/>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="amount" ng-change="changeInput(amount)"/>
             <button class="button" ng-click="delete(input)">Usuń</button>
         </div>
-        <div>{{inputs|json}}</div>
     </div>
 </div>

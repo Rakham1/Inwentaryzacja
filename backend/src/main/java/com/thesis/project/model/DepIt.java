@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -39,7 +41,7 @@ public class DepIt {
     public void setStorageDepot(StorageDepot storageDepot) {
         this.storageDepot = storageDepot;
     }
-
+    @JsonIgnore
     public Item getItem() {
         return item;
     }

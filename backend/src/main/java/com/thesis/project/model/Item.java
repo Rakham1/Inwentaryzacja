@@ -60,6 +60,7 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private Set<RelIt> relIts = new HashSet<>();
 
+
     public Long getId() {
         return id;
     }
@@ -165,19 +166,19 @@ public class Item {
     public void setInvItes(Set<InvIte> invItes) {
         this.invItes = invItes;
     }
-
+    @JsonIgnore
     public Set<DepIt> getDepIts() {
         return depIts;
     }
-
+    @JsonIgnore
     public void setDepIts(Set<DepIt> depIts) {
         this.depIts = depIts;
     }
-
+    @JsonIgnore
     public Set<RelIt> getRelIts() {
         return relIts;
     }
-
+    @JsonIgnore
     public void setRelIts(Set<RelIt> relIts) {
         this.relIts = relIts;
     }

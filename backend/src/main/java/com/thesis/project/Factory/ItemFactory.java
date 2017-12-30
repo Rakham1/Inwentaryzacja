@@ -1,14 +1,8 @@
 package com.thesis.project.factory;
 
-import com.thesis.project.dto.ItemDTO;
-import com.thesis.project.dto.ItemOutputDTO;
-import com.thesis.project.model.InvIte;
-import com.thesis.project.model.Item;
-import com.thesis.project.model.RelIt;
-import com.thesis.project.model.WarIt;
-import com.thesis.project.repositories.GroupRepository;
-import com.thesis.project.repositories.ItemRepository;
-import com.thesis.project.repositories.TypeRepository;
+import com.thesis.project.dto.*;
+import com.thesis.project.model.*;
+import com.thesis.project.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +20,9 @@ public class ItemFactory {
 
     @Autowired
     ItemRepository itemRepository;
+
+    @Autowired
+    InventoryItemRepository inventoryItemRepository;
 
     public ArrayList<ItemDTO> itemToDTO(ArrayList<Item> items) {
         ArrayList<ItemDTO> itemDTOS = new ArrayList<>();
@@ -88,40 +85,61 @@ public class ItemFactory {
         return itemOutputDTOS;
     }
 
-    private ItemOutputDTO itemtoDTO3(InvIte invIte) {
-        ItemOutputDTO itemOutputDTO = new ItemOutputDTO();
+    private ItemOutputInventoryDTO itemtoDTO3(InvIte invIte) {
+        ItemOutputInventoryDTO itemOutputInventoryDTO = new ItemOutputInventoryDTO();
         Item item = invIte.getItem();
 
-        itemOutputDTO.setId(item.getId());
-        itemOutputDTO.setItemName(item.getItemName());
-        itemOutputDTO.setDescription(item.getDescription());
-        itemOutputDTO.setStock(item.getStock());
-        itemOutputDTO.setUnit(item.getUnit());
-        return itemOutputDTO;
+        itemOutputInventoryDTO.setId(item.getId());
+        itemOutputInventoryDTO.setItemName(item.getItemName());
+        itemOutputInventoryDTO.setDescription(item.getDescription());
+        itemOutputInventoryDTO.setStock(item.getStock());
+        itemOutputInventoryDTO.setUnit(item.getUnit());
+        itemOutputInventoryDTO.setInvItes(item.getInvItes());
+        return itemOutputInventoryDTO;
     }
 
-    public ArrayList<ItemOutputDTO> itemtoDTO3(List<InvIte> invItes) {
-        ArrayList<ItemOutputDTO> itemOutputDTOS = new ArrayList<>();
+    public ArrayList<ItemOutputInventoryDTO> itemtoDTO3(List<InvIte> invItes) {
+        ArrayList<ItemOutputInventoryDTO> itemOutputDTOS = new ArrayList<>();
         invItes.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO3(i))));
         return itemOutputDTOS;
     }
 
-    private ItemOutputDTO itemtoDTO4(RelIt relIt) {
-        ItemOutputDTO itemOutputDTO = new ItemOutputDTO();
+    private ItemOutputReleaseDTO itemtoDTO4(RelIt relIt) {
+        ItemOutputReleaseDTO itemOutputReleaseDTO = new ItemOutputReleaseDTO();
         Item item = relIt.getItem();
 
-        itemOutputDTO.setId(item.getId());
-        itemOutputDTO.setItemName(item.getItemName());
-        itemOutputDTO.setDescription(item.getDescription());
-        itemOutputDTO.setStock(item.getStock());
-        itemOutputDTO.setUnit(item.getUnit());
-        itemOutputDTO.setPrice(item.getPrice());
-        return itemOutputDTO;
+        itemOutputReleaseDTO.setId(item.getId());
+        itemOutputReleaseDTO.setItemName(item.getItemName());
+        itemOutputReleaseDTO.setDescription(item.getDescription());
+        itemOutputReleaseDTO.setStock(item.getStock());
+        itemOutputReleaseDTO.setUnit(item.getUnit());
+        itemOutputReleaseDTO.setPrice(item.getPrice());
+        itemOutputReleaseDTO.setRelIts(item.getRelIts());
+        return itemOutputReleaseDTO;
     }
 
-    public ArrayList<ItemOutputDTO> itemtoDTO4(List<RelIt> relIts) {
-        ArrayList<ItemOutputDTO> itemOutputDTOS = new ArrayList<>();
+    public ArrayList<ItemOutputReleaseDTO> itemtoDTO4(List<RelIt> relIts) {
+        ArrayList<ItemOutputReleaseDTO> itemOutputDTOS = new ArrayList<>();
         relIts.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO4(i))));
+        return itemOutputDTOS;
+    }
+
+    private ItemOutputDepotDTO itemtoDTO5(DepIt depIt) {
+        ItemOutputDepotDTO itemOutputDepotDTO = new ItemOutputDepotDTO();
+        Item item = depIt.getItem();
+
+        itemOutputDepotDTO.setId(item.getId());
+        itemOutputDepotDTO.setItemName(item.getItemName());
+        itemOutputDepotDTO.setDescription(item.getDescription());
+        itemOutputDepotDTO.setUnit(item.getUnit());
+        itemOutputDepotDTO.setPrice(item.getPrice());
+        itemOutputDepotDTO.setDepItSet(item.getDepIts());
+        return itemOutputDepotDTO;
+    }
+
+    public ArrayList<ItemOutputDepotDTO> itemtoDTO5(List<DepIt> depIts) {
+        ArrayList<ItemOutputDepotDTO> itemOutputDTOS = new ArrayList<>();
+        depIts.stream().forEach((i -> itemOutputDTOS.add(itemtoDTO5(i))));
         return itemOutputDTOS;
     }
 }

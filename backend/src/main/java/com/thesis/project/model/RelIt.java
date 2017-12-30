@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -34,7 +36,7 @@ public class RelIt {
     public void setItemRelease(ItemRelease itemRelease) {
         this.itemRelease = itemRelease;
     }
-
+    @JsonIgnore
     public Item getItem() {
         return item;
     }

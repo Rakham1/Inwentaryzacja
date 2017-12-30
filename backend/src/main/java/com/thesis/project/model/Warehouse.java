@@ -53,7 +53,7 @@ public class Warehouse {
     public Firm getFirm() {
         return firm;
     }
-
+    @JsonIgnore
     public void setFirm(Firm firm) {
         this.firm = firm;
     }
@@ -93,31 +93,31 @@ public class Warehouse {
     public Set<WarIt> getWarIts() {
         return warIts;
     }
-
+    @JsonIgnore
     public void setWarIts(Set<WarIt> warIts) {
         this.warIts = warIts;
     }
-
+    @JsonIgnore
     public Set<Inventory> getInventories() {
         return inventories;
     }
-
+    @JsonIgnore
     public void setInventories(Set<Inventory> inventories) {
         this.inventories = inventories;
     }
-
+    @JsonIgnore
     public Set<StorageDepot> getStorageDepots() {
         return storageDepots;
     }
-
+    @JsonIgnore
     public void setStorageDepots(Set<StorageDepot> storageDepots) {
         this.storageDepots = storageDepots;
     }
-
+    @JsonIgnore
     public Set<ItemRelease> getItemReleases() {
         return itemReleases;
     }
-
+    @JsonIgnore
     public void setItemReleases(Set<ItemRelease> itemReleases) {
         this.itemReleases = itemReleases;
     }

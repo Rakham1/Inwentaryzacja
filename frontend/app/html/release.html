@@ -1,0 +1,55 @@
+<div class="row">
+    <h1 class="inventh1">Wydania</h1>
+    <div class="leftInvColumn">
+        <form class="invForm">
+            <div class="invDiv">
+                <label class="invLabel">Numer dokumentu: </label>
+                <input type="text" class="invInput" ng-model="addRel.relDocName" />
+            </div>
+            <div class="invDiv" ng-controller="userController">
+                <label class="invLabel">Pracownik:</label>
+                {{user.name}} {{user.surname}}
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Data wydania:</label>
+                <input type="text" id="datepicker" class="invInput" ng-model="addRel.releaseDate" />
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Miejsce:</label>
+                <select ng-model="wId" class="invSelect" ng-change="chooseWh(wId)" ng-init="disableBtn">
+                    <option disabled selected value> -- Wybierz magazyn -- </option>
+                    <option ng-repeat="w in whs | orderBy: 'id'" value="{{w.id}}">{{w.name}}</option>
+                </select>
+            </div>
+            <div class="invDiv" ng-controller="contractorController">
+                <label class="invLabel">Kontrahent:</label>
+                <select class="invSelect" ng-model="cId" ng-change="saveId(cId)" ng-click="changeContractor(cId)">
+                    <option disabled selected value> -- Wybierz z listy --</option>
+                    <option ng-repeat="c in contractors" value="{{c.id}}">{{c.firmName}}</option>
+                    <option value="change">Brak na liście? Dodaj kontrahenta</option>
+                </select>
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Komentarz:</label>
+                <textarea class="invTextarea" ng-model="addRel.comment"></textarea>
+
+            </div>
+            <div class="invDiv">
+                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
+            </div>
+            <div class="invDiv">
+                <button ng-click="addRelPage(addRel)">Zapisz dokument</button>
+            </div>
+        </form>
+    </div>
+    <div class="rightInvColumn">
+        <div class="selectedItem" ng-repeat="input in inputs">
+            <select class="inv" id="index_{{$index}}" ng-model="relItId" ng-change="chooseItem(relItId)">
+                <option disabled selected value>-- Wybierz przedmiot -- </option>
+                <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
+            </select>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="relAmount" ng-change="changeInput(relAmount)" />
+            <button class="button" ng-click="delete(input)">Usuń</button>
+        </div>
+    </div>
+</div>

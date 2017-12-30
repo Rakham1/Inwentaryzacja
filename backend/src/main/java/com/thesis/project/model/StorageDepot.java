@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,6 +21,9 @@ public class StorageDepot {
     @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
     private String comment;
     @OneToMany(mappedBy = "storageDepot")
     private Set<DepIt> depIt = new HashSet<>();
@@ -34,7 +39,7 @@ public class StorageDepot {
     public Contractor getContractor() {
         return contractor;
     }
-
+    @JsonIgnore
     public void setContractor(Contractor contractor) {
         this.contractor = contractor;
     }
@@ -70,12 +75,20 @@ public class StorageDepot {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
+    @JsonIgnore
     public Set<DepIt> getDepIt() {
         return depIt;
     }
 
     public void setDepIt(Set<DepIt> depIt) {
         this.depIt = depIt;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+    @JsonIgnore
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

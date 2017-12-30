@@ -3,6 +3,7 @@ package com.thesis.project.factory;
 import com.thesis.project.dto.StorageDepotDTO;
 import com.thesis.project.model.StorageDepot;
 import com.thesis.project.repositories.ContractorRepository;
+import com.thesis.project.repositories.UserRepository;
 import com.thesis.project.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,8 @@ public class StorageDepotFactory {
     ContractorRepository contractorRepository;
     @Autowired
     WarehouseRepository warehouseRepository;
+    @Autowired
+    UserRepository userRepository;
     private StorageDepotDTO depToDTO(StorageDepot storageDepot){
         StorageDepotDTO storageDepotDTO = new StorageDepotDTO();
         storageDepotDTO.setId(storageDepot.getId());
@@ -23,6 +26,7 @@ public class StorageDepotFactory {
         storageDepotDTO.setContractorId(storageDepot.getContractor().getId());
         storageDepotDTO.setInvoiceName(storageDepot.getInvoiceName());
         storageDepotDTO.setWarehouseId(storageDepot.getWarehouse().getId());
+        storageDepotDTO.setPersonId(storageDepot.getPerson().getId());
         return  storageDepotDTO;
     }
 
@@ -33,6 +37,7 @@ public class StorageDepotFactory {
         storageDepot.setComment(storageDepotDTO.getComment());
         storageDepot.setContractor(contractorRepository.findByContractorId(storageDepotDTO.getContractorId()));
         storageDepot.setWarehouse(warehouseRepository.findByWhId(storageDepotDTO.getWarehouseId()));
+        storageDepot.setPerson(userRepository.findById(storageDepotDTO.getPersonId()));
         storageDepot.setInvoiceName(storageDepotDTO.getInvoiceName());
         return storageDepot;
     }

@@ -1,13 +1,3 @@
-/* .inputGroup{
-  display: block;
-}
-
-.inputGroup .searchForm {
-  border-right: 0;
-  box-shadow: 0 0 0;
-  border-color: #ccc;
-} */
-
 .inputForm{
   margin-top:10px;
   display: table;
@@ -32,9 +22,7 @@
 }
 
 .inputForm .addItemButton{
-  /* position: absolute;
-  top: 0;
-  left: 520px; */
+
   margin-left: 20px;
   margin-right: 20px;
   display: table-cell;
@@ -143,90 +131,6 @@
   cursor: auto;
   font-size: 16px;
 }
-/* .grey {
-  display: none;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1;
-  opacity: .10;
-}
-.pop {
-  display: none;
-  position: absolute;
-  top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  width: 60%;
-  height: 70%;
-  padding: 16px;
-  border: 1px solid black;
-  background-color: rgba(255, 255, 255, 0.9);
-  z-index: 2;
-  overflow: auto;
-}
-.pop input[type=text]{
-  width: 200px;
-  height: 30px;
-  border: 1px solid black;
-  padding:4px;
-}
-.pop input[readonly=readonly]{
-  background-color:blue;
-}
-.pop textarea{
-  width: 100%;
-  height: 100px;
-  border: 1px solid black;
-  padding:4px;
-}
-.pop input::placeholder {
-  color:black;
-}
-.pop textarea::placeholder{
-  color:black;
-}
-.pop .upInfo{
-  background-color: #f0f0f0;
-  padding: 5px 10px 5px 10px;
-  margin-bottom: 15px;
-}
-.pop .stock{
-  display: flex;
-  align-items: center;
-  background-color: #f0f0f0;
-  margin-bottom: 16px;
-}
-
-.pop .stock .stockInfo{
-  margin-right: 4px;
-}
-.pop .stock .stockInfo input{
-  display: inline-block;
-  /* background-color: green; */
-/* }
-.pop .stock .stockInfo label{
-  display: inline-block;
-  /* background-color: green; */
-/* } */
-/* .pop .stock .mStock{
-
-  /* background-color: pink; */
-/* }
-.pop .downInfo{
-  background-color: #f0f0f0;
-} */
-
-/* .itemFooter{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-} */
 
 .addItemForm{
   display: none;
@@ -335,7 +239,5 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: black;
   z-index: 1;
-  opacity: .10;
 }

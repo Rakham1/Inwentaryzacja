@@ -203,4 +203,10 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
     $scope.clearSearch = function () {
         $scope.searchKeyword = "";
     }
+
+    $scope.addItem= function(value){
+        if(value=="change"){
+            $location.path("/groups");
+        }
+    }
 });

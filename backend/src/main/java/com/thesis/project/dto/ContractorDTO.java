@@ -7,6 +7,7 @@ public class ContractorDTO {
     private String city;
     private String postCode;
     private String nip;
+    private Long firmId;
 
     public Long getId() {
         return id;
@@ -54,5 +55,13 @@ public class ContractorDTO {
 
     public void setNip(String nip) {
         this.nip = nip;
+    }
+
+    public Long getFirmId() {
+        return firmId;
+    }
+
+    public void setFirmId(Long firmId) {
+        this.firmId = firmId;
     }
 }

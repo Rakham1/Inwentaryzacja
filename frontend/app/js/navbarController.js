@@ -20,6 +20,9 @@ MyApp.controller('navbarController', function ($scope, $http, $location, $cookie
             $cookies.remove('login');
             $cookies.remove('itemId');
             $cookies.remove('userId');
+            $cookies.remove('invId');
+            $cookies.remove('depId');
+            $cookies.remove('firmId');
             $location.path('/')
         }, function(error){
             showalert(error.data.value, "alert-danger");

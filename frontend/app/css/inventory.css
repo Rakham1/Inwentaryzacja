@@ -23,7 +23,7 @@ select.inv{
 input[type="text"].invAddInput{
     margin-bottom: 0;
 }
-.row .invForm{
+.invForm{
     width: 100%;
     height: auto;
 }
@@ -31,6 +31,7 @@ input[type="text"].invAddInput{
     width: 100%;
 }
 .invDiv{
+    margin-top: -5px;
     width: 100%;
     height: auto;
 }
@@ -48,7 +49,7 @@ input[type="text"].invInput, .invTextarea, .invSelect{
 .rightInvColumn{
     float: right;
     width: 50%;
-    max-height: 650px;
+    max-height: 600px;
     overflow: hidden;
     overflow-y: hidden
 }

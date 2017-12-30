@@ -36,6 +36,9 @@ public class Firm {
     @Column(name = "warehouse", nullable = true)
     private Set<Warehouse> warehouse = new HashSet<>();
 
+    @OneToMany(mappedBy = "firm")
+    private Set<Contractor> contractors = new HashSet<>();
+
     public Long getFirmId() {
         return firmId;
     }
@@ -99,5 +102,13 @@ public class Firm {
 
     public void setFirmId(Long firmId) {
         this.firmId = firmId;
+    }
+
+    public Set<Contractor> getContractors() {
+        return contractors;
+    }
+
+    public void setContractors(Set<Contractor> contractors) {
+        this.contractors = contractors;
     }
 }

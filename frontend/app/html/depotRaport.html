@@ -1,0 +1,77 @@
+<div class="row raport" ng-click="generateInv(i)" id="exportthis">
+    <div class="header">
+        <div class="leftC">
+            <h1>{{thisFirm.firmName}}</h1>
+            <div class="firmInfo">{{thisFirm.postCode}} {{thisFirm.city}}</div>
+            <div class="firmInfo">{{thisFirm.street}}</div>
+            <div class="firmInfo">NIP: {{thisFirm.nip}}</div>
+        </div>
+        <div class="rightC">
+            <div class="docNameDep">
+                <div class="dL">
+                    <h1 style="text-align:center">Pz</h1>
+                </div>
+                <div class="dR">
+                    <h2 style="text-align:center">Przyjęcie na magazyn</h2>
+                </div>
+            </div>
+            <div class="docNumber">
+                <div class="docL">Nr dokumentu</div>
+                <div class="docR">{{thisDepRap.invoiceName}}</div>
+                <span class="depotDate">Data: {{thisDepRap.depotDate | date: "dd-MM-yyyy"}}</span>
+            </div>
+            <div class="empDep">
+                <div class="leftEmp">
+                    <span style="text-align:center">Pracownik</span>
+                </div>
+                <div class="rightEmp" ng-controller="userController">{{user.name}} {{user.surname}}</div>
+            </div>
+            <div class="whDep">
+                <div class="leftWh">Miejsce spisu</div>
+                <div class="rightWh">{{thisDepRap.warehouse.name}}</div>
+            </div>
+            <div class="con">
+                    <div class="leftCon">Kontrahent</div>
+                    <div class="rightCon">
+                        <span class="conName">{{thisFirm.contractors[0].firmName}}</span>, {{thisFirm.contractors[0].street}}, {{thisFirm.contractors[0].postCode}} {{thisFirm.contractors[0].city}}
+                    </div>
+            </div>
+        </div>
+    </div>
+    <table class="invDocTable">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Ilość</th>
+                <th>Cena</th>
+                <th>Koszt</th>
+                <th>jm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in allItemsDep">
+                <td>{{item.itemName}}</td>
+                <td>{{item.description}}</td>
+                <td>{{getAmountDepById(item.depItSet, depId)}}</td>
+                <td>{{item.price}} zł</td>
+                <td>{{depAmount*item.price}} zł</td>
+                <td>{{item.unit}}</td>
+            </tr>
+        </tbody>
+        </tr>
+    </table>
+    <div class="bottomComment">
+        <div class="bottomCommentL">
+            <div class="bottomC">
+                <span class="commentI">{{thisDepRap.comment}}</span>
+            </div>
+        </div>
+        <div class="bottomCommentR">
+            <div class="bottomSign">
+                <span class="sign">Data i czytelny podpis</span>
+            </div>
+        </div>
+    </div>
+</div>
+<button ng-click="generatePDF()">PDF</button>

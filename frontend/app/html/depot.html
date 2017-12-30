@@ -1,0 +1,119 @@
+<div class="row">
+    <h1 class="inventh1">Przyjęcia</h1>
+    <div class="leftInvColumn">
+        <form class="invForm">
+            <div class="invDiv">
+                <label class="invLabel">Nr faktury zakupu, Pz, Pw:
+                    <input type="text" class="invInput" ng-model="addDepot.invoiceName" />
+                </label>
+            </div>
+            <div class="invDiv" ng-controller="contractorController">
+                <label class="invLabel">Kontrahent:</label>
+                <select class="invSelect" ng-model="cId" ng-change="saveId(cId)" ng-click="changeContractor(cId)">
+                    <option disabled selected value> -- Wybierz z listy --</option>
+                    <option ng-repeat="c in contractors" value="{{c.id}}">{{c.firmName}}</option>
+                    <option value="change">Brak na liście? Dodaj kontrahenta</option>
+                </select>
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Data spisu:</label>
+                <input type="text" id="datepicker" class="invInput" ng-model="addDepot.depotDate" />
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Miejsce docelowe:</label>
+                <select ng-model="wId" class="invSelect" ng-change="chooseWh(wId)" ng-init="disableBtn">
+                    <option disabled selected value> -- Wybierz magazyn -- </option>
+                    <option ng-repeat="w in whs | orderBy: 'id'" value="{{w.id}}">{{w.name}}</option>
+                </select>
+            </div>
+            <div class="invDiv">
+                <label class="invLabel">Komentarz:</label>
+                <textarea class="invTextarea" ng-model="addDepot.comment"></textarea>
+
+            </div>
+            <div class="invDiv">
+                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
+            </div>
+            <div class="invDiv">
+                <button ng-click="addDepotPage(addDepot)">Zapisz dokument</button>
+            </div>
+        </form>
+    </div>
+    <div class="rightInvColumn">
+        <div class="selectedItem" ng-repeat="input in inputs">
+            <select class="inv" id="index_{{$index}}" ng-model="depItId" ng-change="chooseItem(depItId)">
+                <option disabled selected value>-- Wybierz przedmiot -- </option>
+                <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
+                <option value="change">Brak na liście? Dodaj przedmiot</option>
+            </select>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="depAmount" ng-change="changeInput(depAmount)" />
+            <button class="button" ng-click="delete(input)">Usuń</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="pAdd" class="addItemForm">
+    <form name="formName" class="formItem" ng-submit="createItem(addItem)">
+        <div class="row columns">
+            <h3>Dodaj przedmiot</h3>
+        </div>
+        <div class="row columns">
+            <label>Nazwa przedmiotu
+                <input type="text" required ng-model="addItem.iN" placeholder="Przedmiot" />
+            </label>
+        </div>
+        <div class="row columns">
+            <label>Opis przedmiotu
+                <textarea required ng-model="addItem.desc" placeholder="Dodaj opis"></textarea>
+            </label>
+        </div>
+        <div class="row">
+            <label class="columns large-4">Ilość</label>
+            <label class="columns large-4">Jednostka</label>
+            <label class="columns large-4">Cena</label>
+            <div class="columns large-4">
+                <input type="number" min="0" required ng-model="addItem.st" placeholder="Dodaj ilość" />
+            </div>
+
+            <div class="columns large-4">
+                <input type="text" required ng-model="addItem.un" placeholder="Dodaj jednostkę" />
+            </div>
+
+            <div class="columns large-4">
+                <input type="text" required ng-model="addItem.pr" placeholder="Dodaj cenę" />
+            </div>
+        </div>
+        <div class="row columns" ng-controller="groupsController">
+            <label>Grupa
+                <select type="text" required ng-model="addItem.gId" ng-click="changeGroup(addItem.gId)">
+                    <option value="">Wybierz z listy</option>
+                    <option ng-repeat="g in groups" value="{{g.id}}">{{g.name}}</option>
+                    <option value="change">Brak na liście? Dodaj grupę</option>
+                </select>
+            </label>
+        </div>
+        <div class="row columns" ng-controller="typesController">
+            <label>Typ
+                <select type="text" required ng-model="addItem.tId" ng-click="changeType(addItem.tId)">
+                    <option value="">Wybierz z listy</option>
+                    <option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>
+                    <option value="change">Brak na liście? Dodaj listę</option>
+                </select>
+            </label>
+        </div>
+        <div class="row columns">
+            <label>Uwagi
+                <textarea required ng-model="addItem.no" ng-init='addItem.no = "Brak."'></textarea>
+            </label>
+        </div>
+        <div class="row columns">
+            <label>Barcode
+                <input type="text" ng-model="addItem.bar" placeholder="Barcode"></input>
+            </label>
+        </div>
+        <div class="row columns">
+            <button type="submit" ng-disabled="formName.$invalid" class="primary button expanded add-button">Dodaj</button>
+        </div>
+    </form>
+</div>

@@ -40,9 +40,33 @@ MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
 			templateUrl: 'html/inventory.html',
 			controller: 'inventoryController'
 		})
+		.when('/release',{
+			templateUrl: 'html/release.html',
+			controller: 'releaseController'
+		})
+		.when('/depot',{
+			templateUrl: 'html/depot.html',
+			controller: 'depotController'
+		})
 		.when('/raport', {
 			templateUrl: 'html/raports.html',
 			controller: 'raportsController'
+		})
+		.when('/raport/invRaport', {
+			templateUrl: 'html/inventoryRaport.html',
+			controller: 'raportsController'
+		})
+		.when('/raport/relRaport', {
+			templateUrl: 'html/releaseRaport.html',
+			controller: 'raportsController'
+		})
+		.when('/raport/depRaport', {
+			templateUrl: 'html/depotRaport.html',
+			controller: 'raportsController'
+		})
+		.when('/contractor',{
+			templateUrl: 'html/contractor.html',
+			controller: 'contractorController'
 		})
 		.otherwise({
 			redirectTo: '/'

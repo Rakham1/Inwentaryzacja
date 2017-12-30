@@ -1,11 +1,15 @@
 package com.thesis.project.controllers;
 
+import com.thesis.project.dto.ContractorDTO;
 import com.thesis.project.dto.FirmDTO;
 import com.thesis.project.dto.WarehouseDTO;
+import com.thesis.project.factory.ContractorFactory;
 import com.thesis.project.factory.FirmFactory;
 import com.thesis.project.factory.WarehouseFactory;
+import com.thesis.project.model.Contractor;
 import com.thesis.project.model.Firm;
 import com.thesis.project.model.Warehouse;
+import com.thesis.project.services.ContractorService;
 import com.thesis.project.services.FirmService;
 import com.thesis.project.services.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,12 @@ public class FirmController {
 
     @Autowired
     FirmFactory firmFactory;
+
+    @Autowired
+    ContractorService contractorService;
+
+    @Autowired
+    ContractorFactory contractorFactory;
 
     @GetMapping("/{id}")
     public ResponseEntity<Firm> getById(@PathVariable("id") Long id) {
@@ -64,6 +74,12 @@ public class FirmController {
     public ResponseEntity<ArrayList<WarehouseDTO>> getWhsByFirm(@PathVariable("id") Long id){
         ArrayList<WarehouseDTO> warehouseDTOS = warehouseFactory.whToDTO(warehouseService.getWhsByFirmId(id));
         return new ResponseEntity<>(warehouseDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/contractors")
+    public ResponseEntity<ArrayList<ContractorDTO>> getContrsByFirm(@PathVariable("id") Long id){
+        ArrayList<ContractorDTO> contractorDTOS = contractorFactory.contractorToDTO(contractorService.getAllContractorsByFirmId(id));
+        return new ResponseEntity<>(contractorDTOS, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/user")

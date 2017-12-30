@@ -1,5 +1,7 @@
 package com.thesis.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +30,13 @@ public class Contractor {
 
     @OneToMany(mappedBy = "contractor")
     private Set<StorageDepot> storageDepots = new HashSet<>();
+
+    @OneToMany(mappedBy = "contractor")
+    private Set<ItemRelease> itemReleases = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "firm_id")
+    private Firm firm;
 
     public Long getId() {
         return id;
@@ -83,5 +92,22 @@ public class Contractor {
 
     public void setStorageDepots(Set<StorageDepot> storageDepots) {
         this.storageDepots = storageDepots;
+    }
+
+    @JsonIgnore
+    public Firm getFirm() {
+        return firm;
+    }
+
+    public void setFirm(Firm firm) {
+        this.firm = firm;
+    }
+
+    public Set<ItemRelease> getItemReleases() {
+        return itemReleases;
+    }
+
+    public void setItemReleases(Set<ItemRelease> itemReleases) {
+        this.itemReleases = itemReleases;
     }
 }

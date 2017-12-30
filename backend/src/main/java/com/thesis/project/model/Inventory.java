@@ -90,7 +90,7 @@ public class Inventory {
     public void setInvDate(Date invDate) {
         this.invDate = invDate;
     }
-
+    @JsonIgnore
     public Set<InvIte> getInvItes() {
         return invItes;
     }

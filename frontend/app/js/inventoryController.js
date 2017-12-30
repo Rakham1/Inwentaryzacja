@@ -1,12 +1,12 @@
 MyApp.controller('inventoryController', function ($scope, $http, $location, $window, $cookies, $route, $anchorScroll) {
     $scope.inputs = [];
     $scope.whs = [];
-    // $scope.items = [];
+    $scope.wId;
+    $scope.items = [];
     var scope = $scope;
-    // $scope.initial = {
-    //     amount: '',
-    //     itemid: ''
-    // }
+    $scope.initial = {
+        amount: '',
+    }
     var dateToday = new Date();
     $(function () {
         $("#datepicker").datepicker({
@@ -16,15 +16,36 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
         });
     });
 
-    scope.newItem = function(){
-        return{
-            itemid:'',
-            amount:''
-        }
+    // scope.newItem = function(){
+    //     return{
+    //         itemid: '',
+    //         amount:''
+    //     }
+    // }
+
+    // scope.getData = function(){
+    //     var data = scope.newItem();
+    //     $scope.var1 = data.itemid;
+    //     $scope.var2 = data.amount;
+    // }
+
+    $scope.chooseItem = function(itId){
+        $scope.var1 = itId;
     }
 
+    $scope.changeInput = function(amount){
+        $scope.var2 = amount;
+    }
+
+    // $scope.add = function () {
+    //     $scope.inputs.push(scope.newItem());
+    //     for (i = 0; i < $scope.items.length; i++) {
+    //         document.getElementById("index_" + i).disabled = true;
+    //     }
+    // };
+
     $scope.add = function () {
-        $scope.inputs.push(scope.newItem());
+        $scope.inputs.push({});
         for (i = 0; i < $scope.items.length; i++) {
             document.getElementById("index_" + i).disabled = true;
         }
@@ -51,7 +72,9 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
             inventoryNumber: addInv.inventoryNumber,
             committeeSquad: addInv.committeeSquad,
             comment: addInv.comment,
-            personId: $cookies.get("userId")
+            personId: $cookies.get("userId"),
+            warehouseId: $scope.wId,
+            invDate: addInv.invDate
         }
         $.ajax({
             type: 'POST',
@@ -61,9 +84,9 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
             contentType: "application/json; charset=utf-8",
             success: function (json) {
                 var data = {
-                    itemId: $scope.initial.itemid,
+                    itemId: $scope.var1,
                     inventoryId: json.addedInvId,
-                    amount: $scope.initial.amount
+                    amount: $scope.var2
                 }
                 $.ajax({
                     type: 'POST',

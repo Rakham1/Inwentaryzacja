@@ -7,7 +7,9 @@ import java.util.ArrayList;
 public interface ContractorRepository {
     Contractor findByContractorId(Long id);
 
-    Contractor findFirmByStorageDepId(Long storageDepId);
+    Contractor findContractorByStorageDepId(Long storageDepId);
+
+    ArrayList<Contractor> getAllContractorsByFirmId(Long firmId);
 
     ArrayList<Contractor> getAllContractors();
 

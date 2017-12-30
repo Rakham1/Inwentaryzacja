@@ -8,6 +8,7 @@ public class StorageDepotDTO {
     private Long id;
     private Long contractorId;
     private Long warehouseId;
+    private Long personId;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "UTC")
     private Date depotDate;
     private String invoiceName;
@@ -59,5 +60,13 @@ public class StorageDepotDTO {
 
     public void setWarehouseId(Long warehouseId) {
         this.warehouseId = warehouseId;
+    }
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 }

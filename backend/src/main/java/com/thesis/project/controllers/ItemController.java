@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/items")
@@ -50,6 +51,12 @@ public class ItemController {
     @Autowired
     ItemReleaseService itemReleaseService;
 
+    @Autowired
+    StorageDepotService storageDepotService;
+
+    @Autowired
+    DepItService depItService;
+
     @PostMapping("/addItem")
     public ResponseEntity<String> addItem(@RequestBody ItemDTO itemDTO) {
         Long i = itemService.save(itemDTO);
@@ -67,12 +74,21 @@ public class ItemController {
 
     @PostMapping("/addItemInv")
     public ResponseEntity<ArrayList<ItemDTO>> addItemToInv(@RequestBody InventoryItemDTO inventoryItemDTO) {
+//        ArrayList<InvIte> invItes = new ArrayList<>();
+//        ItemDTO.forEach(i -> invItes.add(inventoryItemService.save(inventoryItemDTO)));
         inventoryItemService.save(inventoryItemDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PostMapping("/addItemRel")
     public ResponseEntity<ArrayList<ItemDTO>> addItemToRel(@RequestBody ReleaseItDTO releaseItDTO) {
         releaseItService.save(releaseItDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/addItemDep")
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToDep(@RequestBody DepItDTO depItDTO) {
+        depItService.save(depItDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -103,17 +119,24 @@ public class ItemController {
     }
 
     @GetMapping("/allItems/invs/{id}")
-    public ResponseEntity<ArrayList<ItemOutputDTO>> getAllItemsByInvId(@PathVariable("id") Long id) throws NullPointerException {
+    public ResponseEntity<ArrayList<ItemOutputInventoryDTO>> getAllItemsByInvId(@PathVariable("id") Long id) throws NullPointerException {
         Inventory inventory = inventoryRepository.findByInvId(id);
         return new ResponseEntity<>(
                 itemFactory.itemtoDTO3(inventoryItemService.getItemsByInvId(inventory.getId())), HttpStatus.OK);
     }
 
     @GetMapping("/allItems/rels/{id}")
-    public ResponseEntity<ArrayList<ItemOutputDTO>> getAllItemsByRelId(@PathVariable("id") Long id) throws NullPointerException {
+    public ResponseEntity<ArrayList<ItemOutputReleaseDTO>> getAllItemsByRelId(@PathVariable("id") Long id) throws NullPointerException {
         ItemRelease itemRelease = itemReleaseService.findByIRelId(id);
         return new ResponseEntity<>(
                 itemFactory.itemtoDTO4(releaseItService.getItemsByRelId(itemRelease.getId())), HttpStatus.OK);
+    }
+
+    @GetMapping("/allItems/deps/{id}")
+    public ResponseEntity<ArrayList<ItemOutputDepotDTO>> getAllItemsByDepId(@PathVariable("id") Long id) throws NullPointerException {
+        StorageDepot storageDepot = storageDepotService.findByDepId(id);
+        return new ResponseEntity<>(
+                itemFactory.itemtoDTO5(depItService.getItemsByDepId(storageDepot.getId())), HttpStatus.OK);
     }
 
     @RequestMapping("/search")

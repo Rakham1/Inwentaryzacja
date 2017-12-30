@@ -37,7 +37,7 @@ public class InvIte {
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-    @JsonIgnore
+
     public Inventory getInventory() {
         return inventory;
     }
