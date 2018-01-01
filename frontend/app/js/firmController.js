@@ -41,8 +41,28 @@ MyApp.controller('firmController', function ($scope, $http, $location, $cookies,
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
+                $('.addUserForm').toggleClass('active');
+                scope.change();
+                addFirm.firmName = '';
+                addFirm.nip = '';
+                addFirm.street = '';
+                addFirm.postCode = '';
+                addFirm.city = '';
+                $http.get("api/users/" + $scope.uid).then(function (response) {
+                    $scope.user = response.data;
+                });
             },
             error: function (json) {
+                $('.addUserForm').toggleClass('active');
+                scope.change();
+                addFirm.firmName = '';
+                addFirm.nip = '';
+                addFirm.street = '';
+                addFirm.postCode = '';
+                addFirm.city = '';
+                $http.get("api/users/" + $scope.uid).then(function (response) {
+                    $scope.user = response.data;
+                });
             }
         });
     };
@@ -95,7 +115,7 @@ MyApp.controller('firmController', function ($scope, $http, $location, $cookies,
         return false;
     })
 
-    $scope.change = function () {
+    scope.change = function () {
         $(".myButton").html(($(".myButton").html() == 'Dodaj firmę') ? 'Anuluj' : 'Dodaj firmę');
     }
 });  

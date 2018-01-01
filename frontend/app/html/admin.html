@@ -1,7 +1,7 @@
 <div class="wrap">
     <h2>Użytkownicy</h2>
     <label class="searchLabel">Wyszukaj
-        <input type="text" class="usersSearch" />
+        <input type="text" class="usersSearch" ng-model="searchKeyword" />
     </label>
     <a href="#" class="button aaa" ng-click="add()">
         <span class="fi-plus small" style="vertical-align:middle"></span> Dodaj użytkownika
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="divTableBody">
-                <div class="divTableRow" ng-repeat="u in users | orderBy: 'id'" id="{{u.id}}">
+                <div class="divTableRow" ng-repeat="u in users | filter: searchKeyword | orderBy: 'id'" id="{{u.id}}">
                     <div class="divTableCell">{{u.name}}</div>
                     <div class="divTableCell">{{u.surname}}</div>
                     <div class="divTableCell">{{u.username}}</div>

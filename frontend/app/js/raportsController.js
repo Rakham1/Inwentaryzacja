@@ -134,10 +134,41 @@ MyApp.controller('raportsController', function ($scope, $http, $location, $cooki
                         width: 500,
                     }]
                 };
-                pdfMake.createPdf(docDefinition).download("test.pdf");
+                pdfMake.createPdf(docDefinition).download("document");
             }
         });
     }
+
+    $scope.openPDF = function() {
+        html2canvas(document.getElementById('exportthis'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500,
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).open();
+            }
+        });
+    }
+
+    $scope.print = function() {
+        html2canvas(document.getElementById('exportthis'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).print();
+            }
+        });
+    }
+
     $(function () {
         $(document).foundation();
         $('#raports-tabs').foundation('selectTab', 'panel1');

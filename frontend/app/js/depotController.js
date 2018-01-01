@@ -3,6 +3,7 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
     $scope.whs = [];
     $scope.cId;
     $scope.wId;
+    $scope.disableBtn = true;
     var scope = $scope;
 
     var dateToday = new Date();
@@ -14,12 +15,12 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
         });
     });
 
-    // scope.newItem = function(){
-    //     return{
-    //         itemid:'',
-    //         amount:''
-    //     }
-    // }
+    scope.newItem = function(){
+        return{
+            itemid:'',
+            amount:''
+        }
+    }
 
     $scope.chooseItem = function (depItId) {
         $scope.var1 = depItId;
@@ -44,15 +45,26 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
     }
 
     $scope.add = function () {
-        $scope.inputs.push({});
+        $scope.disableBtn = false;
+        $scope.inputs.push(scope.newItem());
         for (i = 0; i < $scope.items.length; i++) {
             document.getElementById("index_" + i).disabled = true;
         }
     };
 
+    // $scope.add = function () {
+    //     $scope.inputs.push({});
+    //     for (i = 0; i < $scope.items.length; i++) {
+    //         document.getElementById("index_" + i).disabled = true;
+    //     }
+    // };
+
     $scope.delete = function (input) {
         var index = $scope.inputs.indexOf(input);
         $scope.inputs.splice(index, 1);
+        if(index == 0){
+            $scope.disableBtn = true;
+        }
     }
 
     $http.get("api/firms/" + $cookies.get("firmId") + "/whs").then(function (response) {
@@ -66,7 +78,7 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
         });
     }
 
-    $scope.addDepotPage = function (addDepot) {
+    $scope.addDepotPage = function (addDepot, inputs) {
         var params = {
             invoiceName: addDepot.invoiceName,
             depotDate: addDepot.depotDate,
@@ -82,10 +94,20 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
-                var data = {
-                    itemId: $scope.var1,
-                    depotId: json.addedDepId,
-                    amount: $scope.var2
+                // var data = {
+                //     itemId: $scope.var1,
+                //     depotId: json.addedDepId,
+                //     amount: $scope.var2
+                // }
+                var data = [];
+                for (i = 0; i < inputs.length; ++i) {
+                    data[i] = 
+                        {
+                            itemId: $scope.inputs[i].itemid,
+                            depotId: json.addedDepId,
+                            amount: $scope.inputs[i].amount
+                        }
+                    
                 }
                 $.ajax({
                     type: 'POST',
@@ -148,7 +170,7 @@ MyApp.controller('depotController', function ($scope, $http, $location, $cookies
     }
 
     $(document).ready(function () {
-        $('.av').on('click', function () {
+        $('.addNextItem').on('click', function () {
             $('.rightInvColumn').css('overflow-y', 'scroll');
         });
     });

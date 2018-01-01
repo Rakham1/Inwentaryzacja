@@ -24,6 +24,9 @@ public class InventoryItemService {
         return inventoryItemRepository.getItemsByInvId(inventoryId);
     }
 
+    public void save (List<InventoryItemDTO> inventoryItemDTO){
+        inventoryItemDTO.stream().forEach(item -> save(item));
+    }
     public void save (InventoryItemDTO inventoryItemDTO){
         InvIte invIte = new InvIte();
         invIte.setItem(itemRepository.findProductById(inventoryItemDTO.getItemId()));

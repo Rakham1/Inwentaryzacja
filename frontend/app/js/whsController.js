@@ -79,8 +79,26 @@ MyApp.controller('whsController', function ($scope, $http, $location, $cookies, 
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
+                $('.addWhForm').toggleClass('active');
+                $http.get("api/firms/" + $scope.fid + "/whs").then(function (response) {
+                    $scope.whs = response.data;
+                });
+                addWh.name = '';
+                addWh.street = '';
+                addWh.postCode = '';
+                addWh.city = '';
+                scope.change();
             },
             error: function (json) {
+                $('.addWhForm').toggleClass('active');
+                $http.get("api/firms/" + $scope.fid + "/whs").then(function (response) {
+                    $scope.whs = response.data;
+                });
+                addWh.name = '';
+                addWh.street = '';
+                addWh.postCode = '';
+                addWh.city = '';
+                scope.change();
             }
         });
     }
@@ -105,7 +123,7 @@ MyApp.controller('whsController', function ($scope, $http, $location, $cookies, 
         return false;
     })
 
-    $scope.change = function () {
+    scope.change = function () {
         $(".myButton").html(($(".myButton").html() == 'Dodaj magazyn') ? 'Anuluj' : 'Dodaj magazyn');
     }
 });

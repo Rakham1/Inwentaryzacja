@@ -1,7 +1,10 @@
+<button class="pdfButton" ng-click="print()"><i class="fi-print"></i>Drukuj</button>
+<button class="pdfButton" ng-click="openPDF()"><i class="fi-page-doc"></i>Podgląd</button>
+<button class="pdfButton" ng-click="generatePDF()"><i class="fi-page-pdf"></i>PDF</button>
 <div class="row raport" ng-click="generateInv(i)" id="exportthis">
     <div class="header">
         <div class="leftC">
-            <h1>{{thisFirm.firmName}}</h1>
+            <h2>{{thisFirm.firmName}}</h2>
             <div class="firmInfo">{{thisFirm.postCode}} {{thisFirm.city}}</div>
             <div class="firmInfo">{{thisFirm.street}}</div>
             <div class="firmInfo">NIP: {{thisFirm.nip}}</div>
@@ -74,4 +77,3 @@
         </div>
     </div>
 </div>
-<button ng-click="generatePDF()">PDF</button>

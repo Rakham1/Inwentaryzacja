@@ -1,10 +1,12 @@
-MyApp.controller('loginController', function ($scope, $http, $location, $cookies, $route) {
+MyApp.controller('loginController', function ($scope, $http, $location, $cookies, $route, $interval) {
 	$scope.user = {
 		username: '',
 		password: ''
 	}
 	$scope.show = false;
 	$scope.users = [];
+	$scope.u;
+	var scope = $scope;
 
 	$scope.loginUser = function () {
 		$http.post("/api/login", $scope.user, {
@@ -16,30 +18,61 @@ MyApp.controller('loginController', function ($scope, $http, $location, $cookies
 					$cookies.put('login', response.data.username);
 					$cookies.put('userId', response.data.uid);
 				}
-				
+
 				$http.get("/api/users/authorities").then(function (response) {
 					$cookies.put("adminRights", response.data.privilege);
 					console.log($cookies.get("adminRights"));
 					if (response.data.privilege == "ROLE_ADMIN") {
 						$location.path('/admin');
-						$route.reload();
+						// window.location.replace('/admin');
 					}
 					else if (response.data.privilege == "ROLE_USER") {
 						$location.path('/user');
-						$route.reload();
+						// window.location.replace('/user');
 					}
 				});
-				// var data = response.config.data;
-				// console.log(response.config.data);
-				console.log(JSON.stringify(response.data));
-				console.log($cookies.get("userId"));
-
 			}, function (error) {
 				showalert(error.data.value, "alert-danger");
 			});
 	};
 
+	$http.get("/api/users/" + $cookies.get("userId")).then(function (response) {
+		$scope.user = response.data;
+	});
+
 	var transform = function (data) {
 		return $.param(data);
 	}
+
+	$scope.isHidden = function () {
+		return $location.path() == '/';
+	};
+
+	$scope.adminRights = function () {
+		return $cookies.get("adminRights") == "ROLE_ADMIN";
+	}
+
+	$scope.userRights = function () {
+		return $cookies.get("adminRights") == "ROLE_USER";
+	}
+
+	// $http.get("/api/users/"+ $cookies.get("userId")).then(function (response) {
+	//     $scope.user = response.data;
+	//     $route.reload();
+	// });
+
+	$scope.logout = function () {
+		$http.get("api/users/logout").then(function (response) {
+			$cookies.remove('adminRights');
+			$cookies.remove('login');
+			$cookies.remove('itemId');
+			$cookies.remove('userId', { path: '/' });
+			$cookies.remove('invId');
+			$cookies.remove('depId');
+			$cookies.remove('firmId');
+			$location.path('/')
+		}, function (error) {
+			showalert(error.data.value, "alert-danger");
+		});
+	};
 })

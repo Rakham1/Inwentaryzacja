@@ -3,6 +3,7 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
     $scope.whs = [];
     $scope.wId;
     $scope.items = [];
+    $scope.disableBtn = true;
     var scope = $scope;
     $scope.initial = {
         amount: '',
@@ -16,12 +17,12 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
         });
     });
 
-    // scope.newItem = function(){
-    //     return{
-    //         itemid: '',
-    //         amount:''
-    //     }
-    // }
+    scope.newItem = function () {
+        return {
+            itemId: '',
+            amount: ''
+        }
+    }
 
     // scope.getData = function(){
     //     var data = scope.newItem();
@@ -29,31 +30,35 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
     //     $scope.var2 = data.amount;
     // }
 
-    $scope.chooseItem = function(itId){
+    $scope.chooseItem = function (itId) {
         $scope.var1 = itId;
     }
 
-    $scope.changeInput = function(amount){
+    $scope.changeInput = function (amount) {
         $scope.var2 = amount;
     }
 
-    // $scope.add = function () {
-    //     $scope.inputs.push(scope.newItem());
-    //     for (i = 0; i < $scope.items.length; i++) {
-    //         document.getElementById("index_" + i).disabled = true;
-    //     }
-    // };
-
     $scope.add = function () {
-        $scope.inputs.push({});
+        $scope.disableBtn = false;
+        $scope.inputs.push(scope.newItem());
         for (i = 0; i < $scope.items.length; i++) {
             document.getElementById("index_" + i).disabled = true;
         }
     };
 
+    // $scope.add = function () {
+    //     $scope.inputs.push({});
+    //     for (i = 0; i < $scope.items.length; i++) {
+    //         document.getElementById("index_" + i).disabled = true;
+    //     }
+    // };
+
     $scope.delete = function (input) {
         var index = $scope.inputs.indexOf(input);
         $scope.inputs.splice(index, 1);
+        if(index == 0){
+            $scope.disableBtn = true;
+        }
     }
 
     $http.get("api/firms/" + $cookies.get("firmId") + "/whs").then(function (response) {
@@ -67,7 +72,7 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
         });
     }
 
-    $scope.addInvPage = function (addInv) {
+    $scope.addInvPage = function (addInv, inputs) {
         var params = {
             inventoryNumber: addInv.inventoryNumber,
             committeeSquad: addInv.committeeSquad,
@@ -83,30 +88,35 @@ MyApp.controller('inventoryController', function ($scope, $http, $location, $win
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
-                var data = {
-                    itemId: $scope.var1,
-                    inventoryId: json.addedInvId,
-                    amount: $scope.var2
+                var data = [];
+                for (i = 0; i < inputs.length; ++i) {
+                    data[i] = 
+                        {
+                            itemId: $scope.inputs[i].itemid,
+                            inventoryId: json.addedInvId,
+                            amount: $scope.inputs[i].amount
+                        }
+                    
                 }
-                $.ajax({
-                    type: 'POST',
-                    url: "/api/items/addItemInv",
-                    data: JSON.stringify(data),
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
-                    success: function (json) {
-                    },
-                    error: function (json) {
-                    }
-                });
-            },
+                    $.ajax({
+                        type: 'POST',
+                        url: "/api/items/addItemInv",
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (json) {
+                        },
+                        error: function (json) {
+                        }
+                    });
+                },
             error: function (json) {
             }
         });
     }
 
     $(document).ready(function () {
-        $('.av').on('click', function () {
+        $('.addNextItem').on('click', function () {
             $('.rightInvColumn').css('overflow-y', 'scroll');
         });
     });

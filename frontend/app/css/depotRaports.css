@@ -56,6 +56,7 @@
     position: relative;
     border-right: 2px solid black;
     border-top: 2px solid black;
+    padding-left: 5px;
 }
 .docNumber .docR{
     width: 65%;
@@ -89,6 +90,7 @@
     border: 2px solid black;
     border-left: 0;
     border-bottom: 0;
+    padding-left: 5px;
 }
 .empDep .rightEmp{
     width: 65%;
@@ -97,6 +99,7 @@
     position: relative;
     overflow: hidden;
     border-top: 2px solid black;
+    padding-left: 5px;
 }
 .whDep .leftWh{
     width: 35%;
@@ -106,6 +109,7 @@
     overflow: hidden;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
+    padding-left: 5px;
 }
 .whDep .rightWh{
     width: 65%;
@@ -114,6 +118,7 @@
     position: relative;
     overflow: hidden;
     border-bottom: 2px solid black;
+    padding-left: 5px;
 }
 .con{
     height: 15%;
@@ -125,6 +130,7 @@
     position: relative;
     overflow: hidden;
     border-right: 2px solid black;
+    padding-left: 5px;
 }
 .rightCon{
     width: 65%;

@@ -73,21 +73,19 @@ public class ItemController {
     }
 
     @PostMapping("/addItemInv")
-    public ResponseEntity<ArrayList<ItemDTO>> addItemToInv(@RequestBody InventoryItemDTO inventoryItemDTO) {
-//        ArrayList<InvIte> invItes = new ArrayList<>();
-//        ItemDTO.forEach(i -> invItes.add(inventoryItemService.save(inventoryItemDTO)));
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToInv(@RequestBody List<InventoryItemDTO> inventoryItemDTO) {
         inventoryItemService.save(inventoryItemDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/addItemRel")
-    public ResponseEntity<ArrayList<ItemDTO>> addItemToRel(@RequestBody ReleaseItDTO releaseItDTO) {
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToRel(@RequestBody List<ReleaseItDTO> releaseItDTO) {
         releaseItService.save(releaseItDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/addItemDep")
-    public ResponseEntity<ArrayList<ItemDTO>> addItemToDep(@RequestBody DepItDTO depItDTO) {
+    public ResponseEntity<ArrayList<ItemDTO>> addItemToDep(@RequestBody List<DepItDTO> depItDTO) {
         depItService.save(depItDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }

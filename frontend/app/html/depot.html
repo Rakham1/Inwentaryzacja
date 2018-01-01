@@ -32,22 +32,22 @@
 
             </div>
             <div class="invDiv">
-                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
-            </div>
-            <div class="invDiv">
-                <button ng-click="addDepotPage(addDepot)">Zapisz dokument</button>
+                <button type="button" class="addNextItem" ng-click="add()"><i class="fa fa-plus"></i>Dodaj kolejne przedmioty</button>
             </div>
         </form>
     </div>
     <div class="rightInvColumn">
         <div class="selectedItem" ng-repeat="input in inputs">
-            <select class="inv" id="index_{{$index}}" ng-model="depItId" ng-change="chooseItem(depItId)">
+            <select class="inv" id="index_{{$index}}" ng-model="input.itemid" ng-change="chooseItem(depItId)">
                 <option disabled selected value>-- Wybierz przedmiot -- </option>
                 <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
                 <option value="change">Brak na liście? Dodaj przedmiot</option>
             </select>
-            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="depAmount" ng-change="changeInput(depAmount)" />
-            <button class="button" ng-click="delete(input)">Usuń</button>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="input.amount" ng-change="changeInput(depAmount)" />
+            <button class="deleteListButton" ng-click="delete(input)">Usuń</button>
+        </div>
+        <div class="invDiv">
+            <button class="saveDoc" ng-disabled="disableBtn" ng-click="addDepotPage(addDepot, inputs)"><i class="fi-check"></i>Zapisz dokument</button>
         </div>
     </div>
 </div>

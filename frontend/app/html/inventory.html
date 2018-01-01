@@ -4,21 +4,21 @@
         <form class="invForm">
             <div class="invDiv">
                 <label class="invLabel">Inwentaryzacja nr:
-                    <input type="text" class="invInput" ng-model="addInv.inventoryNumber"/>
+                    <input type="text" class="invInput" ng-model="addInv.inventoryNumber" />
                 </label>
             </div>
-            
+
             <div class="invDiv" ng-controller="userController">
                 <label class="invLabel">Przeprowadzona przez:</label>
-                {{user.name}} {{user.surname}}
+                <p>{{user.name}} {{user.surname}}</p>
             </div>
             <div class="invDiv">
                 <label class="invLabel">Data spisu:</label>
-                <input type="text" id="datepicker" class="invInput" ng-model="addInv.invDate"/>
+                <input type="text" id="datepicker" class="invInput" ng-model="addInv.invDate" />
             </div>
             <div class="invDiv">
                 <label class="invLabel">Miejsce:</label>
-                <select ng-model="wId" class="invSelect" ng-change="chooseWh(wId)" ng-init="disableBtn">
+                <select ng-model="wId" class="invSelect" ng-change="chooseWh(wId)">
                     <option disabled selected value> -- Wybierz magazyn -- </option>
                     <option ng-repeat="w in whs | orderBy: 'id'" value="{{w.id}}">{{w.name}}</option>
                 </select>
@@ -34,21 +34,24 @@
 
             </div>
             <div class="invDiv">
-                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
+                <button type="button" class="addNextItem" ng-click="add()"><i class="fa fa-plus"></i>Dodaj kolejne przedmioty</button>
             </div>
-            <div class="invDiv">
+            <!-- <div class="invDiv">
                 <button ng-click="addInvPage(addInv)">Zapisz dokument</button>
-            </div>
+            </div> -->
         </form>
     </div>
     <div class="rightInvColumn">
         <div class="selectedItem" ng-repeat="input in inputs">
-            <select class="inv" id="index_{{$index}}" ng-model="itId" ng-change="chooseItem(itId)">
+            <select class="inv" id="index_{{$index}}" ng-model="input.itemid" ng-change="chooseItem(itId)">
                 <option disabled selected value>-- Wybierz przedmiot -- </option>
                 <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
             </select>
-            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="amount" ng-change="changeInput(amount)"/>
-            <button class="button" ng-click="delete(input)">Usuń</button>
+            <input type="text" class="invAddInput" placeholder="Ilość" ng-model="input.amount" ng-change="changeInput(amount)" />
+            <button class="deleteListButton" ng-click="delete(input)">Usuń</button>
+        </div>
+        <div class="invDiv">
+            <button class="saveDoc" ng-disabled="disableBtn" ng-click="addInvPage(addInv, inputs)"><i class="fi-check"></i>Zapisz dokument</button>
         </div>
     </div>
 </div>

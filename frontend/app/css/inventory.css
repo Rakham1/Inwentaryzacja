@@ -18,10 +18,19 @@
 }
 select.inv{
     margin-right: 10px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    border: 1px solid #001f33;
 }
-input[type="text"].invAddInput{
-    margin-bottom: 0;
+input[type="text"].invAddInput, input[type="text"].invAddInput:focus{
+    margin-bottom: 5px;
+    border: 1px solid #001f33;
+}
+.deleteListButton, .deleteListButton:hover, .deleteListButton:focus{
+    margin-bottom: 5px;
+    padding: 7px 10px;
+    margin-left: 3px;
+    background-color: #ff8080;
+    border: 1px solid #cc0000;
 }
 .invForm{
     width: 100%;
@@ -38,8 +47,9 @@ input[type="text"].invAddInput{
 .invLabel{
     cursor: auto;
 }
-input[type="text"].invInput, .invTextarea, .invSelect{
+input[type="text"].invInput, .invTextarea, .invSelect, input[type="text"].invInput:focus, .invTextarea:focus, .invSelect:focus{
     width: 400px;
+    border: 1px solid #001f33;
 }
 .invTextarea{
     max-width: 400px;
@@ -49,7 +59,37 @@ input[type="text"].invInput, .invTextarea, .invSelect{
 .rightInvColumn{
     float: right;
     width: 50%;
-    max-height: 600px;
+    max-height: 550px;
     overflow: hidden;
     overflow-y: hidden
+}
+.saveDoc, .saveDoc:hover, .saveDoc:focus{
+    position: absolute;
+    bottom: -130px;
+    right: 50%;
+    padding: 10px 20px;
+    background-color: #e65c00;
+    border: 2px solid #803300;
+}
+.saveDoc:disabled, .saveDoc:disabled:hover{
+    position: absolute;
+    bottom: -130px;
+    right: 50%;
+    padding: 10px 20px;
+    background-color: #e65c00;
+    border: 2px solid #803300;
+    cursor: not-allowed;
+}
+.saveDoc i {
+    padding-right: 3px;
+}
+.addNextItem, .addNextItem:hover, .addNextItem:focus, .addNextItem:active{
+    margin-left: 100px;
+    padding: 5px 10px;
+    border-radius: 0;
+    background-color: #005c99;
+    border: 2px solid #001f33;
+}
+.addNextItem i{
+    padding-right: 3px;
 }

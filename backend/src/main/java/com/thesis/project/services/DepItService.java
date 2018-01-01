@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DepItService {
@@ -23,6 +24,11 @@ public class DepItService {
     public ArrayList<DepIt> getItemsByDepId(Long depotId){
         return depItRepository.getItemsByDepId(depotId);
     }
+
+    public void save (List<DepItDTO> depItDTO){
+        depItDTO.stream().forEach(item -> save(item));
+    }
+
     public void save (DepItDTO depItDTO){
         DepIt depIt = new DepIt();
         depIt.setAmount(depItDTO.getAmount());

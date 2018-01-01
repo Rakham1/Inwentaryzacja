@@ -173,8 +173,14 @@ MyApp.controller('itemsController', function ($scope, $http, $location, $cookies
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
                     success: function (json) {
+                        $http.get("/api/items/allItems/" + $cookies.get("whID")).then(function (response) {
+                            $scope.items = response.data;
+                        });
                     },
                     error: function (json) {
+                        $http.get("/api/items/allItems/" + $cookies.get("whID")).then(function (response) {
+                            $scope.items = response.data;
+                        });
                     }
                 });
             },

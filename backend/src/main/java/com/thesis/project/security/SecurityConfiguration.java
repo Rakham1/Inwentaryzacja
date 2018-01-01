@@ -46,6 +46,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 //                .authenticationProvider(myAuthenticationProvider)
                 .logout().logoutSuccessUrl("/api/login")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).maximumSessions(1);
     }

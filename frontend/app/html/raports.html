@@ -18,7 +18,7 @@
         <div class="tabs-panel is-active" id="panel1">
             <h3>Raporty z inwentaryzacji</h3>
             <div ng-click="generateInv(i); go('/raport/invRaport')" ng-repeat="i in invRaps | orderBy: 'id'">
-                <div>
+                <div class="raports columns large-3">
                     {{i.inventoryNumber}}
                 </div>
             </div>
@@ -27,13 +27,17 @@
         <div class="tabs-panel" id="panel2">
             <h3>Raporty z przyjęcia przedmiotów</h3>
             <div ng-click="generateDep(d); go('/raport/depRaport')" ng-repeat="d in depRaps | orderBy: 'id'">
-                {{d.invoiceName}}
+                <div class="raports columns large-3">
+                    {{d.invoiceName}}
+                </div>
             </div>
         </div>
         <div class="tabs-panel" id="panel3">
             <h3>Raporty z wydania przedmiotów</h3>
-            <div ng-click="generateRel(r); go('/raport/relRaport')" ng-repeat="r in relRaps">
-                {{r.id}}
+            <div ng-click="generateRel(r); go('/raport/relRaport')" ng-repeat="r in relRaps | orderBy: 'id'">
+                <div class="raports columns large-3">
+                    {{r.id}}
+                </div>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ MyApp.controller('contractorController', function ($scope, $http, $location, $co
     $scope.show = false;
     $scope.edit = false;
     var scope = $scope;
+    $scope.disableBtn = false;
 
     $http.get("api/firms/" + $cookies.get("firmId") + "/contractors").then(function (response) {
         $scope.contractors = response.data;
@@ -17,6 +18,7 @@ MyApp.controller('contractorController', function ($scope, $http, $location, $co
 
     $scope.edit = function (c) {
         $scope.edit = true;
+        $scope.disableBtn = true;
         $http.get("api/contractor/" + c.id).then(function (response) {
             $scope.thisContractor = response.data;
         })
@@ -33,6 +35,7 @@ MyApp.controller('contractorController', function ($scope, $http, $location, $co
 
     scope.closeEdit = function (editContractor) {
         $scope.edit = false;
+        $scope.disableBtn = false;
         editContractor.firmName = '';
         editContractor.nip = '';
         editContractor.street = '';

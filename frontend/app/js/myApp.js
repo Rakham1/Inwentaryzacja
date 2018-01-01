@@ -1,6 +1,11 @@
 var MyApp = angular.module('inventpro', ['ngRoute', 'ngCookies']);
 
 MyApp.config(function ($routeProvider,$locationProvider, $qProvider){
+	var $cookies;
+    angular.injector(['ngCookies']).invoke(['$cookies', function (_$cookies_) {
+        $cookies = _$cookies_;
+    }]);
+	
 	$locationProvider.hashPrefix('!');
 	$qProvider.errorOnUnhandledRejections(false);
 	

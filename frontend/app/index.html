@@ -28,7 +28,7 @@
   <base href="/">
 </head>
 
-<body ng-class="{mainSite:isHidden()}" ng-controller="navbarController">
+<body ng-class="{mainSite:isHidden()}" ng-controller="loginController">
   <div class="top-bar" data-menu-underline-from-center ng-hide="isHidden()">
     <div class="top-bar-left">
       <ul class="menu">
@@ -103,7 +103,7 @@
 
   <div ng-view class="large-11 columns"></div>
 
-  <footer class="footer social-footer" ng-cloak ng-hide="isHidden()" ng-controller="userController">
+  <footer class="footer social-footer" ng-cloak ng-hide="isHidden()">
     <div class="color">
       Zalogowany jako {{user.name}} {{user.surname}} ( {{user.username}} )
     </div>

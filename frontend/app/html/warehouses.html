@@ -17,9 +17,9 @@
                 </div>
                 <div class="row columns">
                     <label>Ulica
-                        <input type="text" name="street" required ng-model="addWh.street" placeholder="np. ul.Reja 14/9" ng-pattern="/(?:(?=(^[A-Za-zęóąśłżźćń]*\s[0-9]{1,3}$))|(?=(^[A-Za-zęóąśłżźćń]*\s[0-9]{1,3}[/][0-9]{1,3}$)))/g"
+                        <input type="text" name="street" required ng-model="addWh.street" placeholder="np. ul.Reja 14/9" ng-pattern="/(?:(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}$))|(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}[/][0-9]{1,3}$))|(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}[A-Za-z]{1}$))|(?=(^(ul.|ul)\s([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}$|[0-9]{1,3}[A-Za-z]{1}$))|([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}[/][0-9]{1,3}$|[0-9]{1,3}[/][0-9]{1,3}[A-Za-z]{1}$))))|(?=(^(ul.|ul)\s(Aleja|aleja|Al|al|Al.|al.)\s([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}[/][0-9]{1,3}$|[0-9]{1,3}[/][0-9]{1,3}[A-Za-z]{1}$))|([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}$|[0-9]{1,3}[A-Za-z]{1}$)))))/g"
                         />
-                        <span ng-show="formName.street.$error.pattern">Nieodpowiedni format miasta</span>
+                        <span class="error" ng-show="formName.street.$error.pattern">Nieodpowiedni format</span>
                     </label>
                 </div>
                 <div class="row">
@@ -28,7 +28,7 @@
                     <div class="columns large-6">
                         <input type="text" name="postcode" placeholder="Kod pocztowy" ng-pattern="/[0-9]{2}[-][0-9]{3}/i" required ng-minlength="6"
                             ng-maxlength="6" ng-model="addWh.postCode" />
-                        <span ng-show="formName.postcode.$error.pattern">Nieodpowiedni kod</span>
+                        <span class="error" ng-show="formName.postcode.$error.pattern">Nieodpowiedni kod</span>
                     </div>
                     <div class="columns large-6">
                         <input type="text" required ng-model="addWh.city" placeholder="Miasto" />
@@ -64,15 +64,16 @@
                     <td>
                         <div ng-hide="show == $index">{{w.street}}</div>
                         <div ng-show="show == $index">
-                            <input type="text" name="editStreet" class="editWhInput" ng-model="editWh.street" ng-pattern="/(?:(?=(^[A-Za-zęóąśłżźćń]*\s[0-9]{1,3}$))|(?=(^[A-Za-zęóąśłżźćń]*\s[0-9]{1,3}[/][0-9]{1,3}$)))/g"
+                            <input type="text" name="editStreet" class="editWhInput" ng-model="editWh.street" ng-pattern="/(?:(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}$))|(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}[/][0-9]{1,3}$))|(?=(^[A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s[0-9]{1,3}[A-Za-z]{1}$))|(?=(^(ul.|ul)\s([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}$|[0-9]{1,3}[A-Za-z]{1}$))|([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}[/][0-9]{1,3}$|[0-9]{1,3}[/][0-9]{1,3}[A-Za-z]{1}$))))|(?=(^(ul.|ul)\s(Aleja|aleja|Al|al|Al.|al.)\s([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}[/][0-9]{1,3}$|[0-9]{1,3}[/][0-9]{1,3}[A-Za-z]{1}$))|([A-ZŚŁŻŹĆa-zęóąśłżźćń]*\s([0-9]{1,3}$|[0-9]{1,3}[A-Za-z]{1}$)))))/g"
                             />
-                            <span ng-show="editStreet.$error.pattern">Nieodpowiedni format miasta</span>
+                            <span class="error" ng-show="editStreet.$error.pattern">Nieodpowiedni format</span>
                         </div>
                     </td>
                     <td>
                         <div ng-hide="show == $index">{{w.postCode}}</div>
-                        <div ng-show="show == $index" ng-class="{'has-error': !whForm.whPC.$valid}">
+                        <div ng-show="show == $index">
                             <input type="text" name="whPC" class="editWhInput" ng-model="editWh.postCode" ng-pattern="/[0-9]{2}[-][0-9]{3}/i" />
+                            <span class="error" ng-show="whPC.$error.pattern">Nieodpowiedni kod</span>
                         </div>
                     </td>
                     <td>
