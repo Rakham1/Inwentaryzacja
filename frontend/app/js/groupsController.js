@@ -2,6 +2,7 @@ MyApp.controller('groupsController', function ($scope, $http, $location, $window
     $scope.groups = [];
     $scope.change = -1;
     $scope.change1 = -1;
+    $scope.active = false;
     $scope.inputs = [];
 
     $http.get("api/groups/allGroups").then(function (response) {
@@ -12,6 +13,7 @@ MyApp.controller('groupsController', function ($scope, $http, $location, $window
     $scope.add = function () {
         $scope.inputs.push({});
         $scope.change1=true;
+        $scope.active = true;
     };
 
     $scope.addNew = function(input){
@@ -63,12 +65,14 @@ MyApp.controller('groupsController', function ($scope, $http, $location, $window
                     $scope.groups = response.data;
                 });
                 $scope.change=-1;
+                $scope.active = false;
             },
             error: function (json) {
                 $http.get("api/groups/allGroups").then(function (response) {
                     $scope.groups = response.data;
                 });
                 $scope.change=-1;
+                $scope.active = false;
             }
         });
     }
@@ -89,6 +93,12 @@ MyApp.controller('groupsController', function ($scope, $http, $location, $window
     $scope.deleteInput = function (input) {
         var index = $scope.inputs.indexOf(input);
         $scope.inputs.splice(index, 1);
+        $scope.active = false;
+    }
+
+    $scope.del = function(index){
+        index = -1;
+        $scope.change = index;
     }
 
     $scope.editG = function (index) {
@@ -99,5 +109,9 @@ MyApp.controller('groupsController', function ($scope, $http, $location, $window
         if(value=="change"){
             $location.path("/groups");
         }
+    }
+
+    $scope.backToItem = function(){
+        $location.path('/items');
     }
 });

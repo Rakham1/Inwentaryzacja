@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="columns large-4">
-                    <input type="text" required ng-model="addItem.pr" placeholder="Dodaj cenę" />
+                    <input type="number" min="1" step="any" required ng-model="addItem.pr" placeholder="Dodaj cenę" />
                 </div>
             </div>
             <div class="row columns" ng-controller="groupsController">
@@ -123,7 +123,7 @@
                                 <input type="text" ng-show="active == $index" required ng-model="editItem.unit" ng-value="thisItem.unit" />
                             </div>
                             <div class="columns large-4">
-                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.price}}" readonly="readonly" />
+                                <input type="text" ng-hide="active == $index" placeholder="{{thisItem.price}} zł" readonly="readonly" />
                                 <input type="text" ng-show="active == $index" required ng-model="editItem.price" ng-value="thisItem.price" />
                             </div>
                             </label>
@@ -132,7 +132,7 @@
                             <label class="columns large-6">Grupa</label>
                             <label class="columns large-6">Typ</label>
                             <div class="columns columns large-6" ng-controller="groupsController">
-                                <div ng-hide="active == $index">{{thisItem.group.name}}</div>
+                                <div ng-hide="active == $index" style="font-weight:bold; font-size:18px;">{{thisItem.group.name}}</div>
                                 <select type="text" ng-show="active == $index" required ng-model="editItem.gId" ng-click="changeGroup(editItem.gId)">
                                     <option value="">Wybierz z listy</option>
                                     <option ng-repeat="g in groups" value="{{g.id}}">{{g.name}}</option>
@@ -141,7 +141,7 @@
                                 <div>{{editItem.gId}}</div>
                             </div>
                             <div class="columns columns large-6" ng-controller="typesController">
-                                <div ng-hide="active == $index">{{thisItem.type.name}}</div>
+                                <div ng-hide="active == $index" style="font-weight:bold; font-size:18px;">{{thisItem.type.name}}</div>
                                 <select type="text" ng-show="active == $index" required ng-model="editItem.tId" ng-click="changeType(editItem.tId)">
                                     <option value="">Wybierz z listy</option>
                                     <option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>
@@ -157,13 +157,8 @@
                             </label>
                         </div>
                         <div class="row columns">
-                            <label>Czas dodania
-                                <input type="text" placeholder="{{thisItem.timestamp}}" readonly="readonly" />
-                            </label>
-                        </div>
-                        <div class="row columns">
-                            <label>Magazyn
-                                <input type="text" placeholder="{{thisItem.warehouse}}" readonly="readonly" />
+                            <label>Data dodania do magazynu
+                                <input type="text" placeholder="{{thisItem.timestamp | date: 'dd-MM-yyyy'}}" readonly="readonly" />
                             </label>
                         </div>
                         <div class="row columns">
@@ -173,15 +168,15 @@
                             </label>
                         </div>
                         <div class="row columns">
-                            <button ng-hide="active==$index" ng-click="edit($index)" class="primary button expanded">Edytuj</button>
-                            <button ng-show="active==$index" ng-disabled="editName.$invalid" ng-click="update(editItem)" class="primary button expanded">Zatwierdź</button>
+                            <button ng-hide="active==$index" ng-click="edit($index)" class="primary button expanded editItemButton">Edytuj</button>
+                            <button ng-show="active==$index" ng-disabled="editName.$invalid" ng-click="update(editItem)" class="primary button expanded editItemButton">Zatwierdź edycję</button>
                         </div>
                         <div class="row columns">
-                            <button ng-click="close()" class="primary button expanded">Koniec</button>
+                            <button ng-hide="active==$index" ng-click="delete()" class="primary button expanded editItemButton">Usuń</button>
+                            <button ng-show="active==$index" ng-click="back()" class="primary button expanded editItemButton">Cofnij edycję</button>
                         </div>
                         <div class="row columns">
-                            <button ng-hide="active==$index" ng-click="delete()" class="primary button expanded">Usuń</button>
-                            <button ng-show="active==$index" ng-click="back()" class="primary button expanded">Cofnij</button>
+                            <button ng-click="close()" class="primary button expanded editItemButton">Wyjdź</button>
                         </div>
                     </form>
                 </div>

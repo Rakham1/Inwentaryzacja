@@ -3,6 +3,7 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
     $scope.whs = [];
     $scope.cId;
     $scope.wId;
+    $scope.disableBtn = true;
     var scope = $scope;
 
     var dateToday = new Date();
@@ -14,12 +15,12 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
         });
     });
 
-    // scope.newItem = function () {
-    //     return {
-    //         itemid: '',
-    //         amount: ''
-    //     }
-    // }
+    scope.newItem = function () {
+        return {
+            itemid: '',
+            amount: ''
+        }
+    }
 
     $scope.chooseItem = function(relItId){
         $scope.var1 = relItId;
@@ -30,7 +31,8 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
     }
 
     $scope.add = function () {
-        $scope.inputs.push({});
+        $scope.disableBtn = false;
+        $scope.inputs.push(scope.newItem());
         for (i = 0; i < $scope.items.length; i++) {
             document.getElementById("index_" + i).disabled = true;
         }
@@ -39,6 +41,9 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
     $scope.delete = function (input) {
         var index = $scope.inputs.indexOf(input);
         $scope.inputs.splice(index, 1);
+        if(index == 0){
+            $scope.disableBtn = true;
+        }
     }
 
     $http.get("api/firms/" + $cookies.get("firmId") + "/whs").then(function (response) {
@@ -68,10 +73,15 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             success: function (json) {
-                var data = {
-                    itemId: $scope.var1,
-                    itemReleaseId: json.addedRelId,
-                    amount: $scope.var2
+                var data = [];
+                for (i = 0; i < inputs.length; ++i) {
+                    data[i] = 
+                        {
+                            itemId: $scope.inputs[i].itemid,
+                            inventoryId: json.addedRelId,
+                            amount: $scope.inputs[i].amount
+                        }
+                    
                 }
                 $.ajax({
                     type: 'POST',
@@ -91,7 +101,7 @@ MyApp.controller('releaseController', function ($scope, $http, $location, $cooki
     }
 
     $(document).ready(function () {
-        $('.av').on('click', function () {
+        $('.addNextItem').on('click', function () {
             $('.rightInvColumn').css('overflow-y', 'scroll');
         });
     });

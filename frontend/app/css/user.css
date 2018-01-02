@@ -1,53 +1,68 @@
-.user-body{
-  margin-top: 10%;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.userBody{
+  width: 100%;
+  height: 800px;
 }
-
-.user-header {
-  text-transform: uppercase;
-  padding-bottom: 1rem;
+#userSite{
+    background-color: #4d94ff;
+    height: 25%;
+    margin-left: -15px;
+    margin-right: -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #333333;
+}
+.sectionText{
+  margin: 0;
+  color: white;
+  font-size: 50px;
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
-
-.user-header-inside{
+#firmSite{
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 30%;
+}
+#whSite{
+  height: 45%;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.sectionHeader{
+  padding-left: 100px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 40px;
   font-weight: bold;
-  margin-bottom: 1rem;
+  font-family: 'Open Sans', sans-serif;
 }
-
-.user-middle{
-  display: inline;
-
-}
-
-.left-user-column{
-  margin-top: 50px;
-  text-align: center;
-}
-
-.middle-user-column, .right-user-column{
-    text-align: center;
-}
-
-.column-inside {
-    padding: 2rem 4rem;
-}
-  
-.user-list{
-  list-style-type: none; 
-  margin-bottom: 2rem; 
-}
-
-.select-label{
+.sectionFirm{
   font-size: 20px;
-  padding-bottom: 5px;
+  padding-left: 103px;
 }
-
-.select{
-    width: 60%;
-    border: 1px solid #ccc;
+.leftSectionWh{
+  padding-left: 100px;
+  width: 30%;
+  height: 80%;
+  float: left;
+  position: relative;
+  overflow: hidden;
 }
-
-.select:focus{
-  outline: none;
+.rightSectionWh{
+  font-size: 20px;
+  width: 60%;
+  height: 80%;
+  float: right;
+  position: relative;
+  overflow: hidden;
+}
+.selectionNameHeader{
+  margin-top: -3px;
+  font-size: 27px;
+  margin-bottom: 10px;  
+}
+.selectionSelect, .selectionSelect:focus{
+  border: 2px solid #333333;
 }

@@ -87,6 +87,11 @@ MyApp.controller('typesController', function ($scope, $http, $location, $cookies
         $scope.inputs.splice(index, 1);
     }
 
+    $scope.del = function(index){
+        index = -1;
+        $scope.change = index;
+    }
+
     $scope.editG = function (index) {
         $scope.change = index;
     }
@@ -95,5 +100,9 @@ MyApp.controller('typesController', function ($scope, $http, $location, $cookies
         if (value == "change") {
             $location.path("/types");
         }
+    }
+
+    $scope.backToItem = function(){
+        $location.path('/items');
     }
 });

@@ -4,10 +4,9 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    top: 10%;
+    top: 100px;
     width: 400px;
     padding: 10px;
-    border: 1px solid black;
     z-index: 2;
     overflow: auto;
 }
@@ -35,7 +34,28 @@
     height: 60px;
     margin-bottom: 0;
 }
-
+.row.columns button.group_type, .row.columns button.group_type:disabled{
+    background-color: transparent;
+    position: relative;
+    text-align: center;
+    border: 4px solid #003366;
+}
 .fi-plus{
     font-size: 30px;
+    text-align: center;
+    line-height: 50%;
+    color: #003366;
+}
+.row.columns .fi-x.delete{
+    position: initial;
+    bottom: 0;
+}
+.fi-page-edit, .fi-save{
+    margin-left: 3px;
+}
+.backGT, .backGT:hover, .backGT:focus{
+    margin: 50px;
+    background-color: #003366;
+    padding: 10px 10px;
+    width: 100px;
 }

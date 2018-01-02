@@ -3,7 +3,7 @@ MyApp.controller('whsController', function ($scope, $http, $location, $cookies, 
     $scope.firm;
     $scope.whs = [];
     $scope.fid;
-    $scope.show;
+    $scope.show = -1;
     $scope.disableBtn = true;
     var scope = $scope;
 

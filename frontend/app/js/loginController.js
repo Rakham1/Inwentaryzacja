@@ -24,10 +24,18 @@ MyApp.controller('loginController', function ($scope, $http, $location, $cookies
 					console.log($cookies.get("adminRights"));
 					if (response.data.privilege == "ROLE_ADMIN") {
 						$location.path('/admin');
+						$scope.user = {
+							username: '',
+							password: ''
+						}
 						// window.location.replace('/admin');
 					}
 					else if (response.data.privilege == "ROLE_USER") {
 						$location.path('/user');
+						$scope.user = {
+							username: '',
+							password: ''
+						}
 						// window.location.replace('/user');
 					}
 				});

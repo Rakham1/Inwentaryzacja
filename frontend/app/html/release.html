@@ -8,7 +8,7 @@
             </div>
             <div class="invDiv" ng-controller="userController">
                 <label class="invLabel">Pracownik:</label>
-                {{user.name}} {{user.surname}}
+                <p>{{user.name}} {{user.surname}}</p>
             </div>
             <div class="invDiv">
                 <label class="invLabel">Data wydania:</label>
@@ -35,10 +35,7 @@
 
             </div>
             <div class="invDiv">
-                <button type="button" class="av" ng-click="add()">Dodaj kolejne przedmioty</button>
-            </div>
-            <div class="invDiv">
-                <button ng-click="addRelPage(addRel)">Zapisz dokument</button>
+                <button type="button" class="addNextItem" ng-click="add()"><i class="fa fa-plus"></i>Dodaj kolejne przedmioty</button>
             </div>
         </form>
     </div>
@@ -49,7 +46,10 @@
                 <option ng-repeat="item in items" value="{{item.id}}">{{item.itemName}}</option>
             </select>
             <input type="text" class="invAddInput" placeholder="Ilość" ng-model="relAmount" ng-change="changeInput(relAmount)" />
-            <button class="button" ng-click="delete(input)">Usuń</button>
+            <button class="deleteListButton" ng-click="delete(input)">Usuń</button>
+        </div>
+        <div class="invDiv">
+            <button class="saveDoc" ng-disabled="disableBtn" ng-click="addRelPage(addRel)"><i class="fi-check"></i>Zapisz dokument</button>
         </div>
     </div>
 </div>

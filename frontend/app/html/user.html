@@ -1,4 +1,4 @@
-<div class="large-12 columns user-body" >
+<!-- <div class="large-12 columns user-body" >
     <div class="">
         <h3 class="user-header">Moje dane</h3>
     </div>
@@ -42,4 +42,32 @@
 
         </div>
     </div>
-</div>
+</div> -->
+<div class="userBody">
+    <section id="userSite">
+        <span class="sectionText">Moje dane</span>
+    </section>
+    <section id="firmSite">
+        <div class="sectionHeader">Firma</div>
+        <div class="sectionFirm">
+            <div class="selectionNameHeader">{{firm.firmName}}</div>
+            <div>{{firm.street}}</div>
+            <div>{{firm.postCode}}, {{firm.city}}</div>
+            <div>NIP: {{firm.nip}}</div>
+        </div>
+    </section>
+    <section id="whSite">
+        <div class="sectionHeader">Magazyny</div>
+        <div class="leftSectionWh">
+            <select class="selectionSelect" ng-model="wid" ng-change="changeWh(wid)">
+                <option disabled selected value> -- </option>
+                <option value="{{w.id}}" ng-repeat="w in whs | orderBy: 'id'">{{w.name}}</option>
+            </select>
+        </div>
+        <div class="rightSectionWh">
+            <div class="selectionNameHeader">{{wh.name}}</div>
+            <div>{{wh.street}}</div>
+            <div>{{wh.postCode}} {{wh.city}}</div>
+        </div>
+    </section>
+    </div>

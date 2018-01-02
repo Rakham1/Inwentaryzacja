@@ -88,6 +88,9 @@ select.addSelect{
   background-color:#ff8c00;
   color: #ffffff;
 }
+.button.aaa .fi-plus.small.add{
+  color: white;
+}
 .fi-plus.small{
   font-size: 1rem;
   padding-right: 2px;

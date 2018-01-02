@@ -1,4 +1,4 @@
-<a href="/items" class="button">Wróć</a>
+<button ng-click="backToItem()" class="backGT">Wróć</button>
 <form class="group_typeForm">
     <div class="row columns">
         <h2>Typy</h2>
@@ -9,16 +9,17 @@
         <input type="text" ng-show="change == $index" placeholder="{{t.name}}" class="columns large-6" ng-model="editType.name"/>
         <i class="fi-page-edit" ng-hide="change == $index" ng-click="editG($index)"></i>
         <i class="fi-save" ng-click="save(editType,  t.id)" ng-show="change == $index"></i>
-        <i class="fi-x" ng-click="delete(t.id)"></i>
+        <i class="fi-x delete" ng-hide="change == $index" ng-click="delete(t.id)"></i>
+        <i class="fi-x delete" ng-show="change == $index" ng-click="del($index)"></i>
         
     </div>
     <div class="row columns" ng-repeat="input in inputs">
         <input ng-model="input.name" ng-show="change1 == true"/>
         <i class="fi-save" ng-click="addNew(input)" ng-show="change1 == true"></i>
-        <i class="fi-x" ng-click="deleteInput(input)" ng-show="change1 == true"5we></i>
+        <i class="fi-x delete" ng-click="deleteInput(input)" ng-show="change1 == true"></i>
     </div>
     <div class="row columns">
-        <button class="primary button expanded" ng-click="add()">
+        <button class="primary button expanded group_type" ng-click="add()" ng-disabled="active">
             <i class="fi-plus"></i>
         </button>
     </div>
